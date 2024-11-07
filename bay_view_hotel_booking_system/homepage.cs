@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace bay_view_hotel_booking_system
 {
-    public partial class Form1 : Form
+    public partial class homepage : Form
     {
-        public Form1()
+        public homepage()
         {
             InitializeComponent();
         }

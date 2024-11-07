@@ -1,7 +1,6 @@
-﻿
-namespace bay_view_hotel_booking_system
+﻿namespace bay_view_hotel_booking_system
 {
-    partial class Form1
+    partial class homepage
     {
         /// <summary>
         /// Required designer variable.
@@ -29,13 +28,21 @@ namespace bay_view_hotel_booking_system
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(homepage));
+            SuspendLayout();
+            // 
+            // homepage
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(784, 461);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "homepage";
+            Text = "Home";
+            ResumeLayout(false);
         }
 
         #endregion
     }
 }
-

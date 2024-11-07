@@ -29,16 +29,21 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            loading_bar = new System.Windows.Forms.ProgressBar();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(splash_screen));
+            loading_bar = new ProgressBar();
             splash_screen_timer = new System.Windows.Forms.Timer(components);
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // loading_bar
             // 
-            loading_bar.Location = new System.Drawing.Point(12, 409);
+            loading_bar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            loading_bar.Location = new Point(12, 454);
+            loading_bar.Margin = new Padding(3, 2, 3, 2);
             loading_bar.Maximum = 60;
             loading_bar.Name = "loading_bar";
-            loading_bar.Size = new System.Drawing.Size(776, 29);
+            loading_bar.Size = new Size(776, 35);
             loading_bar.TabIndex = 0;
             // 
             // splash_screen_timer
@@ -47,16 +52,31 @@
             splash_screen_timer.Interval = 500;
             splash_screen_timer.Tick += timer1_Tick;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            pictureBox1.Image = Properties.Resources.bay_view_logo;
+            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(776, 437);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
             // splash_screen
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(800, 450);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 500);
+            Controls.Add(pictureBox1);
             Controls.Add(loading_bar);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
             Name = "splash_screen";
-            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "splash_screen";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -64,5 +84,6 @@
 
         private System.Windows.Forms.ProgressBar loading_bar;
         private System.Windows.Forms.Timer splash_screen_timer;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
