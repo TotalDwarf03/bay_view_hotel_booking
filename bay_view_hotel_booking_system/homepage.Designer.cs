@@ -29,20 +29,35 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(homepage));
+            datagrid = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)datagrid).BeginInit();
             SuspendLayout();
+            // 
+            // datagrid
+            // 
+            datagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            datagrid.Location = new Point(12, 12);
+            datagrid.Name = "datagrid";
+            datagrid.Size = new Size(760, 437);
+            datagrid.TabIndex = 0;
             // 
             // homepage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 461);
+            Controls.Add(datagrid);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "homepage";
             Text = "Home";
+            Load += homepage_Load;
+            ((System.ComponentModel.ISupportInitialize)datagrid).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView datagrid;
     }
 }

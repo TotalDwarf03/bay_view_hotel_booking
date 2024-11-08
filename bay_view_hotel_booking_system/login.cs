@@ -19,9 +19,33 @@ namespace bay_view_hotel_booking_system
 
         private bool verify_login_details(string username, string password)
         {
-            // TODO
+            string email = email_textbox.Text;
+            string pass = password_textbox.Text;
 
-            return true;
+            string query = $"SELECT * FROM staff WHERE email = '{email}'";
+
+            DataTable dt = new SQLController().RunQuery(query);
+
+            if (dt.Rows.Count == 0)
+            {
+                return false;
+            }
+
+            string? db_pass = dt.Rows[0]["password"].ToString();
+
+            if (db_pass == null)
+            {
+                return false;
+            }
+
+            string input_pass = password_manager.HashPassword(pass);
+
+            if (db_pass == input_pass)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private void show_homepage()
@@ -43,6 +67,8 @@ namespace bay_view_hotel_booking_system
             }
             else
             {
+                password_textbox.Text = "";
+
                 error_message_lbl.Visible = true;
             }
         }

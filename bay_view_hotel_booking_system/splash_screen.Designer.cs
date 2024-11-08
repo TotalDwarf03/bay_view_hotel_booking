@@ -76,6 +76,7 @@
             Name = "splash_screen";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "splash_screen";
+            Load += splash_screen_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }

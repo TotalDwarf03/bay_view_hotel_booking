@@ -16,5 +16,15 @@ namespace bay_view_hotel_booking_system
         {
             InitializeComponent();
         }
+
+        SQLController controller = new SQLController();
+
+        private void homepage_Load(object sender, EventArgs e)
+        {
+            string query = "SELECT * FROM staff";
+
+            DataTable dt = controller.RunQuery(query);
+            datagrid.DataSource = dt;
+        }
     }
 }

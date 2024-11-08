@@ -31,5 +31,11 @@ namespace bay_view_hotel_booking_system
                 this.Close();
             }
         }
+
+        private void splash_screen_Load(object sender, EventArgs e)
+        {
+            SQLController controller = new SQLController();
+            controller.InitialiseDatabase();
+        }
     }
 }

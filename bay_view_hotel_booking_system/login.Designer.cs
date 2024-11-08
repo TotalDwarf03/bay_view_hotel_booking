@@ -30,29 +30,30 @@ namespace bay_view_hotel_booking_system
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(login));
-            username_lbl = new Label();
+            email_lbl = new Label();
             password_lbl = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
             bay_logo_picture = new PictureBox();
             introduction_lbl = new Label();
-            username_textbox = new TextBox();
+            email_textbox = new TextBox();
             password_textbox = new TextBox();
             login_btn = new Button();
             error_message_lbl = new Label();
+            label1 = new Label();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bay_logo_picture).BeginInit();
             SuspendLayout();
             // 
-            // username_lbl
+            // email_lbl
             // 
-            username_lbl.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            username_lbl.AutoSize = true;
-            username_lbl.Location = new Point(23, 146);
-            username_lbl.Name = "username_lbl";
-            username_lbl.Size = new Size(220, 15);
-            username_lbl.TabIndex = 0;
-            username_lbl.Text = "Username:";
-            username_lbl.TextAlign = ContentAlignment.MiddleCenter;
+            email_lbl.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            email_lbl.AutoSize = true;
+            email_lbl.Location = new Point(23, 146);
+            email_lbl.Name = "email_lbl";
+            email_lbl.Size = new Size(220, 15);
+            email_lbl.TabIndex = 0;
+            email_lbl.Text = "Email:";
+            email_lbl.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // password_lbl
             // 
@@ -72,18 +73,19 @@ namespace bay_view_hotel_booking_system
             flowLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             flowLayoutPanel1.Controls.Add(bay_logo_picture);
             flowLayoutPanel1.Controls.Add(introduction_lbl);
-            flowLayoutPanel1.Controls.Add(username_lbl);
-            flowLayoutPanel1.Controls.Add(username_textbox);
+            flowLayoutPanel1.Controls.Add(email_lbl);
+            flowLayoutPanel1.Controls.Add(email_textbox);
             flowLayoutPanel1.Controls.Add(password_lbl);
             flowLayoutPanel1.Controls.Add(password_textbox);
             flowLayoutPanel1.Controls.Add(login_btn);
             flowLayoutPanel1.Controls.Add(error_message_lbl);
+            flowLayoutPanel1.Controls.Add(label1);
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel1.Location = new Point(267, 12);
             flowLayoutPanel1.MinimumSize = new Size(200, 218);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Padding = new Padding(20);
-            flowLayoutPanel1.Size = new Size(266, 345);
+            flowLayoutPanel1.Size = new Size(266, 405);
             flowLayoutPanel1.TabIndex = 2;
             // 
             // bay_logo_picture
@@ -110,14 +112,14 @@ namespace bay_view_hotel_booking_system
             introduction_lbl.Text = "Welcome to Bay View Hotel's Booking System. To get started, please log in.";
             introduction_lbl.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // username_textbox
+            // email_textbox
             // 
-            username_textbox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            username_textbox.Location = new Point(23, 164);
-            username_textbox.Name = "username_textbox";
-            username_textbox.Size = new Size(220, 23);
-            username_textbox.TabIndex = 1;
-            username_textbox.TextAlign = HorizontalAlignment.Center;
+            email_textbox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            email_textbox.Location = new Point(23, 164);
+            email_textbox.Name = "email_textbox";
+            email_textbox.Size = new Size(220, 23);
+            email_textbox.TabIndex = 1;
+            email_textbox.TextAlign = HorizontalAlignment.Center;
             // 
             // password_textbox
             // 
@@ -156,6 +158,18 @@ namespace bay_view_hotel_booking_system
             error_message_lbl.TextAlign = ContentAlignment.MiddleCenter;
             error_message_lbl.Visible = false;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Dock = DockStyle.Fill;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label1.Location = new Point(23, 325);
+            label1.Name = "label1";
+            label1.Size = new Size(220, 60);
+            label1.TabIndex = 3;
+            label1.Text = "Default Login:\r\n\r\nadmin@bayview.com\r\npassword";
+            label1.TextAlign = ContentAlignment.TopCenter;
+            // 
             // login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -175,15 +189,16 @@ namespace bay_view_hotel_booking_system
 
         #endregion
 
-        private Label username_lbl;
+        private Label email_lbl;
         private Label password_lbl;
         private FlowLayoutPanel flowLayoutPanel1;
-        private TextBox username_textbox;
+        private TextBox email_textbox;
         private TextBox password_textbox;
         private PictureBox bay_logo_picture;
         private Label introduction_lbl;
         private Button login_btn;
         private Label error_message_lbl;
+        private Label label1;
     }
 }
 
