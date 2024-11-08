@@ -27,5 +27,10 @@ namespace bay_view_hotel_booking_system
             DataTable dt = controller.RunQuery(query);
             datagrid.DataSource = dt;
         }
+
+        private void homepage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner?.Show();
+        }
     }
 }

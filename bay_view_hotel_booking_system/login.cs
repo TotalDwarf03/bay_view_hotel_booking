@@ -74,6 +74,9 @@ namespace bay_view_hotel_booking_system
             {
                 MessageBox.Show(LoginStatus.Item2, "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                tbEmail.Text = "";
+                tbPassword.Text = "";
+
                 ShowHomepage();
             }
             else

@@ -51,6 +51,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "homepage";
             Text = "Home";
+            FormClosing += homepage_FormClosing;
             Load += homepage_Load;
             ((System.ComponentModel.ISupportInitialize)datagrid).EndInit();
             ResumeLayout(false);
