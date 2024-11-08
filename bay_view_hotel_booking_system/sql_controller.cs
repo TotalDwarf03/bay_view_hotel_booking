@@ -85,13 +85,13 @@ namespace bay_view_hotel_booking_system
                 SQLiteCommand cmd = conn.CreateCommand();
 
                 // This file contains an exported version of the SQL Database off BlackBoard
-                cmd.CommandText = Resources.bayviewhotel_setup;
+                cmd.CommandText = Resources.bayview_setup_empty;
 
                 cmd.ExecuteNonQuery();
 
                 string hashedPassword = password_manager.HashPassword("password");
 
-                cmd.CommandText = $"INSERT INTO staff (Forename, Surname, PhoneNumber, Email, Password) VALUES ('admin', 'user', '01656 123 123', 'admin@bayview.com', '{hashedPassword}')";
+                cmd.CommandText = $"INSERT INTO staff (StaffType, Forename, Surname, PhoneNumber, Email, Password) VALUES ('manager', 'admin', 'user', '01656 123 123', 'admin@bayview.com', '{hashedPassword}')";
 
                 cmd.ExecuteNonQuery();
 

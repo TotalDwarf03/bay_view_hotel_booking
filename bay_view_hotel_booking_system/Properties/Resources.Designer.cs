@@ -82,6 +82,7 @@ namespace bay_view_hotel_booking_system.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to BEGIN TRANSACTION;
+        ///DROP TABLE IF EXISTS &quot;customer&quot;;
         ///CREATE TABLE IF NOT EXISTS &quot;customer&quot; (
         ///	&quot;CustomerID&quot;	INTEGER NOT NULL,
         ///	&quot;Forename&quot;	TEXT NOT NULL,
@@ -90,19 +91,18 @@ namespace bay_view_hotel_booking_system.Properties {
         ///	&quot;Email&quot;	TEXT NOT NULL,
         ///	PRIMARY KEY(&quot;CustomerID&quot; AUTOINCREMENT)
         ///);
+        ///DROP TABLE IF EXISTS &quot;roomstatus&quot;;
         ///CREATE TABLE IF NOT EXISTS &quot;roomstatus&quot; (
         ///	&quot;RoomStatusID&quot;	INTEGER NOT NULL,
         ///	&quot;RoomStatus&quot;	INTEGER NOT NULL,
         ///	PRIMARY KEY(&quot;RoomStatusID&quot; AUTOINCREMENT)
         ///);
-        ///CREATE TABLE IF NOT EXISTS &quot;room&quot; (
-        ///	&quot;RoomID&quot;	INTEGER NOT NULL,
-        ///	&quot;RoomType&quot;	TEXT NOT NULL,
-        ///	&quot;RoomSt [rest of string was truncated]&quot;;.
+        ///DROP TABLE IF EXISTS &quot;room&quot;;
+        ///CR [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string bayviewhotel_setup {
+        internal static string bayview_setup_empty {
             get {
-                return ResourceManager.GetString("bayviewhotel_setup", resourceCulture);
+                return ResourceManager.GetString("bayview_setup_empty", resourceCulture);
             }
         }
     }

@@ -1,4 +1,5 @@
 BEGIN TRANSACTION;
+DROP TABLE IF EXISTS "customer";
 CREATE TABLE IF NOT EXISTS "customer" (
 	"CustomerID"	INTEGER NOT NULL,
 	"Forename"	TEXT NOT NULL,
@@ -7,11 +8,13 @@ CREATE TABLE IF NOT EXISTS "customer" (
 	"Email"	TEXT NOT NULL,
 	PRIMARY KEY("CustomerID" AUTOINCREMENT)
 );
+DROP TABLE IF EXISTS "roomstatus";
 CREATE TABLE IF NOT EXISTS "roomstatus" (
 	"RoomStatusID"	INTEGER NOT NULL,
 	"RoomStatus"	INTEGER NOT NULL,
 	PRIMARY KEY("RoomStatusID" AUTOINCREMENT)
 );
+DROP TABLE IF EXISTS "room";
 CREATE TABLE IF NOT EXISTS "room" (
 	"RoomID"	INTEGER NOT NULL,
 	"RoomType"	TEXT NOT NULL,
@@ -19,23 +22,16 @@ CREATE TABLE IF NOT EXISTS "room" (
 	"Price"	REAL NOT NULL,
 	"Capacity"	INTEGER NOT NULL,
 	"IsDisabled"	INTEGER NOT NULL CHECK("IsDisabled" IN (0, 1)),
-	FOREIGN KEY("RoomStatusID") REFERENCES "roomstatus"("RoomStatusID"),
-	PRIMARY KEY("RoomID" AUTOINCREMENT)
+	PRIMARY KEY("RoomID" AUTOINCREMENT),
+	FOREIGN KEY("RoomStatusID") REFERENCES "roomstatus"("RoomStatusID")
 );
-CREATE TABLE IF NOT EXISTS "staff" (
-	"StaffID"	INTEGER NOT NULL,
-	"Forename"	TEXT NOT NULL,
-	"Surname"	TEXT NOT NULL,
-	"PhoneNumber"	TEXT NOT NULL,
-	"Email"	TEXT NOT NULL,
-	"Password"	TEXT NOT NULL,
-	PRIMARY KEY("StaffID" AUTOINCREMENT)
-);
+DROP TABLE IF EXISTS "breakfastrate";
 CREATE TABLE IF NOT EXISTS "breakfastrate" (
 	"BreakfastRateID"	INTEGER NOT NULL,
 	"Price"	REAL NOT NULL,
 	PRIMARY KEY("BreakfastRateID" AUTOINCREMENT)
 );
+DROP TABLE IF EXISTS "booking";
 CREATE TABLE IF NOT EXISTS "booking" (
 	"BookingID"	INTEGER NOT NULL,
 	"CustomerID"	INTEGER NOT NULL,
@@ -55,19 +51,37 @@ CREATE TABLE IF NOT EXISTS "booking" (
 	"LastUpdatedDate"	TEXT,
 	"CancelledBy"	INTEGER,
 	"CancellationDate"	TEXT,
+	PRIMARY KEY("BookingID" AUTOINCREMENT),
 	FOREIGN KEY("CancelledBy") REFERENCES "staff"("StaffID"),
 	FOREIGN KEY("LastUpdatedBy") REFERENCES "staff"("StaffID"),
-	FOREIGN KEY("RoomID") REFERENCES "room"("RoomID"),
+	FOREIGN KEY("CustomerID") REFERENCES "customer"("CustomerID"),
 	FOREIGN KEY("CreatedBy") REFERENCES "staff"("StaffID"),
 	FOREIGN KEY("BreakfastRateID") REFERENCES "breakfastrate"("BreakfastRateID"),
-	FOREIGN KEY("CustomerID") REFERENCES "customer"("CustomerID"),
-	PRIMARY KEY("BookingID" AUTOINCREMENT)
+	FOREIGN KEY("RoomID") REFERENCES "room"("RoomID")
 );
+DROP TABLE IF EXISTS "transaction";
 CREATE TABLE IF NOT EXISTS "transaction" (
 	"TransactionID"	INTEGER NOT NULL,
 	"BookingID"	INTEGER NOT NULL,
 	"Amount"	REAL NOT NULL,
-	FOREIGN KEY("BookingID") REFERENCES "booking"("BookingID"),
-	PRIMARY KEY("TransactionID" AUTOINCREMENT)
+	PRIMARY KEY("TransactionID" AUTOINCREMENT),
+	FOREIGN KEY("BookingID") REFERENCES "booking"("BookingID")
 );
+DROP TABLE IF EXISTS "staff";
+CREATE TABLE IF NOT EXISTS "staff" (
+	"StaffID"	INTEGER NOT NULL,
+	"StaffType"	TEXT NOT NULL,
+	"Forename"	TEXT NOT NULL,
+	"Surname"	TEXT NOT NULL,
+	"PhoneNumber"	TEXT NOT NULL,
+	"Email"	TEXT NOT NULL,
+	"Password"	TEXT NOT NULL,
+	PRIMARY KEY("StaffID" AUTOINCREMENT)
+);
+INSERT INTO "roomstatus" ("RoomStatusID","RoomStatus") VALUES (1,'available'),
+ (2,'under refurbishment'),
+ (3,'off sale');
+INSERT INTO "breakfastrate" ("BreakfastRateID","Price") VALUES (1,5.0),
+ (2,10.0),
+ (3,15.0);
 COMMIT;

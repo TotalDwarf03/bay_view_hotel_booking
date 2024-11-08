@@ -124,7 +124,7 @@
   <data name="bay_view_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bay_view_icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bayviewhotel_setup" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bayviewhotel_setup.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="bayview_setup_empty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bayview_setup_empty.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>
