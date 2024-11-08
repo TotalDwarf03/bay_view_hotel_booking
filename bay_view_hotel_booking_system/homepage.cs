@@ -21,6 +21,7 @@ namespace bay_view_hotel_booking_system
 
         private void homepage_Load(object sender, EventArgs e)
         {
+            // This code is temporary to check the database is working
             string query = "SELECT * FROM staff";
 
             DataTable dt = controller.RunQuery(query);

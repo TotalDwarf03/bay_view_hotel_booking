@@ -17,38 +17,44 @@ namespace bay_view_hotel_booking_system
             InitializeComponent();
         }
 
-        private bool verify_login_details(string username, string password)
+        /// <summary>
+        /// Checks that a given username and password matches a record in the database.
+        /// </summary>
+        /// <param name="email">The user's email</param>
+        /// <param name="password">The user's password</param>
+        /// <returns></returns>
+        private (bool, string) VerifyLoginDetails(string email, string password)
         {
-            string email = email_textbox.Text;
-            string pass = password_textbox.Text;
-
             string query = $"SELECT * FROM staff WHERE email = '{email}'";
 
             DataTable dt = new SQLController().RunQuery(query);
 
             if (dt.Rows.Count == 0)
             {
-                return false;
+                return (false, "User Not Found.");
             }
 
-            string? db_pass = dt.Rows[0]["password"].ToString();
+            string? dbPassword = dt.Rows[0]["password"].ToString();
 
-            if (db_pass == null)
+            if (dbPassword == null)
             {
-                return false;
+                return (false, "Password missing from Database, please contact your manager.");
             }
 
-            string input_pass = password_manager.HashPassword(pass);
+            string InputPassword = PasswordManager.HashPassword(password);
 
-            if (db_pass == input_pass)
+            if (dbPassword == InputPassword)
             {
-                return true;
+                return (true, "Login Successful.");
             }
 
-            return false;
+            return (false, "Invalid Credentials.");
         }
 
-        private void show_homepage()
+        /// <summary>
+        /// Shows the homepage form and hides the login form.
+        /// </summary>
+        private void ShowHomepage()
         {
             homepage frm = new homepage();
             frm.Owner = this;
@@ -59,17 +65,22 @@ namespace bay_view_hotel_booking_system
 
         private void login_btn_Click(object sender, EventArgs e)
         {
-            bool login = verify_login_details("username", "password");
+            string email = tbEmail.Text;
+            string password = tbPassword.Text;
 
-            if (login)
+            var LoginStatus = VerifyLoginDetails(email, password);
+
+            if (LoginStatus.Item1)
             {
-                show_homepage();
+                MessageBox.Show(LoginStatus.Item2, "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                ShowHomepage();
             }
             else
             {
-                password_textbox.Text = "";
+                tbPassword.Text = "";
 
-                error_message_lbl.Visible = true;
+                MessageBox.Show(LoginStatus.Item2, "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

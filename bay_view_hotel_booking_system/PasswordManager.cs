@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 
 namespace bay_view_hotel_booking_system
 {
-    class password_manager
+    class PasswordManager
     {
         public static string HashPassword(string password)
         {

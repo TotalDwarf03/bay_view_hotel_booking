@@ -50,7 +50,7 @@ namespace bay_view_hotel_booking_system
         /// <returns>The number of records changed</returns>
         public int RunNonQuery(string nonQuery)
         {
-            int recordsChanged = 0;
+            int RecordsChanged = 0;
 
             try
             {
@@ -61,7 +61,7 @@ namespace bay_view_hotel_booking_system
                 cmd = conn.CreateCommand();
                 cmd.CommandText = nonQuery;
 
-                recordsChanged = cmd.ExecuteNonQuery();
+                RecordsChanged = cmd.ExecuteNonQuery();
             }
             catch (SQLiteException ex)
             {
@@ -69,7 +69,7 @@ namespace bay_view_hotel_booking_system
             }
 
             conn.Close();
-            return recordsChanged;
+            return RecordsChanged;
         }
 
         /// <summary>
@@ -89,9 +89,9 @@ namespace bay_view_hotel_booking_system
 
                 cmd.ExecuteNonQuery();
 
-                string hashedPassword = password_manager.HashPassword("password");
+                string HashedPassword = PasswordManager.HashPassword("password");
 
-                cmd.CommandText = $"INSERT INTO staff (StaffType, Forename, Surname, PhoneNumber, Email, Password) VALUES ('manager', 'admin', 'user', '01656 123 123', 'admin@bayview.com', '{hashedPassword}')";
+                cmd.CommandText = $"INSERT INTO staff (StaffType, Forename, Surname, PhoneNumber, Email, Password) VALUES ('manager', 'admin', 'user', '01656 123 123', 'admin@bayview.com', '{HashedPassword}')";
 
                 cmd.ExecuteNonQuery();
 

@@ -10,21 +10,21 @@ using System.Windows.Forms;
 
 namespace bay_view_hotel_booking_system
 {
-    public partial class splash_screen : Form
+    public partial class SplashScreen : Form
     {
-        public splash_screen()
+        public SplashScreen()
         {
             InitializeComponent();
         }
 
-        int tick_count = 0;
+        int TickCount = 0;
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (tick_count < 6)
+            if (TickCount < 6)
             {
-                tick_count++;
-                loading_bar.PerformStep();
+                TickCount++;
+                ProgressBar.PerformStep();
             }
             else
             {
