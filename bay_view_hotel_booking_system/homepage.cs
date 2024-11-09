@@ -22,10 +22,21 @@ namespace bay_view_hotel_booking_system
         private void homepage_Load(object sender, EventArgs e)
         {
             // This code is temporary to check the database is working
-            string query = "SELECT * FROM staff";
+            
+            DataTable dtStaff = controller.RunQuery("SELECT * FROM Staff");
+            dgStaff.DataSource = dtStaff;
 
-            DataTable dt = controller.RunQuery(query);
-            datagrid.DataSource = dt;
+            DataTable dtRoom = controller.RunQuery("SELECT * FROM Room");
+            dgRoom.DataSource = dtRoom;
+
+            DataTable dtBooking = controller.RunQuery("SELECT * FROM Booking");
+            dgBooking.DataSource = dtBooking;
+
+            DataTable dtCustomer = controller.RunQuery("SELECT * FROM Customer");
+            dgCustomer.DataSource = dtCustomer;
+
+            DataTable dtPayment = controller.RunQuery("SELECT * FROM Payment");
+            dgTransaction.DataSource = dtPayment;
         }
 
         private void homepage_FormClosing(object sender, FormClosingEventArgs e)

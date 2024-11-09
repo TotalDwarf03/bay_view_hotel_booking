@@ -82,23 +82,21 @@ namespace bay_view_hotel_booking_system.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to BEGIN TRANSACTION;
-        ///DROP TABLE IF EXISTS &quot;customer&quot;;
-        ///CREATE TABLE IF NOT EXISTS &quot;customer&quot; (
+        ///DROP TABLE IF EXISTS &quot;Payment&quot;;
+        ///CREATE TABLE IF NOT EXISTS &quot;Payment&quot; (
+        ///	&quot;PaymentID&quot;	INTEGER NOT NULL,
+        ///	&quot;BookingID&quot;	INTEGER NOT NULL,
+        ///	&quot;Amount&quot;	REAL NOT NULL,
+        ///	FOREIGN KEY(&quot;BookingID&quot;) REFERENCES &quot;Booking&quot;(&quot;BookingID&quot;),
+        ///	PRIMARY KEY(&quot;PaymentID&quot; AUTOINCREMENT)
+        ///);
+        ///DROP TABLE IF EXISTS &quot;Booking&quot;;
+        ///CREATE TABLE IF NOT EXISTS &quot;Booking&quot; (
+        ///	&quot;BookingID&quot;	INTEGER NOT NULL,
         ///	&quot;CustomerID&quot;	INTEGER NOT NULL,
-        ///	&quot;Forename&quot;	TEXT NOT NULL,
-        ///	&quot;Surname&quot;	TEXT NOT NULL,
-        ///	&quot;PhoneNumber&quot;	TEXT NOT NULL,
-        ///	&quot;Email&quot;	TEXT NOT NULL,
-        ///	PRIMARY KEY(&quot;CustomerID&quot; AUTOINCREMENT)
-        ///);
-        ///DROP TABLE IF EXISTS &quot;roomstatus&quot;;
-        ///CREATE TABLE IF NOT EXISTS &quot;roomstatus&quot; (
-        ///	&quot;RoomStatusID&quot;	INTEGER NOT NULL,
-        ///	&quot;RoomStatus&quot;	INTEGER NOT NULL,
-        ///	PRIMARY KEY(&quot;RoomStatusID&quot; AUTOINCREMENT)
-        ///);
-        ///DROP TABLE IF EXISTS &quot;room&quot;;
-        ///CR [rest of string was truncated]&quot;;.
+        ///	&quot;RoomID&quot;	INTEGER NOT NULL,
+        ///	&quot;StartDate&quot;	TEXT NOT NULL,
+        ///	&quot;EndDate&quot;	TEXT NOT NULL,        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string bayview_setup_empty {
             get {

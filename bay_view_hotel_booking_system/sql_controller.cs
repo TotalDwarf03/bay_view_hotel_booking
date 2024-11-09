@@ -84,14 +84,22 @@ namespace bay_view_hotel_booking_system
                 conn.Open();
                 SQLiteCommand cmd = conn.CreateCommand();
 
-                // This file contains an exported version of the SQL Database off BlackBoard
+                // Add empty tables to the database
+                // Room, RoomStatus and BreakfastRate tables are populated with information from the spec.
                 cmd.CommandText = Resources.bayview_setup_empty;
 
                 cmd.ExecuteNonQuery();
 
+                // Add example users to the databse
                 string HashedPassword = PasswordManager.HashPassword("password");
 
-                cmd.CommandText = $"INSERT INTO staff (StaffType, Forename, Surname, PhoneNumber, Email, Password) VALUES ('manager', 'admin', 'user', '01656 123 123', 'admin@bayview.com', '{HashedPassword}')";
+                // Add an admin user to the database
+                cmd.CommandText = $"INSERT INTO Staff (StaffType, Forename, Surname, PhoneNumber, Email, Password) VALUES ('manager', 'admin', 'user', '01656 123 123', 'admin@bayview.com', '{HashedPassword}')";
+
+                cmd.ExecuteNonQuery();
+
+                // Add a default user to the database
+                cmd.CommandText = $"INSERT INTO Staff (StaffType, Forename, Surname, PhoneNumber, Email, Password) VALUES ('frontdesk', 'default', 'user', '01656 123 123', 'user@bayview.com', '{HashedPassword}')";
 
                 cmd.ExecuteNonQuery();
 

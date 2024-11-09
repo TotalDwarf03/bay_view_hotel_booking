@@ -38,7 +38,6 @@ namespace bay_view_hotel_booking_system
             tbEmail = new TextBox();
             tbPassword = new TextBox();
             btnLogin = new Button();
-            lblErrorMessage = new Label();
             lblDefaultCredentials = new Label();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
@@ -78,14 +77,13 @@ namespace bay_view_hotel_booking_system
             flowLayoutPanel1.Controls.Add(lblPassword);
             flowLayoutPanel1.Controls.Add(tbPassword);
             flowLayoutPanel1.Controls.Add(btnLogin);
-            flowLayoutPanel1.Controls.Add(lblErrorMessage);
             flowLayoutPanel1.Controls.Add(lblDefaultCredentials);
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel1.Location = new Point(267, 12);
             flowLayoutPanel1.MinimumSize = new Size(200, 218);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Padding = new Padding(20);
-            flowLayoutPanel1.Size = new Size(266, 405);
+            flowLayoutPanel1.Size = new Size(266, 470);
             flowLayoutPanel1.TabIndex = 2;
             // 
             // pbLogo
@@ -143,38 +141,23 @@ namespace bay_view_hotel_booking_system
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += login_btn_Click;
             // 
-            // lblErrorMessage
-            // 
-            lblErrorMessage.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            lblErrorMessage.AutoSize = true;
-            lblErrorMessage.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblErrorMessage.ForeColor = Color.IndianRed;
-            lblErrorMessage.Location = new Point(23, 270);
-            lblErrorMessage.Name = "lblErrorMessage";
-            lblErrorMessage.Padding = new Padding(0, 20, 0, 20);
-            lblErrorMessage.Size = new Size(220, 55);
-            lblErrorMessage.TabIndex = 6;
-            lblErrorMessage.Text = "Login Error: Credentials Invalid";
-            lblErrorMessage.TextAlign = ContentAlignment.MiddleCenter;
-            lblErrorMessage.Visible = false;
-            // 
             // lblDefaultCredentials
             // 
             lblDefaultCredentials.AutoSize = true;
             lblDefaultCredentials.Dock = DockStyle.Fill;
             lblDefaultCredentials.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblDefaultCredentials.Location = new Point(23, 325);
+            lblDefaultCredentials.Location = new Point(23, 270);
             lblDefaultCredentials.Name = "lblDefaultCredentials";
-            lblDefaultCredentials.Size = new Size(220, 60);
+            lblDefaultCredentials.Size = new Size(220, 180);
             lblDefaultCredentials.TabIndex = 3;
-            lblDefaultCredentials.Text = "Default Login:\r\n\r\nadmin@bayview.com\r\npassword";
+            lblDefaultCredentials.Text = resources.GetString("lblDefaultCredentials.Text");
             lblDefaultCredentials.TextAlign = ContentAlignment.TopCenter;
             // 
             // login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(784, 461);
+            ClientSize = new Size(784, 511);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -197,7 +180,6 @@ namespace bay_view_hotel_booking_system
         private PictureBox pbLogo;
         private Label lblIntroduction;
         private Button btnLogin;
-        private Label lblErrorMessage;
         private Label lblDefaultCredentials;
     }
 }
