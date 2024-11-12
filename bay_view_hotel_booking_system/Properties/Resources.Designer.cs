@@ -8,9 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
-namespace bay_view_hotel_booking_system.Properties
-{
+namespace bay_view_hotel_booking_system.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -18,52 +19,88 @@ namespace bay_view_hotel_booking_system.Properties
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("bay_view_hotel_booking_system.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon bay_view_icon {
+            get {
+                object obj = ResourceManager.GetObject("bay_view_icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bay_view_logo {
+            get {
+                object obj = ResourceManager.GetObject("bay_view_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BEGIN TRANSACTION;
+        ///DROP TABLE IF EXISTS &quot;Payment&quot;;
+        ///CREATE TABLE IF NOT EXISTS &quot;Payment&quot; (
+        ///	&quot;PaymentID&quot;	INTEGER NOT NULL,
+        ///	&quot;BookingID&quot;	INTEGER NOT NULL,
+        ///	&quot;Amount&quot;	REAL NOT NULL,
+        ///	FOREIGN KEY(&quot;BookingID&quot;) REFERENCES &quot;Booking&quot;(&quot;BookingID&quot;),
+        ///	PRIMARY KEY(&quot;PaymentID&quot; AUTOINCREMENT)
+        ///);
+        ///DROP TABLE IF EXISTS &quot;Booking&quot;;
+        ///CREATE TABLE IF NOT EXISTS &quot;Booking&quot; (
+        ///	&quot;BookingID&quot;	INTEGER NOT NULL,
+        ///	&quot;CustomerID&quot;	INTEGER NOT NULL,
+        ///	&quot;RoomID&quot;	INTEGER NOT NULL,
+        ///	&quot;StartDate&quot;	TEXT NOT NULL,
+        ///	&quot;EndDate&quot;	TEXT NOT NULL,        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string bayview_setup_empty {
+            get {
+                return ResourceManager.GetString("bayview_setup_empty", resourceCulture);
             }
         }
     }
