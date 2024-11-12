@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,7 @@ namespace bay_view_hotel_booking_system
         /// <param name="email">The user's email</param>
         /// <param name="password">The user's password</param>
         /// <returns></returns>
-        private (bool, string) VerifyLoginDetails(string email, string password)
+        private (bool, string, string?, string?) VerifyLoginDetails(string email, string password)
         {
             string query = $"SELECT * FROM Staff WHERE Email = '{email}'";
 
@@ -31,32 +32,35 @@ namespace bay_view_hotel_booking_system
 
             if (dt.Rows.Count == 0)
             {
-                return (false, "User Not Found.");
+                return (false, "User Not Found.", null, null);
             }
 
             string? dbPassword = dt.Rows[0]["password"].ToString();
 
             if (dbPassword == null)
             {
-                return (false, "Password missing from Database, please contact your manager.");
+                return (false, "Password missing from Database, please contact your manager.", null, null);
             }
 
             string InputPassword = PasswordManager.HashPassword(password);
 
             if (dbPassword == InputPassword)
             {
-                return (true, "Login Successful.");
+                string username = $"{dt.Rows[0]["forename"].ToString()} {dt.Rows[0]["surname"].ToString()}";
+                string? usertype = dt.Rows[0]["stafftype"].ToString();
+
+                return (true, "Login Successful.", username, usertype);
             }
 
-            return (false, "Invalid Credentials.");
+            return (false, "Invalid Credentials.", null, null);
         }
 
         /// <summary>
         /// Shows the homepage form and hides the login form.
         /// </summary>
-        private void ShowHomepage()
+        private void ShowHomepage(string username, string usertype)
         {
-            homepage frm = new homepage();
+            homepage frm = new homepage(username, usertype);
             frm.Owner = this;
 
             frm.Show();
@@ -77,13 +81,23 @@ namespace bay_view_hotel_booking_system
                 tbEmail.Text = "";
                 tbPassword.Text = "";
 
-                ShowHomepage();
+                tbEmail.Focus();
+
+                ShowHomepage(LoginStatus.Item3, LoginStatus.Item4);
             }
             else
             {
                 tbPassword.Text = "";
 
                 MessageBox.Show(LoginStatus.Item2, "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void tbPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                login_btn_Click(this, e);
             }
         }
     }
