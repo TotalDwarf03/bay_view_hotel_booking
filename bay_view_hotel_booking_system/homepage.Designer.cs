@@ -29,88 +29,76 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(homepage));
-            dgStaff = new DataGridView();
-            dgRoom = new DataGridView();
-            dgCustomer = new DataGridView();
-            dgTransaction = new DataGridView();
-            dgBooking = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dgStaff).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgRoom).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgCustomer).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgTransaction).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgBooking).BeginInit();
+            pictureBox1 = new PictureBox();
+            lblTitle = new Label();
+            btnUser = new Button();
+            lblUser = new Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // dgStaff
+            // pictureBox1
             // 
-            dgStaff.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgStaff.Location = new Point(12, 12);
-            dgStaff.Name = "dgStaff";
-            dgStaff.Size = new Size(350, 437);
-            dgStaff.TabIndex = 0;
+            pictureBox1.Image = Properties.Resources.bay_view_logo;
+            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(125, 62);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
-            // dgRoom
+            // lblTitle
             // 
-            dgRoom.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgRoom.Location = new Point(368, 12);
-            dgRoom.Name = "dgRoom";
-            dgRoom.Size = new Size(350, 437);
-            dgRoom.TabIndex = 1;
+            lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            lblTitle.Location = new Point(143, 12);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(358, 62);
+            lblTitle.TabIndex = 1;
+            lblTitle.Text = "Home";
+            lblTitle.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // dgCustomer
+            // btnUser
             // 
-            dgCustomer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgCustomer.Location = new Point(368, 455);
-            dgCustomer.Name = "dgCustomer";
-            dgCustomer.Size = new Size(350, 437);
-            dgCustomer.TabIndex = 3;
+            btnUser.Location = new Point(681, 12);
+            btnUser.Name = "btnUser";
+            btnUser.Size = new Size(89, 62);
+            btnUser.TabIndex = 2;
+            btnUser.Text = "Logout";
+            btnUser.UseVisualStyleBackColor = true;
             // 
-            // dgTransaction
+            // lblUser
             // 
-            dgTransaction.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgTransaction.Location = new Point(12, 455);
-            dgTransaction.Name = "dgTransaction";
-            dgTransaction.Size = new Size(350, 437);
-            dgTransaction.TabIndex = 2;
-            // 
-            // dgBooking
-            // 
-            dgBooking.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgBooking.Location = new Point(724, 12);
-            dgBooking.Name = "dgBooking";
-            dgBooking.Size = new Size(350, 437);
-            dgBooking.TabIndex = 4;
+            lblUser.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblUser.Location = new Point(507, 12);
+            lblUser.Name = "lblUser";
+            lblUser.Size = new Size(168, 62);
+            lblUser.TabIndex = 3;
+            lblUser.Text = "Logged in as: \r\nUser Type: ";
+            lblUser.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // homepage
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1086, 935);
-            Controls.Add(dgBooking);
-            Controls.Add(dgCustomer);
-            Controls.Add(dgTransaction);
-            Controls.Add(dgRoom);
-            Controls.Add(dgStaff);
+            ClientSize = new Size(782, 453);
+            Controls.Add(lblUser);
+            Controls.Add(btnUser);
+            Controls.Add(lblTitle);
+            Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 4, 3, 4);
             Name = "homepage";
             Text = "Home";
             FormClosing += homepage_FormClosing;
-            Load += homepage_Load;
-            ((System.ComponentModel.ISupportInitialize)dgStaff).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgRoom).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgCustomer).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgTransaction).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgBooking).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView dgStaff;
-        private DataGridView dgRoom;
-        private DataGridView dgCustomer;
-        private DataGridView dgTransaction;
-        private DataGridView dgBooking;
+        private PictureBox pictureBox1;
+        private Label lblTitle;
+        private Button btnUser;
+        private Label lblUser;
     }
 }
