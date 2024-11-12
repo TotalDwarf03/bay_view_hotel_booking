@@ -31,5 +31,10 @@ namespace bay_view_hotel_booking_system
             this.Owner?.Show();
             this.Close();
         }
+
+        private void flowLayoutPanel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
