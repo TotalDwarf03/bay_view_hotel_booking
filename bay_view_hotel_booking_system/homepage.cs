@@ -33,5 +33,14 @@ namespace bay_view_hotel_booking_system
             this.Owner?.Show();
             this.Close();
         }
+
+        private void fpnlBooking_Click(object sender, EventArgs e)
+        {
+            AddBooking frm = new AddBooking();
+            frm.Owner = this;
+
+            frm.Show();
+            this.Hide();
+        }
     }
 }

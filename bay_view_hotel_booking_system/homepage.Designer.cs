@@ -122,10 +122,12 @@
             fpnlBooking.BorderStyle = BorderStyle.FixedSingle;
             fpnlBooking.Controls.Add(lblBookingHeader);
             fpnlBooking.Controls.Add(lblBookingDesc);
+            fpnlBooking.ImeMode = ImeMode.NoControl;
             fpnlBooking.Location = new Point(9, 93);
             fpnlBooking.Name = "fpnlBooking";
             fpnlBooking.Size = new Size(350, 84);
             fpnlBooking.TabIndex = 5;
+            fpnlBooking.Click += fpnlBooking_Click;
             // 
             // lblBookingHeader
             // 
@@ -137,6 +139,7 @@
             lblBookingHeader.Size = new Size(221, 28);
             lblBookingHeader.TabIndex = 0;
             lblBookingHeader.Text = "Booking Management";
+            lblBookingHeader.Click += fpnlBooking_Click;
             // 
             // lblBookingDesc
             // 
@@ -146,6 +149,7 @@
             lblBookingDesc.Size = new Size(319, 20);
             lblBookingDesc.TabIndex = 1;
             lblBookingDesc.Text = "View Availability, Create and Update Bookings.";
+            lblBookingDesc.Click += fpnlBooking_Click;
             // 
             // fpnlCustomer
             // 
