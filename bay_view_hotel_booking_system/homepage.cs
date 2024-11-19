@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Globalization;
 
 namespace bay_view_hotel_booking_system
 {
@@ -16,7 +9,16 @@ namespace bay_view_hotel_booking_system
         {
             InitializeComponent();
 
-            lblUser.Text = $"Logged in as: {username}.\n User Type: {usertype}.";
+            TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+
+            lblUser.Text = $"Logged in as: {ti.ToTitleCase(username)}.\n User Type: {ti.ToTitleCase(usertype)}.";
+
+            if (usertype == "manager")
+            {
+                fpnlRoom.Visible = true;
+                fpnlStaff.Visible = true;
+                fpnlReporting.Visible = true;
+            }
         }
 
         SQLController controller = new SQLController();
@@ -30,11 +32,6 @@ namespace bay_view_hotel_booking_system
         {
             this.Owner?.Show();
             this.Close();
-        }
-
-        private void flowLayoutPanel5_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
