@@ -30,7 +30,6 @@ namespace bay_view_hotel_booking_system
 
         private void btnUser_Click(object sender, EventArgs e)
         {
-            this.Owner?.Show();
             this.Close();
         }
 

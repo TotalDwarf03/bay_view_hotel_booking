@@ -21,5 +21,10 @@ namespace bay_view_hotel_booking_system
         {
             this.Owner?.Show();
         }
+
+        private void tsmiQuit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
