@@ -76,8 +76,8 @@
             // tsmiQuit
             // 
             tsmiQuit.Name = "tsmiQuit";
-            tsmiQuit.Size = new Size(42, 20);
-            tsmiQuit.Text = "Quit";
+            tsmiQuit.Size = new Size(130, 20);
+            tsmiQuit.Text = "Return to Homepage";
             tsmiQuit.Click += tsmiQuit_Click;
             // 
             // dtpStartDate
@@ -219,7 +219,7 @@
             lblRoomsAvailable.TextAlign = ContentAlignment.MiddleRight;
             lblRoomsAvailable.Visible = false;
             // 
-            // AddBooking
+            // BookingAvailability
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -242,7 +242,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = MenuStrip;
             Margin = new Padding(3, 2, 3, 2);
-            Name = "AddBooking";
+            Name = "BookingAvailability";
             Text = "Booking Management: Availability";
             FormClosing += AddBooking_FormClosing;
             MenuStrip.ResumeLayout(false);
