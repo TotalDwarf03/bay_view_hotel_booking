@@ -19,7 +19,7 @@ namespace bay_view_hotel_booking_system
             //Application.Run(new SplashScreen());
             //Application.Run(new login());
 
-            Application.Run(new AddBooking());
+            Application.Run(new BookingAvailability());
         }
     }
 }

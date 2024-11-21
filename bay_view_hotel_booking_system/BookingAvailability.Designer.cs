@@ -1,6 +1,6 @@
 ﻿namespace bay_view_hotel_booking_system
 {
-    partial class AddBooking
+    partial class BookingAvailability
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddBooking));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookingAvailability));
             MenuStrip = new MenuStrip();
             tsmiAvailability = new ToolStripMenuItem();
             tsmiEditBooking = new ToolStripMenuItem();

@@ -2,12 +2,12 @@
 
 namespace bay_view_hotel_booking_system
 {
-    public partial class AddBooking : Form
+    public partial class BookingAvailability : Form
     {
         // Create SQLController instance to execute SQL
         SQLController controller = new SQLController();
 
-        public AddBooking()
+        public BookingAvailability()
         {
             InitializeComponent();
 
@@ -151,7 +151,11 @@ namespace bay_view_hotel_booking_system
 
         private void btnBook_Click(object sender, EventArgs e)
         {
+            CreateBooking frm = new CreateBooking();
+            frm.Owner = this;
 
+            frm.Show();
+            this.Hide();
         }
     }
 }
