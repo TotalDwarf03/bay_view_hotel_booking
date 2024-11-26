@@ -56,45 +56,45 @@
             MenuStrip.Items.AddRange(new ToolStripItem[] { tsmiAvailability, tsmiEditBooking, tsmiQuit });
             MenuStrip.Location = new Point(0, 0);
             MenuStrip.Name = "MenuStrip";
-            MenuStrip.Padding = new Padding(5, 2, 0, 2);
-            MenuStrip.Size = new Size(684, 24);
+            MenuStrip.Padding = new Padding(6, 3, 0, 3);
+            MenuStrip.Size = new Size(782, 30);
             MenuStrip.TabIndex = 1;
             MenuStrip.Text = "menuStrip1";
             // 
             // tsmiAvailability
             // 
             tsmiAvailability.Name = "tsmiAvailability";
-            tsmiAvailability.Size = new Size(105, 20);
+            tsmiAvailability.Size = new Size(133, 24);
             tsmiAvailability.Text = "View Availability";
             // 
             // tsmiEditBooking
             // 
             tsmiEditBooking.Name = "tsmiEditBooking";
-            tsmiEditBooking.Size = new Size(86, 20);
+            tsmiEditBooking.Size = new Size(108, 24);
             tsmiEditBooking.Text = "Edit Booking";
+            tsmiEditBooking.Click += tsmiEditBooking_Click;
             // 
             // tsmiQuit
             // 
             tsmiQuit.Name = "tsmiQuit";
-            tsmiQuit.Size = new Size(130, 20);
+            tsmiQuit.Size = new Size(163, 24);
             tsmiQuit.Text = "Return to Homepage";
             tsmiQuit.Click += tsmiQuit_Click;
             // 
             // dtpStartDate
             // 
-            dtpStartDate.Location = new Point(10, 38);
-            dtpStartDate.Margin = new Padding(3, 2, 3, 2);
+            dtpStartDate.Location = new Point(11, 51);
             dtpStartDate.Name = "dtpStartDate";
-            dtpStartDate.Size = new Size(150, 23);
+            dtpStartDate.Size = new Size(171, 27);
             dtpStartDate.TabIndex = 3;
             // 
             // lblStartDate
             // 
             lblStartDate.AutoSize = true;
             lblStartDate.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblStartDate.Location = new Point(10, 21);
+            lblStartDate.Location = new Point(11, 28);
             lblStartDate.Name = "lblStartDate";
-            lblStartDate.Size = new Size(71, 15);
+            lblStartDate.Size = new Size(88, 20);
             lblStartDate.TabIndex = 4;
             lblStartDate.Text = "Start Date: ";
             // 
@@ -102,18 +102,17 @@
             // 
             lblEndDate.AutoSize = true;
             lblEndDate.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblEndDate.Location = new Point(166, 21);
+            lblEndDate.Location = new Point(190, 28);
             lblEndDate.Name = "lblEndDate";
-            lblEndDate.Size = new Size(60, 15);
+            lblEndDate.Size = new Size(76, 20);
             lblEndDate.TabIndex = 6;
             lblEndDate.Text = "End Date:";
             // 
             // dtpEndDate
             // 
-            dtpEndDate.Location = new Point(166, 38);
-            dtpEndDate.Margin = new Padding(3, 2, 3, 2);
+            dtpEndDate.Location = new Point(190, 51);
             dtpEndDate.Name = "dtpEndDate";
-            dtpEndDate.Size = new Size(150, 23);
+            dtpEndDate.Size = new Size(171, 27);
             dtpEndDate.TabIndex = 5;
             dtpEndDate.Value = new DateTime(2024, 11, 21, 11, 28, 36, 0);
             // 
@@ -121,9 +120,9 @@
             // 
             lblAvailability.AutoSize = true;
             lblAvailability.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblAvailability.Location = new Point(10, 100);
+            lblAvailability.Location = new Point(11, 133);
             lblAvailability.Name = "lblAvailability";
-            lblAvailability.Size = new Size(48, 15);
+            lblAvailability.Size = new Size(62, 20);
             lblAvailability.TabIndex = 8;
             lblAvailability.Text = "Rooms:";
             // 
@@ -134,42 +133,39 @@
             dgvAvailability.AllowUserToOrderColumns = true;
             dgvAvailability.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvAvailability.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAvailability.Location = new Point(10, 118);
-            dgvAvailability.Margin = new Padding(3, 2, 3, 2);
+            dgvAvailability.Location = new Point(11, 157);
             dgvAvailability.MultiSelect = false;
             dgvAvailability.Name = "dgvAvailability";
             dgvAvailability.ReadOnly = true;
             dgvAvailability.RowHeadersWidth = 51;
             dgvAvailability.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAvailability.Size = new Size(663, 184);
+            dgvAvailability.Size = new Size(758, 245);
             dgvAvailability.TabIndex = 9;
             // 
             // lblRoomType
             // 
             lblRoomType.AutoSize = true;
             lblRoomType.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblRoomType.Location = new Point(322, 21);
+            lblRoomType.Location = new Point(368, 28);
             lblRoomType.Name = "lblRoomType";
-            lblRoomType.Size = new Size(72, 15);
+            lblRoomType.Size = new Size(92, 20);
             lblRoomType.TabIndex = 10;
             lblRoomType.Text = "Room Type:";
             // 
             // cbRoomType
             // 
             cbRoomType.FormattingEnabled = true;
-            cbRoomType.Location = new Point(322, 38);
-            cbRoomType.Margin = new Padding(3, 2, 3, 2);
+            cbRoomType.Location = new Point(368, 51);
             cbRoomType.Name = "cbRoomType";
-            cbRoomType.Size = new Size(150, 23);
+            cbRoomType.Size = new Size(171, 28);
             cbRoomType.TabIndex = 11;
             // 
             // btnSearch
             // 
             btnSearch.AutoSize = true;
-            btnSearch.Location = new Point(10, 70);
-            btnSearch.Margin = new Padding(3, 2, 3, 2);
+            btnSearch.Location = new Point(11, 93);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(82, 25);
+            btnSearch.Size = new Size(94, 33);
             btnSearch.TabIndex = 12;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
@@ -178,10 +174,9 @@
             // btnBook
             // 
             btnBook.AutoSize = true;
-            btnBook.Location = new Point(12, 307);
-            btnBook.Margin = new Padding(3, 2, 3, 2);
+            btnBook.Location = new Point(14, 409);
             btnBook.Name = "btnBook";
-            btnBook.Size = new Size(147, 25);
+            btnBook.Size = new Size(168, 33);
             btnBook.TabIndex = 13;
             btnBook.Text = "Create Booking";
             btnBook.UseVisualStyleBackColor = true;
@@ -191,19 +186,18 @@
             // 
             cbDisabled.FormattingEnabled = true;
             cbDisabled.Items.AddRange(new object[] { "Any", "Yes", "No" });
-            cbDisabled.Location = new Point(478, 38);
-            cbDisabled.Margin = new Padding(3, 2, 3, 2);
+            cbDisabled.Location = new Point(546, 51);
             cbDisabled.Name = "cbDisabled";
-            cbDisabled.Size = new Size(150, 23);
+            cbDisabled.Size = new Size(171, 28);
             cbDisabled.TabIndex = 15;
             // 
             // lblDisabled
             // 
             lblDisabled.AutoSize = true;
             lblDisabled.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblDisabled.Location = new Point(478, 21);
+            lblDisabled.Location = new Point(546, 28);
             lblDisabled.Name = "lblDisabled";
-            lblDisabled.Size = new Size(95, 15);
+            lblDisabled.Size = new Size(122, 20);
             lblDisabled.TabIndex = 14;
             lblDisabled.Text = "Disabled Room?";
             // 
@@ -211,9 +205,9 @@
             // 
             lblRoomsAvailable.AutoSize = true;
             lblRoomsAvailable.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblRoomsAvailable.Location = new Point(564, 307);
+            lblRoomsAvailable.Location = new Point(645, 409);
             lblRoomsAvailable.Name = "lblRoomsAvailable";
-            lblRoomsAvailable.Size = new Size(108, 15);
+            lblRoomsAvailable.Size = new Size(138, 20);
             lblRoomsAvailable.TabIndex = 16;
             lblRoomsAvailable.Text = "x Rooms Available";
             lblRoomsAvailable.TextAlign = ContentAlignment.MiddleRight;
@@ -221,9 +215,9 @@
             // 
             // BookingAvailability
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(684, 340);
+            ClientSize = new Size(782, 453);
             Controls.Add(lblRoomsAvailable);
             Controls.Add(cbDisabled);
             Controls.Add(lblDisabled);
@@ -241,7 +235,6 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = MenuStrip;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "BookingAvailability";
             Text = "Booking Management: Availability";
             FormClosing += AddBooking_FormClosing;

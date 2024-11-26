@@ -195,5 +195,14 @@ namespace bay_view_hotel_booking_system
             dgvAvailability.DataSource = null;
             lblRoomsAvailable.Visible = false;
         }
+
+        private void tsmiEditBooking_Click(object sender, EventArgs e)
+        {
+            FindBooking frm = new FindBooking();
+            frm.Owner = this;
+
+            frm.Show();
+            this.Hide();
+        }
     }
 }

@@ -97,6 +97,7 @@ namespace bay_view_hotel_booking_system
 
         private void tbPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
+            // If enter pressed, login
             if (e.KeyChar == 13)
             {
                 login_btn_Click(this, e);

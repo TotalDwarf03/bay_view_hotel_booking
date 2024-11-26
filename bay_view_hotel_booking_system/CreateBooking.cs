@@ -386,5 +386,14 @@ namespace bay_view_hotel_booking_system
                 }
             }
         }
+
+        private void tbCustomerName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // If enter pressed, search for customer
+            if (e.KeyChar == 13)
+            {
+                btnCustomerSearch_Click(this, e);
+            }
+        }
     }
 }
