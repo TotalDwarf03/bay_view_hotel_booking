@@ -1,5 +1,4 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace bay_view_hotel_booking_system
 {
@@ -25,6 +24,7 @@ namespace bay_view_hotel_booking_system
 
         private void homepage_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Environment.SetEnvironmentVariable("username", null);
             this.Owner?.Show();
         }
 

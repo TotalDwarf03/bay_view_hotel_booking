@@ -245,6 +245,7 @@
             Name = "BookingAvailability";
             Text = "Booking Management: Availability";
             FormClosing += AddBooking_FormClosing;
+            VisibleChanged += BookingAvailability_VisibleChanged;
             MenuStrip.ResumeLayout(false);
             MenuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAvailability).EndInit();

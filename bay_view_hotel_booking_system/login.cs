@@ -78,6 +78,8 @@ namespace bay_view_hotel_booking_system
             {
                 MessageBox.Show(LoginStatus.Item2, "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                Environment.SetEnvironmentVariable("USER_EMAIL", email);
+
                 tbEmail.Text = "";
                 tbPassword.Text = "";
 

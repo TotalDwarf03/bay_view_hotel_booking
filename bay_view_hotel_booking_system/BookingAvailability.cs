@@ -105,7 +105,7 @@ namespace bay_view_hotel_booking_system
                     END AS IsDisabled,
                     CASE
                         WHEN 
-                            (('{StartDate}' NOT BETWEEN b.StartDate and b.EndDate) AND ('{EndDate}' NOT BETWEEN b.StartDate AND b.EndDate)) -- Room isn't already booked
+                            (('{StartDate.ToString("yyyy-MM-dd")}' NOT BETWEEN b.StartDate and b.EndDate) AND ('{EndDate.ToString("yyyy-MM-dd")}' NOT BETWEEN b.StartDate AND b.EndDate)) -- Room isn't already booked
                             OR b.BookingID IS NULL -- Room has no current bookings
                             AND r.RoomStatusID = 1 -- Room is available for sale (Not being refurbished or off sale)
 
@@ -151,11 +151,49 @@ namespace bay_view_hotel_booking_system
 
         private void btnBook_Click(object sender, EventArgs e)
         {
-            CreateBooking frm = new CreateBooking();
+            if (dgvAvailability.SelectedRows.Count == 0)
+            {
+                MessageBox.Show(
+                    "Please select a room to book.",
+                    "Warning",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+
+                return;
+            }
+
+            if (dgvAvailability.SelectedRows[0].Cells[5].Value.ToString() == "Not Available")
+            {
+                MessageBox.Show(
+                    "This room has already been booked for the selected period. Please select another room or try another date.",
+                    "Unavailable",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation
+                );
+
+                return;
+            }
+
+            int SelectedRoomID = Convert.ToInt32(dgvAvailability.SelectedRows[0].Cells[0].Value);
+            string SelectedRoomType = dgvAvailability.SelectedRows[0].Cells[1].Value.ToString();
+            decimal RoomPrice = Convert.ToDecimal(dgvAvailability.SelectedRows[0].Cells[2].Value);
+            int RoomCapacity = Convert.ToInt32(dgvAvailability.SelectedRows[0].Cells[3].Value);
+            bool IsDisabledRoom = dgvAvailability.SelectedRows[0].Cells[4].Value.ToString() == "Yes" ? true : false;
+            DateTime StartDate = dtpStartDate.Value.Date;
+            DateTime EndDate = dtpEndDate.Value.Date;
+
+            CreateBooking frm = new CreateBooking(SelectedRoomID, SelectedRoomType, RoomPrice, RoomCapacity, IsDisabledRoom, StartDate, EndDate);
             frm.Owner = this;
 
             frm.Show();
             this.Hide();
+        }
+
+        private void BookingAvailability_VisibleChanged(object sender, EventArgs e)
+        {
+            dgvAvailability.DataSource = null;
+            lblRoomsAvailable.Visible = false;
         }
     }
 }
