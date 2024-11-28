@@ -16,10 +16,10 @@ namespace bay_view_hotel_booking_system
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new SplashScreen());
-            //Application.Run(new login());
+            Application.Run(new SplashScreen());
+            Application.Run(new login());
 
-            Application.Run(new BookingAvailability());
+            //Application.Run(new BookingAvailability());
         }
     }
 }

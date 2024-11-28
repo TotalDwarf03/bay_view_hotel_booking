@@ -142,8 +142,11 @@ namespace bay_view_hotel_booking_system
 
             string BookingID = dgvBooking.SelectedRows[0].Cells[0].Value.ToString();
 
-            // Go to Edit Form and Pass Booking ID :)
-            Debug.WriteLine($"Going to edit booking {BookingID}");
+            EditBooking frm = new EditBooking(Convert.ToInt32(BookingID));
+            frm.Owner = this;
+
+            frm.Show();
+            this.Hide();
         }
     }
 }

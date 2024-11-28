@@ -1,10 +1,11 @@
 ﻿using System.Data;
+using System.Globalization;
 
 namespace bay_view_hotel_booking_system
 {
     public partial class BookingAvailability : Form
     {
-        // Create SQLController instance to execute SQL
+        TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
         SQLController controller = new SQLController();
 
         public BookingAvailability()
@@ -30,7 +31,7 @@ namespace bay_view_hotel_booking_system
 
                 foreach (DataRow dr in dtRoomTypes.Rows)
                 {
-                    cbRoomType.Items.Add(dr["RoomType"].ToString());
+                    cbRoomType.Items.Add(ti.ToTitleCase(dr["RoomType"].ToString()));
                 }
             }
             else
@@ -116,7 +117,7 @@ namespace bay_view_hotel_booking_system
                 FROM Room as r
                 LEFT JOIN Booking as b
                     ON r.RoomID = b.RoomID
-                WHERE (r.RoomType = '{RoomType}' OR '{RoomType}' = 'All')
+                WHERE (r.RoomType = '{RoomType.ToLower()}' OR '{RoomType}' = 'All')
                     AND (r.IsDisabled = {DisabledRoom} OR '{cbDisabled.Text}' = 'Any')
                 ORDER BY Availability;
                 """;
