@@ -26,7 +26,7 @@ namespace bay_view_hotel_booking_system
         /// <returns></returns>
         private (bool, string, string?, string?) VerifyLoginDetails(string email, string password)
         {
-            string query = $"SELECT * FROM Staff WHERE Email = '{email}'";
+            string query = $"SELECT * FROM Staff WHERE Email = '{email}' AND StaffID != 1";
 
             DataTable dt = new SQLController().RunQuery(query);
 
