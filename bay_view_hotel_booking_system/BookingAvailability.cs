@@ -93,33 +93,47 @@ namespace bay_view_hotel_booking_system
             }
 
             String query = $"""
-                SELECT DISTINCT
-                    r.RoomID,
-                    r.RoomType,
-                    r.Price,
-                    r.Capacity,
-                    CASE
-                        WHEN r.IsDisabled = 1
-                            THEN 'Yes'
-                        ELSE
-                            'No'
-                    END AS IsDisabled,
-                    CASE
-                        WHEN 
-                            (('{StartDate.ToString("yyyy-MM-dd")}' NOT BETWEEN b.StartDate and b.EndDate) AND ('{EndDate.ToString("yyyy-MM-dd")}' NOT BETWEEN b.StartDate AND b.EndDate)) -- Room isn't already booked
-                            OR b.BookingID IS NULL -- Room has no current bookings
-                            AND r.RoomStatusID = 1 -- Room is available for sale (Not being refurbished or off sale)
-
-                            THEN 'Available'
-                        ELSE 
-                            'Not Available'
-                    END AS Availability
-                FROM Room as r
-                LEFT JOIN Booking as b
-                    ON r.RoomID = b.RoomID
+                SELECT
+                	r.RoomID,
+                	r.RoomType,
+                	r.Price,
+                	r.Capacity,
+                
+                	CASE
+                		WHEN r.IsDisabled = 1
+                			THEN 'Yes'
+                		ELSE
+                			'No'
+                	END AS IsDisabled,
+                
+                	CASE
+                		-- If there is another booking in the date range for the Room
+                		-- Cannot Book
+                		WHEN 0 < 	(
+                							SELECT
+                								COUNT(b.BookingID)
+                							FROM Booking AS b
+                							WHERE
+                								(
+                									'{StartDate.ToString("yyyy-MM-dd")}' BETWEEN b.StartDate AND b.EndDate
+                									OR
+                									'{EndDate.ToString("yyyy-MM-dd")}' BETWEEN b.StartDate AND b.EndDate
+                								)
+                								AND b.RoomID = r.RoomID
+                					)
+                			THEN 'Unavailable'
+                
+                		-- If the Room Status is not available (ID = 1)
+                		-- Cannot Book as it's being refurbished or is off sale
+                		WHEN r.RoomStatusID != 1
+                			THEN 'Unavailable'
+                
+                		ELSE 'Available'
+                	END AS Availability
+                FROM Room AS r
                 WHERE (r.RoomType = '{RoomType.ToLower()}' OR '{RoomType}' = 'All')
                     AND (r.IsDisabled = {DisabledRoom} OR '{cbDisabled.Text}' = 'Any')
-                ORDER BY Availability;
+                ORDER BY r.Availability;
                 """;
 
             DataTable rooms = controller.RunQuery(query);
