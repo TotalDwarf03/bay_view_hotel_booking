@@ -107,6 +107,11 @@ namespace bay_view_hotel_booking_system
                 FROM Booking AS b
                 WHERE
                     b.CustomerID = {CustomerID}
+                    AND (
+                            b.StartDate >= date('now')
+                            OR
+                            b.EndDate >= date('now')
+                        )
                 """;
 
             DataTable dt = controller.RunQuery(query);

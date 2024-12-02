@@ -121,6 +121,7 @@
             // pnlCustomer
             // 
             pnlCustomer.BackColor = SystemColors.ControlLight;
+            pnlCustomer.BorderStyle = BorderStyle.FixedSingle;
             pnlCustomer.Controls.Add(btnLoadCustomerBooking);
             pnlCustomer.Controls.Add(lblCustomerHeader);
             pnlCustomer.Controls.Add(dgvCustomer);
@@ -146,19 +147,20 @@
             // pnlBooking
             // 
             pnlBooking.BackColor = SystemColors.ControlLight;
+            pnlBooking.BorderStyle = BorderStyle.FixedSingle;
             pnlBooking.Controls.Add(btnEditBooking);
             pnlBooking.Controls.Add(lblBooking);
             pnlBooking.Controls.Add(dgvBooking);
             pnlBooking.Location = new Point(318, 25);
             pnlBooking.Margin = new Padding(3, 2, 3, 2);
             pnlBooking.Name = "pnlBooking";
-            pnlBooking.Size = new Size(289, 240);
+            pnlBooking.Size = new Size(354, 240);
             pnlBooking.TabIndex = 39;
             // 
             // btnEditBooking
             // 
             btnEditBooking.BackColor = SystemColors.ControlLightLight;
-            btnEditBooking.Location = new Point(54, 209);
+            btnEditBooking.Location = new Point(87, 209);
             btnEditBooking.Name = "btnEditBooking";
             btnEditBooking.Size = new Size(180, 23);
             btnEditBooking.TabIndex = 38;
@@ -188,7 +190,7 @@
             dgvBooking.RowHeadersWidth = 51;
             dgvBooking.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvBooking.ShowEditingIcon = false;
-            dgvBooking.Size = new Size(282, 185);
+            dgvBooking.Size = new Size(346, 185);
             dgvBooking.TabIndex = 37;
             // 
             // FindBooking

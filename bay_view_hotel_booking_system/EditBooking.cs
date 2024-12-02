@@ -42,12 +42,6 @@ namespace bay_view_hotel_booking_system
             dtpStartDate.Value = StartDate;
             dtpEndDate.Value = EndDate;
 
-            nudAdult.Value = Convert.ToInt32(booking.Rows[0]["NoAdults"]);
-            nudChild.Value = Convert.ToInt32(booking.Rows[0]["NoChildren"]);
-
-            rbBreakfastYes.Checked = booking.Rows[0]["Breakfast"].ToString() == "1" ? true : false;
-            rbBreakfastNo.Checked = booking.Rows[0]["Breakfast"].ToString() == "0" ? true : false;
-
             // Populate Room Type Combo Box
             query = $"""
                 SELECT DISTINCT
@@ -82,6 +76,14 @@ namespace bay_view_hotel_booking_system
             tbCustomerName.Text = customer.Rows[0]["CustomerName"].ToString();
             tbCustomerEmail.Text = customer.Rows[0]["Email"].ToString();
             tbCustomerPhone.Text = customer.Rows[0]["PhoneNumber"].ToString();
+
+            // Update Number of Guests and Breakfast
+
+            nudAdult.Value = Convert.ToInt32(booking.Rows[0]["NoAdults"]);
+            nudChild.Value = Convert.ToInt32(booking.Rows[0]["NoChildren"]);
+
+            rbBreakfastYes.Checked = booking.Rows[0]["Breakfast"].ToString() == "1" ? true : false;
+            rbBreakfastNo.Checked = booking.Rows[0]["Breakfast"].ToString() == "0" ? true : false;
         }
 
         public DataTable GetAvailableRooms()
@@ -148,18 +150,18 @@ namespace bay_view_hotel_booking_system
                 								)
                 								AND b.RoomID = r.RoomID
                 					)
-                			THEN 'Unavailable'
+                			THEN 'Not Available'
 
                 		-- If the Room Status is not available (ID = 1)
                 		-- Cannot Book as it's being refurbished or is off sale
                 		WHEN r.RoomStatusID != 1
-                			THEN 'Unavailable'
+                			THEN 'Not Available'
 
                 		ELSE 'Available'
                 	END AS Availability
                 FROM Room AS r
                 WHERE (r.RoomType = '{RoomType.ToLower()}' OR '{RoomType}' = 'All')
-                ORDER BY r.Availability;
+                ORDER BY Availability;
                 """;
 
             DataTable dtAvailableRooms = controller.RunQuery(query);
@@ -197,6 +199,11 @@ namespace bay_view_hotel_booking_system
 
                     AvailableRooms++;
                 }
+            }
+
+            if (!lblRoomAvailableCount.Visible)
+            {
+                lblRoomAvailableCount.Visible = true;
             }
 
             lblRoomAvailableCount.Text = $"{AvailableRooms.ToString()} Alternative Rooms Available.";
@@ -278,7 +285,7 @@ namespace bay_view_hotel_booking_system
             tbRoomID.Text = dgvAvailability.SelectedRows[0].Cells[0].Value.ToString();
 
             UpdateSelectedRoom();
-            UpdateSelectedRoomAvailability(GetAvailableRooms());
+            BookingInformationChanged(sender, e);
         }
 
         private int CalculateBreakfastRateID(int NumberOfGuests)
@@ -392,14 +399,208 @@ namespace bay_view_hotel_booking_system
 
         private void BookingInformationChanged(object sender, EventArgs e)
         {
-            UpdateRoomAvailability();
-            UpdateSelectedRoomAvailability(GetAvailableRooms());
+            try
+            {
+                UpdateRoomAvailability();
+                UpdateSelectedRoomAvailability(GetAvailableRooms());
+
+                calculateSummary();
+            }
+            catch (Exception ex)
+            {
+                // If there is an error here, write the message to Debug output and continue.
+                // There is likely an error when variables are being initialised in the screen
+                // (i.e Room Price Per Night being populated).
+                // These errors are not import and can be ignored.
+
+                Debug.WriteLine(ex.Message);
+                return;
+            }
+        }
+
+        private bool ValidateInputs(List<string> ItemsToValidate)
+        {
+            // Number of Guests Validation
+
+            if (ItemsToValidate.Contains("guest"))
+            {
+                int NumberOfGuests = Convert.ToInt32(nudAdult.Value + nudChild.Value);
+
+                // Check if booking has at least one adult
+                if (nudAdult.Value == 0)
+                {
+                    MessageBox.Show(
+                        "You must have at least one adult in the room.",
+                        "Warning",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    return false;
+                }
+
+                // Check if number of guests exceeds room capacity
+                if (NumberOfGuests > Convert.ToInt32(tbCapacity.Text))
+                {
+                    MessageBox.Show(
+                        "The number of guests exceeds the room capacity. Please select a larger room or reduce the number of guests.",
+                        "Warning",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    return false;
+                }
+            }
+
+            // Staff Validation
+
+            if (ItemsToValidate.Contains("staff"))
+            {
+                // Check if the user has ticked the confirmation box
+                if (chbConfirm.Checked == false)
+                {
+                    MessageBox.Show(
+                        "Please confirm that the details are correct before booking.",
+                        "Warning",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    return false;
+                }
+            }
+
+            // Room Validation
+
+            if (tbRoomAvailable.Text == "Not Available")
+            {
+                MessageBox.Show(
+                    "The selected room is not available for the selected dates. Please select another room or change the dates.",
+                    "Warning",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+
+                return false;
+            }
+
+            if (tbRoomAvailable.Text == "Invalid Room Type")
+            {
+                MessageBox.Show(
+                    "The selected room is not valid. Please select a room from the list.",
+                    "Warning",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+
+                return false;
+            }
+
+            return true;
+        }
+
+        private void CostingChanged(object sender, EventArgs e)
+        {
+            calculateSummary();
         }
 
         private void EditBooking_Load(object sender, EventArgs e)
         {
             // Unbind dgvAvailability from the DataSource
             dgvAvailability.DataSource = null;
+
+            // Hide the Room Availability Count
+            lblRoomAvailableCount.Visible = false;
+
+            // Calculate Cost Summary
+            calculateSummary();
+        }
+
+        private void NumberOfGuestsChanged(object sender, EventArgs e)
+        {
+            if (ValidateInputs(["guest"]))
+            {
+                calculateSummary();
+            }
+            else
+            {
+                // Reset the number of guests to the default values
+                nudAdult.Value = 1;
+                nudChild.Value = 0;
+            }
+        }
+
+        private void btnBook_Click(object sender, EventArgs e)
+        {
+            if (ValidateInputs(["guest", "customer", "staff"]))
+            {
+                // Collect Booking Details from the UI
+                int RoomID = Convert.ToInt32(tbRoomID.Text);
+                DateTime StartDate = dtpStartDate.Value;
+                DateTime EndDate = dtpEndDate.Value;
+                int NumberOfAdults = Convert.ToInt32(nudAdult.Value);
+                int NumberOfChildren = Convert.ToInt32(nudChild.Value);
+                int Breakfast = rbBreakfastYes.Checked ? 1 : 0;
+                int BreakfastRateID = CalculateBreakfastRateID(NumberOfAdults + NumberOfChildren);
+                decimal Total = Convert.ToDecimal(lblTotalValue.Text.Substring(1));
+
+                // Collect User Details to keep track of who made the booking
+                string? username = Environment.GetEnvironmentVariable("USER_EMAIL");
+
+                string query = $"""
+                    SELECT 
+                        s.StaffID
+                    FROM Staff AS s
+                    WHERE s.Email = '{username}';
+                    """;
+
+                DataTable dt = controller.RunQuery(query);
+
+                int StaffID = Convert.ToInt32(dt.Rows[0][0]);
+
+                // Insert Booking into the Database
+                query = $"""
+                    UPDATE Booking
+                    SET
+                        RoomID = {RoomID},
+                        StartDate = '{StartDate.ToString("yyyy-MM-dd")}',
+                        EndDate = '{EndDate.ToString("yyyy-MM-dd")}',
+                        NoAdults = {NumberOfAdults},
+                        NoChildren = {NumberOfChildren},
+                        Breakfast = {Breakfast},
+                        BreakfastRateID = {BreakfastRateID},
+                        Price = {Total},
+                        LastUpdatedBy = {StaffID},
+                        LastUpdatedDate = '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}'
+                    WHERE BookingID = {lblBookingID.Text};
+                    """;
+
+                Debug.WriteLine(query);
+
+                int RecordsChanged = controller.RunNonQuery(query);
+
+                if (RecordsChanged == 1)
+                {
+                    MessageBox.Show(
+                        "Booking updated successfully.",
+                        "Information",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+
+                    tsmiAvailability_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "An error occurred while creating the booking. Please try again.",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                }
+            }
         }
     }
 }

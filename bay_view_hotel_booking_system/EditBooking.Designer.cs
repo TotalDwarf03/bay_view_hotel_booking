@@ -147,6 +147,7 @@
             lblRoomAvailableCount.TabIndex = 17;
             lblRoomAvailableCount.Text = "x Alternative Rooms Available";
             lblRoomAvailableCount.TextAlign = ContentAlignment.MiddleRight;
+            lblRoomAvailableCount.Visible = false;
             // 
             // dgvAvailability
             // 
@@ -426,6 +427,7 @@
             rbBreakfastNo.TabStop = true;
             rbBreakfastNo.Text = "No";
             rbBreakfastNo.UseVisualStyleBackColor = true;
+            rbBreakfastNo.Click += CostingChanged;
             // 
             // lblCustomerName
             // 
@@ -446,6 +448,7 @@
             rbBreakfastYes.TabIndex = 29;
             rbBreakfastYes.Text = "Yes";
             rbBreakfastYes.UseVisualStyleBackColor = true;
+            rbBreakfastYes.Click += CostingChanged;
             // 
             // lblBreakfast
             // 
@@ -486,6 +489,7 @@
             nudAdult.Size = new Size(100, 23);
             nudAdult.TabIndex = 2;
             nudAdult.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            nudAdult.ValueChanged += NumberOfGuestsChanged;
             // 
             // nudChild
             // 
@@ -494,6 +498,7 @@
             nudChild.Name = "nudChild";
             nudChild.Size = new Size(100, 23);
             nudChild.TabIndex = 1;
+            nudChild.ValueChanged += NumberOfGuestsChanged;
             // 
             // lblGuest
             // 
@@ -513,6 +518,7 @@
             btnCancel.TabIndex = 10;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += tsmiAvailability_Click;
             // 
             // btnBook
             // 
@@ -522,6 +528,7 @@
             btnBook.TabIndex = 9;
             btnBook.Text = "Update Booking";
             btnBook.UseVisualStyleBackColor = true;
+            btnBook.Click += btnBook_Click;
             // 
             // pnlSummary
             // 

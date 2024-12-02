@@ -55,12 +55,12 @@ SELECT
 								)
 								AND b.RoomID = r.RoomID
 					)
-			THEN 'Unavailable'
+			THEN 'Not Available'
 			
 		-- If the Room Status is not available (ID = 1)
 		-- Cannot Book as it's being refurbished or is off sale
 		WHEN r.RoomStatusID != 1
-			THEN 'Unavailable'
+			THEN 'Not Available'
 			
 		ELSE 'Available'
 	END AS Availability

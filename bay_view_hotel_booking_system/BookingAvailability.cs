@@ -121,19 +121,19 @@ namespace bay_view_hotel_booking_system
                 								)
                 								AND b.RoomID = r.RoomID
                 					)
-                			THEN 'Unavailable'
+                			THEN 'Not Available'
                 
                 		-- If the Room Status is not available (ID = 1)
                 		-- Cannot Book as it's being refurbished or is off sale
                 		WHEN r.RoomStatusID != 1
-                			THEN 'Unavailable'
+                			THEN 'Not Available'
                 
                 		ELSE 'Available'
                 	END AS Availability
                 FROM Room AS r
                 WHERE (r.RoomType = '{RoomType.ToLower()}' OR '{RoomType}' = 'All')
                     AND (r.IsDisabled = {DisabledRoom} OR '{cbDisabled.Text}' = 'Any')
-                ORDER BY r.Availability;
+                ORDER BY Availability;
                 """;
 
             DataTable rooms = controller.RunQuery(query);
