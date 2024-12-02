@@ -49,7 +49,8 @@ namespace bay_view_hotel_booking_system
                     c.Email, 
                     c.PhoneNumber 
                 FROM Customer AS c 
-                WHERE c.Forename || ' ' || c.Surname LIKE '%{CustomerName}%';
+                WHERE c.Forename || ' ' || c.Surname LIKE '%{CustomerName}%'
+                    AND c.CustomerID != 1;
                 """;
 
             DataTable dt = controller.RunQuery(query);

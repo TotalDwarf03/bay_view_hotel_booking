@@ -47,9 +47,9 @@ namespace bay_view_hotel_booking_system
             // 
             lblEmail.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(26, 216);
+            lblEmail.Location = new Point(23, 161);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(239, 20);
+            lblEmail.Size = new Size(206, 15);
             lblEmail.TabIndex = 0;
             lblEmail.Text = "Email:";
             lblEmail.TextAlign = ContentAlignment.MiddleCenter;
@@ -58,9 +58,9 @@ namespace bay_view_hotel_booking_system
             // 
             lblPassword.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(26, 271);
+            lblPassword.Location = new Point(23, 205);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(239, 20);
+            lblPassword.Size = new Size(206, 15);
             lblPassword.TabIndex = 1;
             lblPassword.Text = "Password:";
             lblPassword.TextAlign = ContentAlignment.MiddleCenter;
@@ -79,22 +79,20 @@ namespace bay_view_hotel_booking_system
             flowLayoutPanel1.Controls.Add(btnLogin);
             flowLayoutPanel1.Controls.Add(lblDefaultCredentials);
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel1.Location = new Point(305, 16);
-            flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
-            flowLayoutPanel1.MinimumSize = new Size(229, 291);
+            flowLayoutPanel1.Location = new Point(267, 12);
+            flowLayoutPanel1.MinimumSize = new Size(200, 218);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Padding = new Padding(23, 27, 23, 27);
-            flowLayoutPanel1.Size = new Size(291, 661);
+            flowLayoutPanel1.Padding = new Padding(20, 20, 20, 20);
+            flowLayoutPanel1.Size = new Size(252, 500);
             flowLayoutPanel1.TabIndex = 2;
             // 
             // pbLogo
             // 
             pbLogo.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pbLogo.Image = Properties.Resources.bay_view_logo;
-            pbLogo.Location = new Point(26, 31);
-            pbLogo.Margin = new Padding(3, 4, 3, 4);
+            pbLogo.Location = new Point(23, 23);
             pbLogo.Name = "pbLogo";
-            pbLogo.Size = new Size(239, 67);
+            pbLogo.Size = new Size(206, 50);
             pbLogo.SizeMode = PictureBoxSizeMode.Zoom;
             pbLogo.TabIndex = 3;
             pbLogo.TabStop = false;
@@ -104,10 +102,10 @@ namespace bay_view_hotel_booking_system
             lblIntroduction.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblIntroduction.AutoSize = true;
             lblIntroduction.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblIntroduction.Location = new Point(26, 102);
+            lblIntroduction.Location = new Point(23, 76);
             lblIntroduction.Name = "lblIntroduction";
-            lblIntroduction.Padding = new Padding(0, 27, 0, 27);
-            lblIntroduction.Size = new Size(239, 114);
+            lblIntroduction.Padding = new Padding(0, 20, 0, 20);
+            lblIntroduction.Size = new Size(206, 85);
             lblIntroduction.TabIndex = 4;
             lblIntroduction.Text = "Welcome to Bay View Hotel's Booking System. To get started, please log in.";
             lblIntroduction.TextAlign = ContentAlignment.MiddleCenter;
@@ -115,20 +113,18 @@ namespace bay_view_hotel_booking_system
             // tbEmail
             // 
             tbEmail.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tbEmail.Location = new Point(26, 240);
-            tbEmail.Margin = new Padding(3, 4, 3, 4);
+            tbEmail.Location = new Point(23, 179);
             tbEmail.Name = "tbEmail";
-            tbEmail.Size = new Size(239, 27);
+            tbEmail.Size = new Size(206, 23);
             tbEmail.TabIndex = 1;
             tbEmail.TextAlign = HorizontalAlignment.Center;
             // 
             // tbPassword
             // 
             tbPassword.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tbPassword.Location = new Point(26, 295);
-            tbPassword.Margin = new Padding(3, 4, 3, 4);
+            tbPassword.Location = new Point(23, 223);
             tbPassword.Name = "tbPassword";
-            tbPassword.Size = new Size(239, 27);
+            tbPassword.Size = new Size(206, 23);
             tbPassword.TabIndex = 2;
             tbPassword.TextAlign = HorizontalAlignment.Center;
             tbPassword.UseSystemPasswordChar = true;
@@ -137,10 +133,10 @@ namespace bay_view_hotel_booking_system
             // btnLogin
             // 
             btnLogin.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnLogin.Location = new Point(26, 339);
-            btnLogin.Margin = new Padding(3, 13, 3, 4);
+            btnLogin.Location = new Point(23, 259);
+            btnLogin.Margin = new Padding(3, 10, 3, 3);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(239, 31);
+            btnLogin.Size = new Size(206, 23);
             btnLogin.TabIndex = 5;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
@@ -151,22 +147,21 @@ namespace bay_view_hotel_booking_system
             lblDefaultCredentials.AutoSize = true;
             lblDefaultCredentials.Dock = DockStyle.Fill;
             lblDefaultCredentials.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblDefaultCredentials.Location = new Point(26, 374);
+            lblDefaultCredentials.Location = new Point(23, 285);
             lblDefaultCredentials.Name = "lblDefaultCredentials";
-            lblDefaultCredentials.Size = new Size(239, 260);
+            lblDefaultCredentials.Size = new Size(206, 195);
             lblDefaultCredentials.TabIndex = 3;
             lblDefaultCredentials.Text = resources.GetString("lblDefaultCredentials.Text");
             lblDefaultCredentials.TextAlign = ContentAlignment.TopCenter;
             // 
             // login
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(896, 681);
+            ClientSize = new Size(784, 511);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
             Name = "login";
             Text = "Login";
             flowLayoutPanel1.ResumeLayout(false);
