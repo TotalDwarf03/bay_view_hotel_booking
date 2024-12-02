@@ -8,11 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace bay_view_hotel_booking_system
 {
     public partial class FindBooking : Form
     {
+        TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
         SQLController controller = new SQLController();
 
         public FindBooking()
@@ -103,7 +105,17 @@ namespace bay_view_hotel_booking_system
 
             string query = $"""
                 SELECT
-                    b.*
+                    b.BookingID,
+                    b.StartDate,
+                    b.EndDate,
+                    b.RoomID,
+                    CASE
+                        WHEN b.Breakfast = 1 THEN 'Yes'
+                        ELSE 'No'
+                    END AS Breakfast,
+                    b.NoAdults,
+                    b.NoChildren,
+                    b.Price
                 FROM Booking AS b
                 WHERE
                     b.CustomerID = {CustomerID}

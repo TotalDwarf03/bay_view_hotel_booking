@@ -164,7 +164,7 @@
             btnEditBooking.Name = "btnEditBooking";
             btnEditBooking.Size = new Size(180, 23);
             btnEditBooking.TabIndex = 38;
-            btnEditBooking.Text = "Edit Booking";
+            btnEditBooking.Text = "View / Edit Booking";
             btnEditBooking.UseVisualStyleBackColor = false;
             btnEditBooking.Click += btnEditBooking_Click;
             // 
