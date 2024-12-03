@@ -41,5 +41,10 @@ namespace bay_view_hotel_booking_system
             frm.Show();
             this.Hide();
         }
+
+        private void fpnlPayment_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
