@@ -46,6 +46,7 @@
             tbForename = new TextBox();
             pnlCustomerEdit = new Panel();
             lblCustomerEdit = new Label();
+            viewToolStripMenuItem = new ToolStripMenuItem();
             mnCustomerEdit.SuspendLayout();
             pnlEditCustomer.SuspendLayout();
             pnlCustomerEdit.SuspendLayout();
@@ -54,7 +55,7 @@
             // mnCustomerEdit
             // 
             mnCustomerEdit.ImageScalingSize = new Size(20, 20);
-            mnCustomerEdit.Items.AddRange(new ToolStripItem[] { customerHomeToolStripMenuItem, addToolStripMenuItem, deleteToolStripMenuItem });
+            mnCustomerEdit.Items.AddRange(new ToolStripItem[] { customerHomeToolStripMenuItem, addToolStripMenuItem, deleteToolStripMenuItem, viewToolStripMenuItem });
             mnCustomerEdit.Location = new Point(0, 0);
             mnCustomerEdit.Name = "mnCustomerEdit";
             mnCustomerEdit.Size = new Size(490, 28);
@@ -64,8 +65,8 @@
             // customerHomeToolStripMenuItem
             // 
             customerHomeToolStripMenuItem.Name = "customerHomeToolStripMenuItem";
-            customerHomeToolStripMenuItem.Size = new Size(131, 24);
-            customerHomeToolStripMenuItem.Text = "Customer Home";
+            customerHomeToolStripMenuItem.Size = new Size(64, 24);
+            customerHomeToolStripMenuItem.Text = "Home";
             customerHomeToolStripMenuItem.Click += customerHomeToolStripMenuItem_Click;
             // 
             // addToolStripMenuItem
@@ -111,6 +112,7 @@
             // 
             // tbCustomerID
             // 
+            tbCustomerID.Enabled = false;
             tbCustomerID.Location = new Point(124, 30);
             tbCustomerID.Name = "tbCustomerID";
             tbCustomerID.Size = new Size(125, 27);
@@ -208,6 +210,13 @@
             lblCustomerEdit.TabIndex = 0;
             lblCustomerEdit.Text = "Customer Edit";
             // 
+            // viewToolStripMenuItem
+            // 
+            viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            viewToolStripMenuItem.Size = new Size(55, 24);
+            viewToolStripMenuItem.Text = "View";
+            viewToolStripMenuItem.Click += viewToolStripMenuItem_Click;
+            // 
             // CustomerEdit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -219,7 +228,6 @@
             MainMenuStrip = mnCustomerEdit;
             Name = "CustomerEdit";
             Text = "CustomerEdit";
-            Load += CustomerEdit_Load;
             mnCustomerEdit.ResumeLayout(false);
             mnCustomerEdit.PerformLayout();
             pnlEditCustomer.ResumeLayout(false);
@@ -250,5 +258,6 @@
         private Panel pnlCustomerEdit;
         private Label lblCustomerEdit;
         private TextBox tbCustomerID;
+        private ToolStripMenuItem viewToolStripMenuItem;
     }
 }

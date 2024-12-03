@@ -33,17 +33,18 @@
             editToolStripMenuItem = new ToolStripMenuItem();
             deleteToolStripMenuItem = new ToolStripMenuItem();
             pnlCustomerAddTitle = new Panel();
-            pnlAddCustomer = new Panel();
-            tbForename = new TextBox();
             lblCustomerAdd = new Label();
-            tbSurname = new TextBox();
-            tbPhoneNumber = new TextBox();
-            tbEmail = new TextBox();
-            lblForename = new Label();
-            lblSurname = new Label();
-            lblPhoneNumber = new Label();
-            lblEmail = new Label();
+            pnlAddCustomer = new Panel();
             btnSave = new Button();
+            lblEmail = new Label();
+            lblPhoneNumber = new Label();
+            lblSurname = new Label();
+            lblForename = new Label();
+            tbEmail = new TextBox();
+            tbPhoneNumber = new TextBox();
+            tbSurname = new TextBox();
+            tbForename = new TextBox();
+            viewToolStripMenuItem = new ToolStripMenuItem();
             mnCustomerAdd.SuspendLayout();
             pnlCustomerAddTitle.SuspendLayout();
             pnlAddCustomer.SuspendLayout();
@@ -52,7 +53,7 @@
             // mnCustomerAdd
             // 
             mnCustomerAdd.ImageScalingSize = new Size(20, 20);
-            mnCustomerAdd.Items.AddRange(new ToolStripItem[] { customerHomeToolStripMenuItem, editToolStripMenuItem, deleteToolStripMenuItem });
+            mnCustomerAdd.Items.AddRange(new ToolStripItem[] { customerHomeToolStripMenuItem, editToolStripMenuItem, deleteToolStripMenuItem, viewToolStripMenuItem });
             mnCustomerAdd.Location = new Point(0, 0);
             mnCustomerAdd.Name = "mnCustomerAdd";
             mnCustomerAdd.Size = new Size(467, 28);
@@ -62,8 +63,8 @@
             // customerHomeToolStripMenuItem
             // 
             customerHomeToolStripMenuItem.Name = "customerHomeToolStripMenuItem";
-            customerHomeToolStripMenuItem.Size = new Size(131, 24);
-            customerHomeToolStripMenuItem.Text = "Customer Home";
+            customerHomeToolStripMenuItem.Size = new Size(64, 24);
+            customerHomeToolStripMenuItem.Text = "Home";
             customerHomeToolStripMenuItem.Click += customerHomeToolStripMenuItem_Click;
             // 
             // editToolStripMenuItem
@@ -88,6 +89,16 @@
             pnlCustomerAddTitle.Size = new Size(448, 79);
             pnlCustomerAddTitle.TabIndex = 1;
             // 
+            // lblCustomerAdd
+            // 
+            lblCustomerAdd.AutoSize = true;
+            lblCustomerAdd.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblCustomerAdd.Location = new Point(124, 24);
+            lblCustomerAdd.Name = "lblCustomerAdd";
+            lblCustomerAdd.Size = new Size(194, 38);
+            lblCustomerAdd.TabIndex = 0;
+            lblCustomerAdd.Text = "Customer Add";
+            // 
             // pnlAddCustomer
             // 
             pnlAddCustomer.Controls.Add(btnSave);
@@ -104,70 +115,15 @@
             pnlAddCustomer.Size = new Size(448, 238);
             pnlAddCustomer.TabIndex = 2;
             // 
-            // tbForename
+            // btnSave
             // 
-            tbForename.Location = new Point(124, 28);
-            tbForename.Name = "tbForename";
-            tbForename.Size = new Size(107, 27);
-            tbForename.TabIndex = 0;
-            // 
-            // lblCustomerAdd
-            // 
-            lblCustomerAdd.AutoSize = true;
-            lblCustomerAdd.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCustomerAdd.Location = new Point(124, 24);
-            lblCustomerAdd.Name = "lblCustomerAdd";
-            lblCustomerAdd.Size = new Size(194, 38);
-            lblCustomerAdd.TabIndex = 0;
-            lblCustomerAdd.Text = "Customer Add";
-            // 
-            // tbSurname
-            // 
-            tbSurname.Location = new Point(124, 80);
-            tbSurname.Name = "tbSurname";
-            tbSurname.Size = new Size(107, 27);
-            tbSurname.TabIndex = 2;
-            // 
-            // tbPhoneNumber
-            // 
-            tbPhoneNumber.Location = new Point(147, 137);
-            tbPhoneNumber.Name = "tbPhoneNumber";
-            tbPhoneNumber.Size = new Size(146, 27);
-            tbPhoneNumber.TabIndex = 3;
-            // 
-            // tbEmail
-            // 
-            tbEmail.Location = new Point(124, 189);
-            tbEmail.Name = "tbEmail";
-            tbEmail.Size = new Size(169, 27);
-            tbEmail.TabIndex = 4;
-            // 
-            // lblForename
-            // 
-            lblForename.AutoSize = true;
-            lblForename.Location = new Point(18, 31);
-            lblForename.Name = "lblForename";
-            lblForename.Size = new Size(75, 20);
-            lblForename.TabIndex = 6;
-            lblForename.Text = "Forename";
-            // 
-            // lblSurname
-            // 
-            lblSurname.AutoSize = true;
-            lblSurname.Location = new Point(18, 83);
-            lblSurname.Name = "lblSurname";
-            lblSurname.Size = new Size(67, 20);
-            lblSurname.TabIndex = 7;
-            lblSurname.Text = "Surname";
-            // 
-            // lblPhoneNumber
-            // 
-            lblPhoneNumber.AutoSize = true;
-            lblPhoneNumber.Location = new Point(18, 140);
-            lblPhoneNumber.Name = "lblPhoneNumber";
-            lblPhoneNumber.Size = new Size(108, 20);
-            lblPhoneNumber.TabIndex = 8;
-            lblPhoneNumber.Text = "Phone Number";
+            btnSave.Location = new Point(335, 192);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(94, 29);
+            btnSave.TabIndex = 10;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // lblEmail
             // 
@@ -178,15 +134,67 @@
             lblEmail.TabIndex = 9;
             lblEmail.Text = "Email";
             // 
-            // btnSave
+            // lblPhoneNumber
             // 
-            btnSave.Location = new Point(335, 192);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(94, 29);
-            btnSave.TabIndex = 10;
-            btnSave.Text = "Save";
-            btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += btnSave_Click;
+            lblPhoneNumber.AutoSize = true;
+            lblPhoneNumber.Location = new Point(18, 140);
+            lblPhoneNumber.Name = "lblPhoneNumber";
+            lblPhoneNumber.Size = new Size(108, 20);
+            lblPhoneNumber.TabIndex = 8;
+            lblPhoneNumber.Text = "Phone Number";
+            // 
+            // lblSurname
+            // 
+            lblSurname.AutoSize = true;
+            lblSurname.Location = new Point(18, 83);
+            lblSurname.Name = "lblSurname";
+            lblSurname.Size = new Size(67, 20);
+            lblSurname.TabIndex = 7;
+            lblSurname.Text = "Surname";
+            // 
+            // lblForename
+            // 
+            lblForename.AutoSize = true;
+            lblForename.Location = new Point(18, 31);
+            lblForename.Name = "lblForename";
+            lblForename.Size = new Size(75, 20);
+            lblForename.TabIndex = 6;
+            lblForename.Text = "Forename";
+            // 
+            // tbEmail
+            // 
+            tbEmail.Location = new Point(124, 189);
+            tbEmail.Name = "tbEmail";
+            tbEmail.Size = new Size(169, 27);
+            tbEmail.TabIndex = 4;
+            // 
+            // tbPhoneNumber
+            // 
+            tbPhoneNumber.Location = new Point(147, 137);
+            tbPhoneNumber.Name = "tbPhoneNumber";
+            tbPhoneNumber.Size = new Size(146, 27);
+            tbPhoneNumber.TabIndex = 3;
+            // 
+            // tbSurname
+            // 
+            tbSurname.Location = new Point(124, 80);
+            tbSurname.Name = "tbSurname";
+            tbSurname.Size = new Size(107, 27);
+            tbSurname.TabIndex = 2;
+            // 
+            // tbForename
+            // 
+            tbForename.Location = new Point(124, 28);
+            tbForename.Name = "tbForename";
+            tbForename.Size = new Size(107, 27);
+            tbForename.TabIndex = 0;
+            // 
+            // viewToolStripMenuItem
+            // 
+            viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            viewToolStripMenuItem.Size = new Size(55, 24);
+            viewToolStripMenuItem.Text = "View";
+            viewToolStripMenuItem.Click += viewToolStripMenuItem_Click;
             // 
             // CustomerAdd
             // 
@@ -227,5 +235,6 @@
         private Label lblPhoneNumber;
         private Label lblSurname;
         private Label lblForename;
+        private ToolStripMenuItem viewToolStripMenuItem;
     }
 }

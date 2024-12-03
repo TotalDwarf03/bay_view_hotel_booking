@@ -25,8 +25,6 @@ namespace bay_view_hotel_booking_system
 
             DataTable dtCustomer = controller.RunQuery(query);
 
-            Debug.WriteLine(CustomerID);
-
             tbCustomerID.Text = CustomerID;
             tbForename.Text = dtCustomer.Rows[0]["Forename"].ToString();
             tbSurname.Text = dtCustomer.Rows[0]["Surname"].ToString();
@@ -56,7 +54,7 @@ namespace bay_view_hotel_booking_system
             string PhoneNumber = tbPhoneNumber.Text;
             string Email = tbEmail.Text;
 
-            string query = $"UPDATE Customer SET CustomerID = '{CustomerID}', Forename = '{Forename}', Surname = '{Surname}', PhoneNumber = '{PhoneNumber}', Email = '{Email}'";
+            string query = $"UPDATE Customer SET Forename = '{Forename}', Surname = '{Surname}', PhoneNumber = '{PhoneNumber}', Email = '{Email}' WHERE CustomerID = '{CustomerID}'";
 
             int recordschanged = new SQLController().RunNonQuery(query);
 
@@ -69,7 +67,12 @@ namespace bay_view_hotel_booking_system
                 tbEmail.Text = "";
 
                 MessageBox.Show("Customer has been saved");
+
+                CustomerForm CHome = new CustomerForm();
+                CHome.Show();
+                this.Hide();
             }
+
             if (recordschanged == 0)
             {
                 MessageBox.Show("Customer is unable to be saved. Please contact an admin",
@@ -79,16 +82,17 @@ namespace bay_view_hotel_booking_system
             }
         }
 
-        private void CustomerEdit_Load(object sender, EventArgs e)
-        {
-            DataTable dtCustomer = controller.RunQuery("SELECT * FROM Customer");
-            dgCustomer.DataSource = dtCustomer;
-        }
-
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CustomerSearch CSearch = new CustomerSearch("Delete");
             CSearch.Show();
+            this.Hide();
+        }
+
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CustomerView CView = new CustomerView();
+            CView.Show();
             this.Hide();
         }
     }

@@ -45,7 +45,7 @@ namespace bay_view_hotel_booking_system
             string PhoneNumber = tbPhoneNumber.Text;
             string Email = tbEmail.Text;
 
-            string query = $"INSERT INTO Customer (Forename, Surname, PhoneNumber, Email VALUES '{Forename}', '{Surname}', '{PhoneNumber}', '{Email}'";
+            string query = $"INSERT INTO Customer (Forename, Surname, PhoneNumber, Email) VALUES ('{Forename}', '{Surname}', '{PhoneNumber}', '{Email}')";
 
             int recordschanged = new SQLController().RunNonQuery(query);
 
@@ -66,6 +66,13 @@ namespace bay_view_hotel_booking_system
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CustomerView CView = new CustomerView();
+            CView.Show();
+            this.Hide();
         }
     }
 }

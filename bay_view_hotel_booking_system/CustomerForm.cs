@@ -37,5 +37,19 @@ namespace bay_view_hotel_booking_system
             CSearch.Show();
             this.Hide();
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            homepage homepage = new homepage();
+            homepage.Show();
+            this.Hide();
+        }
+
+        private void btnCustomerView_Click(object sender, EventArgs e)
+        {
+            CustomerView CView = new CustomerView();
+            CView.Show();
+            this.Hide();
+        }
     }
 }

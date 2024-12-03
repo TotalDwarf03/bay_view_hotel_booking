@@ -14,7 +14,6 @@ namespace bay_view_hotel_booking_system
     public partial class CustomerDelete : Form
     {
         SQLController controller = new SQLController();
-        TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
 
         public CustomerDelete(string CustomerID)
         {
@@ -24,17 +23,11 @@ namespace bay_view_hotel_booking_system
 
             DataTable dtCustomer = controller.RunQuery(query);
 
-            if (dtCustomer.Columns.Contains("CustomerID"))
-            {
-                cbCustomerID.Items.Add("All");
-                cbCustomerID.SelectedIndex = 0;
-
-                foreach (DataRow dr in dtCustomer.Rows)
-                {
-                    cbCustomerID.Items.Add(dr["CustomerID"].ToString());
-                }
-            }
-
+            tbCustomerID.Text = CustomerID;
+            tbForename.Text = dtCustomer.Rows[0]["Forename"].ToString();
+            tbSurname.Text = dtCustomer.Rows[0]["Surname"].ToString();
+            tbPhoneNumber.Text = dtCustomer.Rows[0]["PhoneNumber"].ToString();
+            tbEmail.Text = dtCustomer.Rows[0]["Email"].ToString();
         }
 
         private void customerHomeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,23 +46,45 @@ namespace bay_view_hotel_booking_system
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            string CustomerID = tbCustomerID.Text;
 
-        }
+            string query = $"DELETE FROM Customer WHERE CustomerID = '{CustomerID}'";
 
-        private void cbCustomerID_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            int recordschanged = controller.RunNonQuery(query);
 
-        }
+            if (recordschanged > 0)
+            {
+                tbCustomerID.Text = "";
+                tbForename.Text = "";
+                tbSurname.Text = "";
+                tbPhoneNumber.Text = "";
+                tbEmail.Text = "";
 
-        private void CustomerDelete_Load(object sender, EventArgs e)
-        {
-
+                MessageBox.Show("Customer has been Deleted");
+                CustomerForm CHome = new CustomerForm();
+                CHome.Show();
+                this.Hide();
+            }
+            if (recordschanged == 0)
+            {
+                MessageBox.Show("Customer is unable to be Deleted. Please contact an admin",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CustomerSearch CSearch = new CustomerSearch("Edit");
             CSearch.Show();
+            this.Hide();
+        }
+
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CustomerView CView = new CustomerView();
+            CView.Show();
             this.Hide();
         }
     }

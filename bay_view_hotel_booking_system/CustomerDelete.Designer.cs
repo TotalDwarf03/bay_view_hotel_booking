@@ -33,6 +33,7 @@
             addToolStripMenuItem = new ToolStripMenuItem();
             editToolStripMenuItem = new ToolStripMenuItem();
             pnlEditCustomer = new Panel();
+            tbCustomerID = new TextBox();
             btnDelete = new Button();
             lblEmail = new Label();
             lblPhoneNumber = new Label();
@@ -45,7 +46,7 @@
             tbForename = new TextBox();
             pnlCustomerDelete = new Panel();
             lblCustomerDelete = new Label();
-            tbCustomerID = new TextBox();
+            viewToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             pnlEditCustomer.SuspendLayout();
             pnlCustomerDelete.SuspendLayout();
@@ -54,7 +55,7 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { customerHomeToolStripMenuItem, addToolStripMenuItem, editToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { customerHomeToolStripMenuItem, addToolStripMenuItem, editToolStripMenuItem, viewToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(490, 28);
@@ -64,8 +65,8 @@
             // customerHomeToolStripMenuItem
             // 
             customerHomeToolStripMenuItem.Name = "customerHomeToolStripMenuItem";
-            customerHomeToolStripMenuItem.Size = new Size(131, 24);
-            customerHomeToolStripMenuItem.Text = "Customer Home";
+            customerHomeToolStripMenuItem.Size = new Size(64, 24);
+            customerHomeToolStripMenuItem.Text = "Home";
             customerHomeToolStripMenuItem.Click += customerHomeToolStripMenuItem_Click;
             // 
             // addToolStripMenuItem
@@ -99,6 +100,14 @@
             pnlEditCustomer.Name = "pnlEditCustomer";
             pnlEditCustomer.Size = new Size(469, 258);
             pnlEditCustomer.TabIndex = 4;
+            // 
+            // tbCustomerID
+            // 
+            tbCustomerID.Enabled = false;
+            tbCustomerID.Location = new Point(124, 30);
+            tbCustomerID.Name = "tbCustomerID";
+            tbCustomerID.Size = new Size(107, 27);
+            tbCustomerID.TabIndex = 11;
             // 
             // btnDelete
             // 
@@ -205,13 +214,12 @@
             lblCustomerDelete.TabIndex = 0;
             lblCustomerDelete.Text = "Customer Delete";
             // 
-            // tbCustomerID
+            // viewToolStripMenuItem
             // 
-            tbCustomerID.Enabled = false;
-            tbCustomerID.Location = new Point(124, 30);
-            tbCustomerID.Name = "tbCustomerID";
-            tbCustomerID.Size = new Size(107, 27);
-            tbCustomerID.TabIndex = 11;
+            viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            viewToolStripMenuItem.Size = new Size(55, 24);
+            viewToolStripMenuItem.Text = "View";
+            viewToolStripMenuItem.Click += viewToolStripMenuItem_Click;
             // 
             // CustomerDelete
             // 
@@ -254,5 +262,6 @@
         private Panel pnlCustomerDelete;
         private Label lblCustomerDelete;
         private TextBox tbCustomerID;
+        private ToolStripMenuItem viewToolStripMenuItem;
     }
 }
