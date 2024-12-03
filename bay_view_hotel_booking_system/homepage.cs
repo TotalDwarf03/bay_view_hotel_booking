@@ -22,7 +22,7 @@ namespace bay_view_hotel_booking_system
         private void homepage_Load(object sender, EventArgs e)
         {
             // This code is temporary to check the database is working
-            
+
             DataTable dtStaff = controller.RunQuery("SELECT * FROM Staff");
             dgStaff.DataSource = dtStaff;
 
@@ -42,6 +42,11 @@ namespace bay_view_hotel_booking_system
         private void homepage_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Owner?.Show();
+        }
+
+        private void dgRoom_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

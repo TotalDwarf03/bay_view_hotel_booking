@@ -44,48 +44,59 @@
             // dgStaff
             // 
             dgStaff.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgStaff.Location = new Point(12, 12);
+            dgStaff.Location = new Point(14, 16);
+            dgStaff.Margin = new Padding(3, 4, 3, 4);
             dgStaff.Name = "dgStaff";
-            dgStaff.Size = new Size(350, 437);
+            dgStaff.RowHeadersWidth = 51;
+            dgStaff.Size = new Size(400, 583);
             dgStaff.TabIndex = 0;
             // 
             // dgRoom
             // 
             dgRoom.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgRoom.Location = new Point(368, 12);
+            dgRoom.Location = new Point(421, 16);
+            dgRoom.Margin = new Padding(3, 4, 3, 4);
             dgRoom.Name = "dgRoom";
-            dgRoom.Size = new Size(350, 437);
+            dgRoom.RowHeadersWidth = 51;
+            dgRoom.Size = new Size(400, 583);
             dgRoom.TabIndex = 1;
+            dgRoom.CellContentClick += dgRoom_CellContentClick;
             // 
             // dgCustomer
             // 
             dgCustomer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgCustomer.Location = new Point(368, 455);
+            dgCustomer.Location = new Point(421, 607);
+            dgCustomer.Margin = new Padding(3, 4, 3, 4);
             dgCustomer.Name = "dgCustomer";
-            dgCustomer.Size = new Size(350, 437);
+            dgCustomer.RowHeadersWidth = 51;
+            dgCustomer.Size = new Size(400, 583);
             dgCustomer.TabIndex = 3;
             // 
             // dgTransaction
             // 
             dgTransaction.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgTransaction.Location = new Point(12, 455);
+            dgTransaction.Location = new Point(14, 607);
+            dgTransaction.Margin = new Padding(3, 4, 3, 4);
             dgTransaction.Name = "dgTransaction";
-            dgTransaction.Size = new Size(350, 437);
+            dgTransaction.RowHeadersWidth = 51;
+            dgTransaction.Size = new Size(400, 583);
             dgTransaction.TabIndex = 2;
             // 
             // dgBooking
             // 
             dgBooking.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgBooking.Location = new Point(724, 12);
+            dgBooking.Location = new Point(827, 16);
+            dgBooking.Margin = new Padding(3, 4, 3, 4);
             dgBooking.Name = "dgBooking";
-            dgBooking.Size = new Size(350, 437);
+            dgBooking.RowHeadersWidth = 51;
+            dgBooking.Size = new Size(400, 583);
             dgBooking.TabIndex = 4;
             // 
             // homepage
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1086, 935);
+            ClientSize = new Size(1241, 1055);
             Controls.Add(dgBooking);
             Controls.Add(dgCustomer);
             Controls.Add(dgTransaction);
@@ -93,6 +104,7 @@
             Controls.Add(dgStaff);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 4, 3, 4);
             Name = "homepage";
             Text = "Home";
             FormClosing += homepage_FormClosing;
