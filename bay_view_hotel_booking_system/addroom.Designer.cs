@@ -42,6 +42,10 @@
             radioButton2 = new RadioButton();
             btnAdd = new Button();
             button2 = new Button();
+            menuStrip1 = new MenuStrip();
+            viewRoomsToolStripMenuItem = new ToolStripMenuItem();
+            returnToHomepageToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -68,7 +72,6 @@
             // rType
             // 
             rType.AllowDrop = true;
-            rType.DropDownStyle = ComboBoxStyle.DropDownList;
             rType.FormattingEnabled = true;
             rType.Items.AddRange(new object[] { "single\t", "double", "family" });
             rType.Location = new Point(183, 126);
@@ -182,6 +185,28 @@
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
+            // menuStrip1
+            // 
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { viewRoomsToolStripMenuItem, returnToHomepageToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(624, 28);
+            menuStrip1.TabIndex = 15;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // viewRoomsToolStripMenuItem
+            // 
+            viewRoomsToolStripMenuItem.Name = "viewRoomsToolStripMenuItem";
+            viewRoomsToolStripMenuItem.Size = new Size(105, 24);
+            viewRoomsToolStripMenuItem.Text = "View Rooms";
+            // 
+            // returnToHomepageToolStripMenuItem
+            // 
+            returnToHomepageToolStripMenuItem.Name = "returnToHomepageToolStripMenuItem";
+            returnToHomepageToolStripMenuItem.Size = new Size(163, 24);
+            returnToHomepageToolStripMenuItem.Text = "Return to Homepage";
+            // 
             // addroom
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -201,8 +226,12 @@
             Controls.Add(rType);
             Controls.Add(label2);
             Controls.Add(label1);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Name = "addroom";
             Text = "addroom";
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -223,5 +252,8 @@
         private RadioButton radioButton2;
         private Button btnAdd;
         private Button button2;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem viewRoomsToolStripMenuItem;
+        private ToolStripMenuItem returnToHomepageToolStripMenuItem;
     }
 }

@@ -35,5 +35,48 @@ namespace bay_view_hotel_booking_system
             DataTable dtRoom = controller.RunQuery("SELECT * FROM Room");
             dgRoom.DataSource = dtRoom;
         }
+
+        private void addRoomToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addroom frm = new addroom();
+            frm.Owner = this;
+
+            frm.Show();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            String RoomType = rType.Text;
+            
+            string query = $"""
+                SELECT 
+                    RoomID,
+                    RoomType,
+                    RoomStatusID,
+                    Price,
+                    Capacity,
+                    IsDisabled
+
+                FROM Room
+
+                WHERE RoomType = '{RoomType}'
+                """;
+
+            DataTable dtRoom = controller.RunQuery(query);
+            dgRoom.DataSource = dtRoom;
+        }
+
+        //private void btnLoad_Click(object sender, EventArgs e)
+        //{
+        //SQLController controller = new SQLController();
+
+        //string load = $"""
+        //SELECT * FROM Room
+        //""";
+
+        //DataTable dgRooms = controller.RunQuery(load);
+
+        //}
     }
 }
+
