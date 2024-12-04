@@ -517,8 +517,6 @@ namespace bay_view_hotel_booking_system
             // and validation is not required
             if (ItemsToValidate.Contains("date") && dtpStartDate.Value != dtpEndDate.Value)
             {
-                Debug.WriteLine("Checking Dates");
-
                 if (dtpEndDate.Value.Date < DateTime.Now.Date)
                 {
                     MessageBox.Show(
@@ -592,6 +590,8 @@ namespace bay_view_hotel_booking_system
         {
             if (ValidateInputs(["guest", "staff", "room", "date"]))
             {
+                int RecordsChanged = 0;
+
                 // Collect Booking Details from the UI
                 int RoomID = Convert.ToInt32(tbRoomID.Text);
                 DateTime StartDate = dtpStartDate.Value;
@@ -602,17 +602,117 @@ namespace bay_view_hotel_booking_system
                 int BreakfastRateID = CalculateBreakfastRateID(NumberOfAdults + NumberOfChildren);
                 decimal Total = Convert.ToDecimal(lblTotalValue.Text.Substring(1));
 
+                // Check if booking has already been paid
+                // If so, notify the user that the customer should pay or be refunded the difference.
+
+                string query = $"""
+                    SELECT
+                        b.IsPaid,
+                        b.Price
+                    FROM Booking AS b
+                    WHERE b.BookingID = {lblBookingID.Text};
+                    """;
+
+                DataTable dt = controller.RunQuery(query);
+
+                bool IsPaid = Convert.ToBoolean(dt.Rows[0][0]);
+                decimal OldPrice = Convert.ToDecimal(dt.Rows[0][1]);
+
+                string message = "";
+
+                if (IsPaid && OldPrice != Total)
+                {
+                    // If new price is greater than the old price, the customer should pay the difference
+                    if (Total > OldPrice)
+                    {
+                        message = $"""
+                            The new price for the booking is greater than the original price. 
+                            The customer should pay the difference of {(Total - OldPrice).ToString("C")}.
+                            Would you like to continue with the booking?
+                            (Note: The above sum should be paid before continuing)
+                            """;
+                    }
+
+                    // If new price is less than the old price, the customer should be refunded the difference
+                    else if (Total < OldPrice)
+                    {
+                        message = $"""
+                            The new price for the booking is less than the original price. 
+                            The customer should be refunded the difference of {(OldPrice - Total).ToString("C")}.
+                            Would you like to continue with the booking?
+                            (Note: The above sum should be refunded before continuing)
+                            """;
+                    }
+
+                    DialogResult dialogResult = MessageBox.Show(
+                        message,
+                        "Warning",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning
+                    );
+
+                    if (dialogResult == DialogResult.No)
+                    {
+                        MessageBox.Show(
+                            "Booking has not been updated. Returning to Booking Management.",
+                            "Information",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+
+                        tsmiAvailability_Click(sender, e);
+                        return;
+                    }
+
+                    // Log the payment/refund
+                    query = $"""
+                        INSERT INTO Payment (
+                            BookingID, 
+                            Amount
+                        )
+                        VALUES (
+                            {lblBookingID.Text},
+                            {(Total - OldPrice)}
+                        );
+                        """;
+
+                    RecordsChanged = controller.RunNonQuery(query);
+
+                    if (RecordsChanged > 0)
+                    {
+                        MessageBox.Show(
+                            "Payment/Refund processed successfully.",
+                            "Information",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                    }
+
+                    else
+                    {
+                        MessageBox.Show(
+                            "An error occurred while processing the payment/refund. Please try again.",
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+
+                        tsmiAvailability_Click(sender, e);
+                        return;
+                    }
+                }
+
                 // Collect User Details to keep track of who made the booking
                 string? username = Environment.GetEnvironmentVariable("USER_EMAIL");
 
-                string query = $"""
+                query = $"""
                     SELECT 
                         s.StaffID
                     FROM Staff AS s
                     WHERE s.Email = '{username}';
                     """;
 
-                DataTable dt = controller.RunQuery(query);
+                dt = controller.RunQuery(query);
 
                 int StaffID = Convert.ToInt32(dt.Rows[0][0]);
 
@@ -633,9 +733,7 @@ namespace bay_view_hotel_booking_system
                     WHERE BookingID = {lblBookingID.Text};
                     """;
 
-                Debug.WriteLine(query);
-
-                int RecordsChanged = controller.RunNonQuery(query);
+                RecordsChanged = controller.RunNonQuery(query);
 
                 if (RecordsChanged == 1)
                 {
