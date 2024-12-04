@@ -61,41 +61,6 @@ namespace bay_view_hotel_booking_system.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT
-        ///	r.RoomID,
-        ///	r.RoomType,
-        ///	r.Price,
-        ///	r.Capacity,
-        ///	
-        ///	CASE
-        ///		WHEN r.IsDisabled = 1
-        ///			THEN &apos;Yes&apos;
-        ///		ELSE
-        ///			&apos;No&apos;
-        ///	END AS IsDisabled,
-        ///	
-        ///	CASE
-        ///		-- If there is only one booking between the dates
-        ///		-- And that booking is the one being edited
-        ///		-- Ok to book
-        ///		WHEN 1 = 	(
-        ///						SELECT
-        ///							COUNT(b.BookingID)
-        ///						FROM Booking AS b
-        ///						WHERE
-        ///								(
-        ///									&apos;STARTDATE&apos; BETWEEN b.StartDate AND b.EndDate
-        ///									OR
-        ///									&apos;STARTDATE&apos; BETWEEN b.StartDate AND b.EndDate
-        ///								 [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string availability_logic {
-            get {
-                return ResourceManager.GetString("availability_logic", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon bay_view_icon {

@@ -130,6 +130,7 @@ namespace bay_view_hotel_booking_system
                 									'{EndDate.ToString("yyyy-MM-dd")}' BETWEEN b.StartDate AND b.EndDate
                 								)
                 								AND b.RoomID = r.RoomID
+                                                AND b.IsCancelled = 0
                 					)
                 			THEN 'Not Available'
                 
