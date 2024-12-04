@@ -17,9 +17,20 @@ namespace bay_view_hotel_booking_system
         TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
         SQLController controller = new SQLController();
 
-        public FindBooking()
+        public FindBooking(string NextPage)
         {
             InitializeComponent();
+
+            lblNextPage.Text = NextPage;
+
+            // If the next page is Payment Management, the availability button goes back to the homepage
+            // Therefore we need to rename this button to "Back to Homepage"
+            // And hide the quit button
+            if (NextPage == "PaymentManagement")
+            {
+                tsmiQuit.Visible = false;
+                tsmiAvailability.Text = "Back to Homepage";
+            }
         }
 
         private void EditBooking_FormClosing(object sender, FormClosingEventArgs e)
@@ -125,6 +136,10 @@ namespace bay_view_hotel_booking_system
                             OR
                             b.EndDate >= date('now')
                         )
+                    AND b.IsCancelled = 0
+
+                    -- Only return bookings that are not paid unless going to EditBooking
+                    AND (b.IsPaid = 0 OR '{lblNextPage.Text}' = 'EditBooking') 
                 """;
 
             DataTable dt = controller.RunQuery(query);
@@ -149,7 +164,7 @@ namespace bay_view_hotel_booking_system
             if (dgvBooking.SelectedRows.Count == 0)
             {
                 MessageBox.Show(
-                    "You must select a Booking before you can edit it.",
+                    "You must select a Booking before you can load it.",
                     "Warning",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
@@ -158,13 +173,34 @@ namespace bay_view_hotel_booking_system
                 return;
             }
 
+
             string BookingID = dgvBooking.SelectedRows[0].Cells[0].Value.ToString();
 
-            EditBooking frm = new EditBooking(Convert.ToInt32(BookingID));
-            frm.Owner = this;
+            string NextPage = lblNextPage.Text;
 
-            frm.Show();
-            this.Hide();
+            if (NextPage == "EditBooking")
+            {
+                EditBooking frm = new EditBooking(Convert.ToInt32(BookingID));
+                frm.Owner = this;
+
+                frm.Show();
+                this.Hide();
+            }
+            else if (NextPage == "PaymentManagement")
+            {
+                // Go to Payment Management
+                PaymentManagement frm = new PaymentManagement(Convert.ToInt32(BookingID));
+                frm.Owner = this;
+
+                frm.Show();
+                this.Hide();
+            }
+        }
+
+        private void FindBooking_VisibleChanged(object sender, EventArgs e)
+        {
+            dgvCustomer.DataSource = null;
+            dgvBooking.DataSource = null;
         }
     }
 }

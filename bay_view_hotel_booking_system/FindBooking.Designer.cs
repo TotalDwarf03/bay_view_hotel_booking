@@ -42,6 +42,7 @@
             btnEditBooking = new Button();
             lblBooking = new Label();
             dgvBooking = new DataGridView();
+            lblNextPage = new Label();
             MenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCustomer).BeginInit();
             pnlCustomer.SuspendLayout();
@@ -164,7 +165,7 @@
             btnEditBooking.Name = "btnEditBooking";
             btnEditBooking.Size = new Size(180, 23);
             btnEditBooking.TabIndex = 38;
-            btnEditBooking.Text = "View / Edit Booking";
+            btnEditBooking.Text = "Load Booking";
             btnEditBooking.UseVisualStyleBackColor = false;
             btnEditBooking.Click += btnEditBooking_Click;
             // 
@@ -193,11 +194,22 @@
             dgvBooking.Size = new Size(346, 185);
             dgvBooking.TabIndex = 37;
             // 
+            // lblNextPage
+            // 
+            lblNextPage.AutoSize = true;
+            lblNextPage.Location = new Point(277, 294);
+            lblNextPage.Name = "lblNextPage";
+            lblNextPage.Size = new Size(38, 15);
+            lblNextPage.TabIndex = 40;
+            lblNextPage.Text = "label1";
+            lblNextPage.Visible = false;
+            // 
             // FindBooking
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(684, 340);
+            Controls.Add(lblNextPage);
             Controls.Add(pnlBooking);
             Controls.Add(pnlCustomer);
             Controls.Add(MenuStrip);
@@ -207,6 +219,7 @@
             Name = "FindBooking";
             Text = "Find Booking";
             FormClosing += EditBooking_FormClosing;
+            VisibleChanged += FindBooking_VisibleChanged;
             MenuStrip.ResumeLayout(false);
             MenuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCustomer).EndInit();
@@ -234,5 +247,6 @@
         private Button btnEditBooking;
         private Label lblBooking;
         private DataGridView dgvBooking;
+        private Label lblNextPage;
     }
 }

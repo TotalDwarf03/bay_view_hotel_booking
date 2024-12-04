@@ -42,6 +42,12 @@ namespace bay_view_hotel_booking_system
             dtpStartDate.Value = StartDate;
             dtpEndDate.Value = EndDate;
 
+            // If Booking has already started, disable the start date input
+            if (StartDate <= DateTime.Now.Date)
+            {
+                dtpStartDate.Enabled = false;
+            }
+
             // Populate Room Type Combo Box
             query = $"""
                 SELECT DISTINCT
@@ -401,10 +407,13 @@ namespace bay_view_hotel_booking_system
         {
             try
             {
-                UpdateRoomAvailability();
-                UpdateSelectedRoomAvailability(GetAvailableRooms());
+                if (ValidateInputs(["date"]))
+                {
+                    UpdateRoomAvailability();
+                    UpdateSelectedRoomAvailability(GetAvailableRooms());
 
-                calculateSummary();
+                    calculateSummary();
+                }
             }
             catch (Exception ex)
             {
@@ -473,28 +482,76 @@ namespace bay_view_hotel_booking_system
 
             // Room Validation
 
-            if (tbRoomAvailable.Text == "Not Available")
+            if (ItemsToValidate.Contains("room"))
             {
-                MessageBox.Show(
-                    "The selected room is not available for the selected dates. Please select another room or change the dates.",
-                    "Warning",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
+                if (tbRoomAvailable.Text == "Not Available")
+                {
+                    MessageBox.Show(
+                        "The selected room is not available for the selected dates. Please select another room or change the dates.",
+                        "Warning",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
 
-                return false;
+                    return false;
+                }
+
+                if (tbRoomAvailable.Text == "Invalid Room Type")
+                {
+                    MessageBox.Show(
+                        "The selected room is not valid. Please select a room from the list.",
+                        "Warning",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    return false;
+                }
             }
 
-            if (tbRoomAvailable.Text == "Invalid Room Type")
-            {
-                MessageBox.Show(
-                    "The selected room is not valid. Please select a room from the list.",
-                    "Warning",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
+            // Date Validation
 
-                return false;
+            // Only validate the date if ItemsToValidate contains "date"
+            // and the start and end dates are not today's date
+            // If the dates are today's date, the page is still loading data
+            // and validation is not required
+            if (ItemsToValidate.Contains("date") && dtpStartDate.Value != dtpEndDate.Value)
+            {
+                Debug.WriteLine("Checking Dates");
+
+                if (dtpEndDate.Value.Date < DateTime.Now.Date)
+                {
+                    MessageBox.Show(
+                        "The end date cannot be in the past. Please select a valid end date.",
+                        "Warning",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    return false;
+                }
+
+                if (dtpEndDate.Value.Date <= dtpStartDate.Value.Date)
+                {
+                    MessageBox.Show(
+                        "The end date cannot be before or equal to the start date. Please select a valid end date.",
+                        "Warning",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    return false;
+                }
+
+                if (dtpStartDate.Value.Date >= dtpEndDate.Value.Date)
+                {
+                    MessageBox.Show(
+                        "The start date cannot be after or equal to the end date. Please select a valid start date.",
+                        "Warning",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                }
             }
 
             return true;
@@ -533,7 +590,7 @@ namespace bay_view_hotel_booking_system
 
         private void btnBook_Click(object sender, EventArgs e)
         {
-            if (ValidateInputs(["guest", "customer", "staff"]))
+            if (ValidateInputs(["guest", "staff", "room", "date"]))
             {
                 // Collect Booking Details from the UI
                 int RoomID = Convert.ToInt32(tbRoomID.Text);
