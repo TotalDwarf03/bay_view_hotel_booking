@@ -131,7 +131,7 @@
             btnUpdateRoom.Location = new Point(3, 381);
             btnUpdateRoom.Margin = new Padding(3, 2, 3, 2);
             btnUpdateRoom.Name = "btnUpdateRoom";
-            btnUpdateRoom.Size = new Size(147, 25);
+            btnUpdateRoom.Size = new Size(161, 30);
             btnUpdateRoom.TabIndex = 14;
             btnUpdateRoom.Text = "Update Room Choice";
             btnUpdateRoom.UseVisualStyleBackColor = false;
@@ -302,7 +302,7 @@
             dtpEndDate.Name = "dtpEndDate";
             dtpEndDate.Size = new Size(150, 23);
             dtpEndDate.TabIndex = 10;
-            dtpEndDate.Value = new DateTime(2024, 11, 21, 11, 28, 36, 0);
+            dtpEndDate.Value = new DateTime(2024, 12, 4, 0, 0, 0, 0);
             dtpEndDate.ValueChanged += BookingInformationChanged;
             // 
             // dtpStartDate
@@ -680,7 +680,7 @@
             lblCurrentlyEditing.Name = "lblCurrentlyEditing";
             lblCurrentlyEditing.Size = new Size(151, 49);
             lblCurrentlyEditing.TabIndex = 0;
-            lblCurrentlyEditing.Text = "Currently Editing Booking:";
+            lblCurrentlyEditing.Text = "Viewing / Editing Booking:";
             lblCurrentlyEditing.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // EditBooking

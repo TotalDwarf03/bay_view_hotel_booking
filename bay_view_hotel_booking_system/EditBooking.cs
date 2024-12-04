@@ -42,6 +42,12 @@ namespace bay_view_hotel_booking_system
             dtpStartDate.Value = StartDate;
             dtpEndDate.Value = EndDate;
 
+            // If Booking has already started, disable the start date input
+            if (StartDate <= DateTime.Now.Date)
+            {
+                dtpStartDate.Enabled = false;
+            }
+
             // Populate Room Type Combo Box
             query = $"""
                 SELECT DISTINCT
@@ -121,6 +127,7 @@ namespace bay_view_hotel_booking_system
                 									'{EndDate.ToString("yyyy-MM-dd")}' BETWEEN b.StartDate AND b.EndDate
                 								)
                 								AND b.RoomID = r.RoomID
+                                                AND b.IsCancelled = 0
                 					)
                 		AND '{lblBookingID.Text}' IN	(
                 								            SELECT
@@ -133,6 +140,7 @@ namespace bay_view_hotel_booking_system
                 											'{EndDate.ToString("yyyy-MM-dd")}' BETWEEN b.StartDate AND b.EndDate
                 										)
                 										AND b.RoomID = r.RoomID
+                                                        AND b.IsCancelled = 0
                 							)
                 			THEN 'Current Room'
 
@@ -149,6 +157,7 @@ namespace bay_view_hotel_booking_system
                 									'{EndDate.ToString("yyyy-MM-dd")}' BETWEEN b.StartDate AND b.EndDate
                 								)
                 								AND b.RoomID = r.RoomID
+                                                AND b.IsCancelled = 0
                 					)
                 			THEN 'Not Available'
 
@@ -401,10 +410,13 @@ namespace bay_view_hotel_booking_system
         {
             try
             {
-                UpdateRoomAvailability();
-                UpdateSelectedRoomAvailability(GetAvailableRooms());
+                if (ValidateInputs(["date"]))
+                {
+                    UpdateRoomAvailability();
+                    UpdateSelectedRoomAvailability(GetAvailableRooms());
 
-                calculateSummary();
+                    calculateSummary();
+                }
             }
             catch (Exception ex)
             {
@@ -473,28 +485,74 @@ namespace bay_view_hotel_booking_system
 
             // Room Validation
 
-            if (tbRoomAvailable.Text == "Not Available")
+            if (ItemsToValidate.Contains("room"))
             {
-                MessageBox.Show(
-                    "The selected room is not available for the selected dates. Please select another room or change the dates.",
-                    "Warning",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
+                if (tbRoomAvailable.Text == "Not Available")
+                {
+                    MessageBox.Show(
+                        "The selected room is not available for the selected dates. Please select another room or change the dates.",
+                        "Warning",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
 
-                return false;
+                    return false;
+                }
+
+                if (tbRoomAvailable.Text == "Invalid Room Type")
+                {
+                    MessageBox.Show(
+                        "The selected room is not valid. Please select a room from the list.",
+                        "Warning",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    return false;
+                }
             }
 
-            if (tbRoomAvailable.Text == "Invalid Room Type")
-            {
-                MessageBox.Show(
-                    "The selected room is not valid. Please select a room from the list.",
-                    "Warning",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
+            // Date Validation
 
-                return false;
+            // Only validate the date if ItemsToValidate contains "date"
+            // and the start and end dates are not today's date
+            // If the dates are today's date, the page is still loading data
+            // and validation is not required
+            if (ItemsToValidate.Contains("date") && dtpStartDate.Value != dtpEndDate.Value)
+            {
+                if (dtpEndDate.Value.Date < DateTime.Now.Date)
+                {
+                    MessageBox.Show(
+                        "The end date cannot be in the past. Please select a valid end date.",
+                        "Warning",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    return false;
+                }
+
+                if (dtpEndDate.Value.Date <= dtpStartDate.Value.Date)
+                {
+                    MessageBox.Show(
+                        "The end date cannot be before or equal to the start date. Please select a valid end date.",
+                        "Warning",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    return false;
+                }
+
+                if (dtpStartDate.Value.Date >= dtpEndDate.Value.Date)
+                {
+                    MessageBox.Show(
+                        "The start date cannot be after or equal to the end date. Please select a valid start date.",
+                        "Warning",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                }
             }
 
             return true;
@@ -533,8 +591,10 @@ namespace bay_view_hotel_booking_system
 
         private void btnBook_Click(object sender, EventArgs e)
         {
-            if (ValidateInputs(["guest", "customer", "staff"]))
+            if (ValidateInputs(["guest", "staff", "room", "date"]))
             {
+                int RecordsChanged = 0;
+
                 // Collect Booking Details from the UI
                 int RoomID = Convert.ToInt32(tbRoomID.Text);
                 DateTime StartDate = dtpStartDate.Value;
@@ -545,17 +605,117 @@ namespace bay_view_hotel_booking_system
                 int BreakfastRateID = CalculateBreakfastRateID(NumberOfAdults + NumberOfChildren);
                 decimal Total = Convert.ToDecimal(lblTotalValue.Text.Substring(1));
 
+                // Check if booking has already been paid
+                // If so, notify the user that the customer should pay or be refunded the difference.
+
+                string query = $"""
+                    SELECT
+                        b.IsPaid,
+                        b.Price
+                    FROM Booking AS b
+                    WHERE b.BookingID = {lblBookingID.Text};
+                    """;
+
+                DataTable dt = controller.RunQuery(query);
+
+                bool IsPaid = Convert.ToBoolean(dt.Rows[0][0]);
+                decimal OldPrice = Convert.ToDecimal(dt.Rows[0][1]);
+
+                string message = "";
+
+                if (IsPaid && OldPrice != Total)
+                {
+                    // If new price is greater than the old price, the customer should pay the difference
+                    if (Total > OldPrice)
+                    {
+                        message = $"""
+                            The new price for the booking is greater than the original price. 
+                            The customer should pay the difference of {(Total - OldPrice).ToString("C")}.
+                            Would you like to continue with the booking?
+                            (Note: The above sum should be paid before continuing)
+                            """;
+                    }
+
+                    // If new price is less than the old price, the customer should be refunded the difference
+                    else if (Total < OldPrice)
+                    {
+                        message = $"""
+                            The new price for the booking is less than the original price. 
+                            The customer should be refunded the difference of {(OldPrice - Total).ToString("C")}.
+                            Would you like to continue with the booking?
+                            (Note: The above sum should be refunded before continuing)
+                            """;
+                    }
+
+                    DialogResult dialogResult = MessageBox.Show(
+                        message,
+                        "Warning",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning
+                    );
+
+                    if (dialogResult == DialogResult.No)
+                    {
+                        MessageBox.Show(
+                            "Booking has not been updated. Returning to Booking Management.",
+                            "Information",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+
+                        tsmiAvailability_Click(sender, e);
+                        return;
+                    }
+
+                    // Log the payment/refund
+                    query = $"""
+                        INSERT INTO Payment (
+                            BookingID, 
+                            Amount
+                        )
+                        VALUES (
+                            {lblBookingID.Text},
+                            {(Total - OldPrice)}
+                        );
+                        """;
+
+                    RecordsChanged = controller.RunNonQuery(query);
+
+                    if (RecordsChanged > 0)
+                    {
+                        MessageBox.Show(
+                            "Payment/Refund processed successfully.",
+                            "Information",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                    }
+
+                    else
+                    {
+                        MessageBox.Show(
+                            "An error occurred while processing the payment/refund. Please try again.",
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+
+                        tsmiAvailability_Click(sender, e);
+                        return;
+                    }
+                }
+
                 // Collect User Details to keep track of who made the booking
                 string? username = Environment.GetEnvironmentVariable("USER_EMAIL");
 
-                string query = $"""
+                query = $"""
                     SELECT 
                         s.StaffID
                     FROM Staff AS s
                     WHERE s.Email = '{username}';
                     """;
 
-                DataTable dt = controller.RunQuery(query);
+                dt = controller.RunQuery(query);
 
                 int StaffID = Convert.ToInt32(dt.Rows[0][0]);
 
@@ -576,9 +736,7 @@ namespace bay_view_hotel_booking_system
                     WHERE BookingID = {lblBookingID.Text};
                     """;
 
-                Debug.WriteLine(query);
-
-                int RecordsChanged = controller.RunNonQuery(query);
+                RecordsChanged = controller.RunNonQuery(query);
 
                 if (RecordsChanged == 1)
                 {

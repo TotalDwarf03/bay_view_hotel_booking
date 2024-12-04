@@ -224,6 +224,7 @@
             fpnlPayment.Name = "fpnlPayment";
             fpnlPayment.Size = new Size(350, 84);
             fpnlPayment.TabIndex = 8;
+            fpnlPayment.Click += fpnlPayment_Click;
             // 
             // lblPaymentHeader
             // 
@@ -235,6 +236,7 @@
             lblPaymentHeader.Size = new Size(226, 28);
             lblPaymentHeader.TabIndex = 0;
             lblPaymentHeader.Text = "Payment Management";
+            lblPaymentHeader.Click += fpnlPayment_Click;
             // 
             // lblPaymentDesc
             // 
@@ -244,6 +246,7 @@
             lblPaymentDesc.Size = new Size(291, 20);
             lblPaymentDesc.TabIndex = 1;
             lblPaymentDesc.Text = "Mark Bookings as Paid or Cancel Bookings.";
+            lblPaymentDesc.Click += fpnlPayment_Click;
             // 
             // fpnlStaff
             // 

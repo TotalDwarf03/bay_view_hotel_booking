@@ -92,6 +92,16 @@ namespace bay_view_hotel_booking_system
                 return;
             }
 
+            if (EndDate.Date <= DateTime.Today)
+            {
+                MessageBox.Show(
+                    "Error: The End Date must not be less than the current date.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+
             String query = $"""
                 SELECT
                 	r.RoomID,
@@ -120,6 +130,7 @@ namespace bay_view_hotel_booking_system
                 									'{EndDate.ToString("yyyy-MM-dd")}' BETWEEN b.StartDate AND b.EndDate
                 								)
                 								AND b.RoomID = r.RoomID
+                                                AND b.IsCancelled = 0
                 					)
                 			THEN 'Not Available'
                 
@@ -213,7 +224,7 @@ namespace bay_view_hotel_booking_system
 
         private void tsmiEditBooking_Click(object sender, EventArgs e)
         {
-            FindBooking frm = new FindBooking();
+            FindBooking frm = new FindBooking("EditBooking");
             frm.Owner = this;
 
             frm.Show();
