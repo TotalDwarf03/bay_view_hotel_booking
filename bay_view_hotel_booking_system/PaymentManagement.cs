@@ -196,7 +196,7 @@ namespace bay_view_hotel_booking_system
                 // 15% of the total booking price if the booking is cancelled within 3 weeks (21 days) of the start date
                 DateTime StartDate = Convert.ToDateTime(tbStartDate.Text);
 
-                if ((DateTime.Now.Date - StartDate).Days < 21)
+                if ((StartDate - DateTime.Now.Date).Days < 21)
                 {
                     CancelFee = Math.Round(Convert.ToDecimal(tbPrice.Text.Substring(1)) * 0.15m, 2);
                     string CancelFeeStr = CancelFee.ToString("C");
