@@ -29,10 +29,10 @@ CREATE TABLE IF NOT EXISTS "Booking" (
 	"CancellationDate"	TEXT,
 	FOREIGN KEY("CreatedBy") REFERENCES "Staff"("StaffID"),
 	FOREIGN KEY("CancelledBy") REFERENCES "Staff"("StaffID"),
+	FOREIGN KEY("CustomerID") REFERENCES "Customer"("CustomerID"),
+	FOREIGN KEY("RoomID") REFERENCES "Room"("RoomID"),
 	FOREIGN KEY("LastUpdatedBy") REFERENCES "Staff"("StaffID"),
 	FOREIGN KEY("BreakfastRateID") REFERENCES "BreakfastRate"("BreakfastRateID"),
-	FOREIGN KEY("RoomID") REFERENCES "Room"("RoomID"),
-	FOREIGN KEY("CustomerID") REFERENCES "Customer"("CustomerID"),
 	PRIMARY KEY("BookingID" AUTOINCREMENT)
 );
 DROP TABLE IF EXISTS "BreakfastRate";
@@ -81,6 +81,7 @@ CREATE TABLE IF NOT EXISTS "Staff" (
 INSERT INTO "BreakfastRate" ("BreakfastRateID","Price") VALUES (1,5.0),
  (2,10.0),
  (3,15.0);
+INSERT INTO "Customer" ("CustomerID","Forename","Surname","PhoneNumber","Email") VALUES (1,'Customer','Deleted','123456','deleted@customer.com');
 INSERT INTO "Room" ("RoomID","RoomType","RoomStatusID","Price","Capacity","IsDisabled") VALUES (1,'single',1,70.0,1,1),
  (2,'single',1,70.0,1,1),
  (3,'single',1,70.0,1,0),
@@ -111,4 +112,5 @@ INSERT INTO "Room" ("RoomID","RoomType","RoomStatusID","Price","Capacity","IsDis
 INSERT INTO "RoomStatus" ("RoomStatusID","RoomStatus") VALUES (1,'available'),
  (2,'under refurbishment'),
  (3,'off sale');
+INSERT INTO "Staff" ("StaffID","StaffType","Forename","Surname","PhoneNumber","Email","Password") VALUES (1,'frontdesk','Deleted','Staff','123456','deleted@staff.com','123456');
 COMMIT;
