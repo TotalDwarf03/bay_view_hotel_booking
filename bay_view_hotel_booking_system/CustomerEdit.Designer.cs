@@ -35,6 +35,7 @@
             lblCustomerID = new Label();
             pnlEditCustomer = new Panel();
             tbCustomerID = new TextBox();
+            btnSave = new Button();
             lblEmail = new Label();
             lblPhoneNumber = new Label();
             lblSurname = new Label();
@@ -43,7 +44,6 @@
             tbPhoneNumber = new TextBox();
             tbSurname = new TextBox();
             tbForename = new TextBox();
-            btnSave = new Button();
             mnCustomerEdit.SuspendLayout();
             pnlEditCustomer.SuspendLayout();
             SuspendLayout();
@@ -99,7 +99,7 @@
             pnlEditCustomer.Controls.Add(tbForename);
             pnlEditCustomer.Location = new Point(12, 31);
             pnlEditCustomer.Name = "pnlEditCustomer";
-            pnlEditCustomer.Size = new Size(442, 239);
+            pnlEditCustomer.Size = new Size(442, 248);
             pnlEditCustomer.TabIndex = 3;
             // 
             // tbCustomerID
@@ -109,6 +109,17 @@
             tbCustomerID.Name = "tbCustomerID";
             tbCustomerID.Size = new Size(190, 27);
             tbCustomerID.TabIndex = 11;
+            // 
+            // btnSave
+            // 
+            btnSave.BackColor = SystemColors.ControlLightLight;
+            btnSave.Location = new Point(139, 205);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(164, 29);
+            btnSave.TabIndex = 10;
+            btnSave.Text = "Update Customer";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // lblEmail
             // 
@@ -177,17 +188,6 @@
             tbForename.Name = "tbForename";
             tbForename.Size = new Size(190, 27);
             tbForename.TabIndex = 0;
-            // 
-            // btnSave
-            // 
-            btnSave.BackColor = SystemColors.ControlLightLight;
-            btnSave.Location = new Point(139, 205);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(164, 29);
-            btnSave.TabIndex = 10;
-            btnSave.Text = "Save";
-            btnSave.UseVisualStyleBackColor = false;
-            btnSave.Click += btnSave_Click;
             // 
             // CustomerEdit
             // 

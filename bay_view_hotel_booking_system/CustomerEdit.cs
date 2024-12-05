@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -45,32 +46,77 @@ namespace bay_view_hotel_booking_system
             string PhoneNumber = tbPhoneNumber.Text;
             string Email = tbEmail.Text;
 
+            // Validate Inputs
+
+            bool ValidationFailed = false;
+            string message = "";
+
+            // Check if all fields are populated
+
+            if (Forename.Length == 0)
+            {
+                ValidationFailed = true;
+                message = "Forename is a required field. Please fill it in.";
+            }
+            else if (Surname.Length == 0)
+            {
+                ValidationFailed = true;
+                message = "Surname is a required field. Please fill it in.";
+            }
+            else if (PhoneNumber.Length == 0)
+            {
+                ValidationFailed = true;
+                message = "Phone Number is a required field. Please fill it in.";
+            }
+            else if (Email.Length == 0)
+            {
+                ValidationFailed = true;
+                message = "Email is a required field. Please fill it in.";
+            }
+
+            // Check Valid Email
+            else if (!(new EmailAddressAttribute().IsValid(Email)))
+            {
+                ValidationFailed = true;
+                message = "Email Address Invalid.";
+            }
+
+            if (ValidationFailed)
+            {
+                MessageBox.Show(
+                    message,
+                    "Warning",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+
+                return;
+            }
+
             string query = $"UPDATE Customer SET Forename = '{Forename}', Surname = '{Surname}', PhoneNumber = '{PhoneNumber}', Email = '{Email}' WHERE CustomerID = '{CustomerID}'";
 
-            int recordschanged = new SQLController().RunNonQuery(query);
+            int RecordsChanged = new SQLController().RunNonQuery(query);
 
-            if (recordschanged > 0)
+            if (RecordsChanged > 0)
             {
-                tbCustomerID.Text = "";
-                tbForename.Text = "";
-                tbSurname.Text = "";
-                tbPhoneNumber.Text = "";
-                tbEmail.Text = "";
-
-                MessageBox.Show("Customer has been saved");
-
-                CustomerForm CHome = new CustomerForm();
-                CHome.Show();
-                this.Hide();
+                MessageBox.Show(
+                    "Customer has been updated.",
+                    "Success",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
             }
-
-            if (recordschanged == 0)
+            else
             {
-                MessageBox.Show("Customer is unable to be saved. Please contact an admin",
+                MessageBox.Show(
+                    "An Error has occured when updating the customer. Please try again.",
                     "Error",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                    MessageBoxIcon.Error
+                );
             }
+
+            this.Close();
         }
 
         private void CustomerEdit_FormClosing(object sender, FormClosingEventArgs e)

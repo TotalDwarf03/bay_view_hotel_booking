@@ -28,62 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblCustomerForm = new Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerForm));
             btnCustomerAdd = new Button();
             CustomerEdit = new Button();
             CustomerDelete = new Button();
             btnBack = new Button();
             btnCustomerView = new Button();
+            pnlHeader = new Panel();
+            pbLogo = new PictureBox();
+            lblTitle = new Label();
+            pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
             SuspendLayout();
-            // 
-            // lblCustomerForm
-            // 
-            lblCustomerForm.AutoSize = true;
-            lblCustomerForm.Font = new Font("Segoe UI", 28.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCustomerForm.Location = new Point(331, 60);
-            lblCustomerForm.Name = "lblCustomerForm";
-            lblCustomerForm.Size = new Size(348, 62);
-            lblCustomerForm.TabIndex = 0;
-            lblCustomerForm.Text = "Customer Form";
             // 
             // btnCustomerAdd
             // 
-            btnCustomerAdd.Font = new Font("Segoe UI", 13.8F);
-            btnCustomerAdd.Location = new Point(57, 175);
+            btnCustomerAdd.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnCustomerAdd.Location = new Point(420, 177);
             btnCustomerAdd.Name = "btnCustomerAdd";
-            btnCustomerAdd.Size = new Size(162, 142);
+            btnCustomerAdd.Size = new Size(349, 75);
             btnCustomerAdd.TabIndex = 1;
-            btnCustomerAdd.Text = "Add";
+            btnCustomerAdd.Text = "Add a New Customer";
             btnCustomerAdd.UseVisualStyleBackColor = true;
             btnCustomerAdd.Click += btnCustomerAdd_Click;
             // 
             // CustomerEdit
             // 
-            CustomerEdit.Font = new Font("Segoe UI", 13.8F);
-            CustomerEdit.Location = new Point(298, 175);
+            CustomerEdit.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            CustomerEdit.Location = new Point(9, 177);
             CustomerEdit.Name = "CustomerEdit";
-            CustomerEdit.Size = new Size(162, 142);
+            CustomerEdit.Size = new Size(349, 75);
             CustomerEdit.TabIndex = 2;
-            CustomerEdit.Text = "Edit";
+            CustomerEdit.Text = "Edit an Existing Customer";
             CustomerEdit.UseVisualStyleBackColor = true;
             CustomerEdit.Click += CustomerEdit_Click;
             // 
             // CustomerDelete
             // 
-            CustomerDelete.Font = new Font("Segoe UI", 13.8F);
-            CustomerDelete.Location = new Point(805, 175);
+            CustomerDelete.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            CustomerDelete.Location = new Point(420, 96);
             CustomerDelete.Name = "CustomerDelete";
-            CustomerDelete.Size = new Size(162, 142);
+            CustomerDelete.Size = new Size(349, 75);
             CustomerDelete.TabIndex = 3;
-            CustomerDelete.Text = "Delete";
+            CustomerDelete.Text = "Delete an Existing Customer";
             CustomerDelete.UseVisualStyleBackColor = true;
             CustomerDelete.Click += CustomerDelete_Click;
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(12, 415);
+            btnBack.Location = new Point(661, 3);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(94, 29);
+            btnBack.Size = new Size(94, 62);
             btnBack.TabIndex = 4;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = true;
@@ -91,40 +86,76 @@
             // 
             // btnCustomerView
             // 
-            btnCustomerView.Font = new Font("Segoe UI", 13.8F);
-            btnCustomerView.Location = new Point(554, 175);
+            btnCustomerView.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnCustomerView.Location = new Point(9, 96);
             btnCustomerView.Name = "btnCustomerView";
-            btnCustomerView.Size = new Size(162, 142);
+            btnCustomerView.Size = new Size(349, 75);
             btnCustomerView.TabIndex = 5;
-            btnCustomerView.Text = "View";
+            btnCustomerView.Text = "View Existing Customers";
             btnCustomerView.UseVisualStyleBackColor = true;
             btnCustomerView.Click += btnCustomerView_Click;
+            // 
+            // pnlHeader
+            // 
+            pnlHeader.BackColor = SystemColors.Info;
+            pnlHeader.BorderStyle = BorderStyle.FixedSingle;
+            pnlHeader.Controls.Add(pbLogo);
+            pnlHeader.Controls.Add(lblTitle);
+            pnlHeader.Controls.Add(btnBack);
+            pnlHeader.Location = new Point(9, 9);
+            pnlHeader.Margin = new Padding(0);
+            pnlHeader.Name = "pnlHeader";
+            pnlHeader.Size = new Size(760, 71);
+            pnlHeader.TabIndex = 6;
+            // 
+            // pbLogo
+            // 
+            pbLogo.Image = Properties.Resources.bay_view_logo;
+            pbLogo.Location = new Point(3, 3);
+            pbLogo.Name = "pbLogo";
+            pbLogo.Size = new Size(125, 62);
+            pbLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pbLogo.TabIndex = 0;
+            pbLogo.TabStop = false;
+            // 
+            // lblTitle
+            // 
+            lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            lblTitle.Location = new Point(134, 3);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(418, 62);
+            lblTitle.TabIndex = 1;
+            lblTitle.Text = "Customer Management";
+            lblTitle.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // CustomerForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1032, 456);
+            ClientSize = new Size(782, 453);
+            Controls.Add(pnlHeader);
             Controls.Add(btnCustomerView);
-            Controls.Add(btnBack);
             Controls.Add(CustomerDelete);
             Controls.Add(CustomerEdit);
             Controls.Add(btnCustomerAdd);
-            Controls.Add(lblCustomerForm);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CustomerForm";
-            Text = "CustomerForm";
+            Text = "Customer Management";
             FormClosing += CustomerForm_FormClosing;
+            pnlHeader.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Label lblCustomerForm;
         private Button btnCustomerAdd;
         private Button CustomerEdit;
         private Button CustomerDelete;
         private Button btnBack;
         private Button btnCustomerView;
+        private Panel pnlHeader;
+        private PictureBox pbLogo;
+        private Label lblTitle;
     }
 }

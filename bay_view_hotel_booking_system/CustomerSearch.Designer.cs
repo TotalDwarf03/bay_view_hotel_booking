@@ -157,6 +157,7 @@
             Name = "CustomerSearch";
             Text = "Find Customer";
             FormClosing += CustomerSearch_FormClosing;
+            VisibleChanged += CustomerSearch_VisibleChanged;
             mnCustomerSearch.ResumeLayout(false);
             mnCustomerSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgCustomer).EndInit();

@@ -102,5 +102,10 @@ namespace bay_view_hotel_booking_system
         {
             this.Owner?.Close();
         }
+
+        private void CustomerSearch_VisibleChanged(object sender, EventArgs e)
+        {
+            dgCustomer.DataSource = null;
+        }
     }
 }

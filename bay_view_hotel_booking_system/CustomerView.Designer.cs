@@ -28,101 +28,132 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerView));
             dgCustomer = new DataGridView();
             mnView = new MenuStrip();
-            homeToolStripMenuItem = new ToolStripMenuItem();
-            addToolStripMenuItem = new ToolStripMenuItem();
-            editToolStripMenuItem = new ToolStripMenuItem();
-            deleteToolStripMenuItem = new ToolStripMenuItem();
-            pnlSearch = new Panel();
-            lblCustomerView = new Label();
+            tsmiCustomerHome = new ToolStripMenuItem();
+            tsmiQuit = new ToolStripMenuItem();
+            lblCustomerHeader = new Label();
+            btnCustomerSearch = new Button();
+            tbCustomerName = new TextBox();
+            panel1 = new Panel();
+            btnClear = new Button();
             ((System.ComponentModel.ISupportInitialize)dgCustomer).BeginInit();
             mnView.SuspendLayout();
-            pnlSearch.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // dgCustomer
             // 
             dgCustomer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgCustomer.Location = new Point(12, 127);
+            dgCustomer.Location = new Point(10, 78);
+            dgCustomer.Margin = new Padding(3, 2, 3, 2);
             dgCustomer.Name = "dgCustomer";
+            dgCustomer.ReadOnly = true;
             dgCustomer.RowHeadersWidth = 51;
-            dgCustomer.Size = new Size(762, 311);
+            dgCustomer.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgCustomer.Size = new Size(663, 222);
             dgCustomer.TabIndex = 0;
             // 
             // mnView
             // 
             mnView.ImageScalingSize = new Size(20, 20);
-            mnView.Items.AddRange(new ToolStripItem[] { homeToolStripMenuItem, addToolStripMenuItem, editToolStripMenuItem, deleteToolStripMenuItem });
+            mnView.Items.AddRange(new ToolStripItem[] { tsmiCustomerHome, tsmiQuit });
             mnView.Location = new Point(0, 0);
             mnView.Name = "mnView";
-            mnView.Size = new Size(794, 28);
+            mnView.Padding = new Padding(5, 2, 0, 2);
+            mnView.Size = new Size(684, 24);
             mnView.TabIndex = 1;
             mnView.Text = "menuStrip1";
             // 
-            // homeToolStripMenuItem
+            // tsmiCustomerHome
             // 
-            homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            homeToolStripMenuItem.Size = new Size(64, 24);
-            homeToolStripMenuItem.Text = "Home";
-            homeToolStripMenuItem.Click += homeToolStripMenuItem_Click;
+            tsmiCustomerHome.Name = "tsmiCustomerHome";
+            tsmiCustomerHome.Size = new Size(145, 20);
+            tsmiCustomerHome.Text = "Customer Management";
+            tsmiCustomerHome.Click += tsmiCustomerHome_Click;
             // 
-            // addToolStripMenuItem
+            // tsmiQuit
             // 
-            addToolStripMenuItem.Name = "addToolStripMenuItem";
-            addToolStripMenuItem.Size = new Size(51, 24);
-            addToolStripMenuItem.Text = "Add";
-            addToolStripMenuItem.Click += addToolStripMenuItem_Click;
+            tsmiQuit.Name = "tsmiQuit";
+            tsmiQuit.Size = new Size(130, 20);
+            tsmiQuit.Text = "Return to Homepage";
+            tsmiQuit.Click += tsmiQuit_Click;
             // 
-            // editToolStripMenuItem
+            // lblCustomerHeader
             // 
-            editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Size(49, 24);
-            editToolStripMenuItem.Text = "Edit";
-            editToolStripMenuItem.Click += editToolStripMenuItem_Click;
+            lblCustomerHeader.AutoSize = true;
+            lblCustomerHeader.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblCustomerHeader.Location = new Point(3, 0);
+            lblCustomerHeader.Name = "lblCustomerHeader";
+            lblCustomerHeader.Size = new Size(100, 15);
+            lblCustomerHeader.TabIndex = 36;
+            lblCustomerHeader.Text = "Customer Name:";
             // 
-            // deleteToolStripMenuItem
+            // btnCustomerSearch
             // 
-            deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new Size(67, 24);
-            deleteToolStripMenuItem.Text = "Delete";
-            deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
+            btnCustomerSearch.BackColor = SystemColors.ControlLightLight;
+            btnCustomerSearch.Location = new Point(389, 15);
+            btnCustomerSearch.Name = "btnCustomerSearch";
+            btnCustomerSearch.Size = new Size(97, 23);
+            btnCustomerSearch.TabIndex = 38;
+            btnCustomerSearch.Text = "Search";
+            btnCustomerSearch.UseVisualStyleBackColor = false;
+            btnCustomerSearch.Click += CustomerView_Load;
             // 
-            // pnlSearch
+            // tbCustomerName
             // 
-            pnlSearch.Controls.Add(lblCustomerView);
-            pnlSearch.Location = new Point(12, 36);
-            pnlSearch.Name = "pnlSearch";
-            pnlSearch.Size = new Size(762, 72);
-            pnlSearch.TabIndex = 2;
+            tbCustomerName.Location = new Point(3, 16);
+            tbCustomerName.Name = "tbCustomerName";
+            tbCustomerName.Size = new Size(382, 23);
+            tbCustomerName.TabIndex = 37;
             // 
-            // lblCustomerView
+            // panel1
             // 
-            lblCustomerView.AutoSize = true;
-            lblCustomerView.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCustomerView.Location = new Point(21, 14);
-            lblCustomerView.Name = "lblCustomerView";
-            lblCustomerView.Size = new Size(246, 46);
-            lblCustomerView.TabIndex = 0;
-            lblCustomerView.Text = "Customer View";
+            panel1.BackColor = SystemColors.ControlLight;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(lblCustomerHeader);
+            panel1.Controls.Add(tbCustomerName);
+            panel1.Controls.Add(btnCustomerSearch);
+            panel1.Location = new Point(10, 23);
+            panel1.Margin = new Padding(3, 2, 3, 2);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(664, 51);
+            panel1.TabIndex = 39;
+            // 
+            // btnClear
+            // 
+            btnClear.BackColor = SystemColors.ControlLightLight;
+            btnClear.Location = new Point(577, 305);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(97, 23);
+            btnClear.TabIndex = 39;
+            btnClear.Text = "Clear Search";
+            btnClear.UseVisualStyleBackColor = false;
+            btnClear.Click += btnClear_Click;
             // 
             // CustomerView
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(794, 450);
-            Controls.Add(pnlSearch);
+            ClientSize = new Size(684, 340);
+            Controls.Add(btnClear);
+            Controls.Add(panel1);
             Controls.Add(dgCustomer);
             Controls.Add(mnView);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = mnView;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "CustomerView";
-            Text = "CustomerView";
+            Text = "View Customers";
+            FormClosing += CustomerSearch_FormClosing;
             Load += CustomerView_Load;
             ((System.ComponentModel.ISupportInitialize)dgCustomer).EndInit();
             mnView.ResumeLayout(false);
             mnView.PerformLayout();
-            pnlSearch.ResumeLayout(false);
-            pnlSearch.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -131,11 +162,12 @@
 
         private DataGridView dgCustomer;
         private MenuStrip mnView;
-        private ToolStripMenuItem homeToolStripMenuItem;
-        private ToolStripMenuItem addToolStripMenuItem;
-        private ToolStripMenuItem editToolStripMenuItem;
-        private ToolStripMenuItem deleteToolStripMenuItem;
-        private Panel pnlSearch;
-        private Label lblCustomerView;
+        private ToolStripMenuItem tsmiCustomerHome;
+        private ToolStripMenuItem tsmiQuit;
+        private Label lblCustomerHeader;
+        private Button btnCustomerSearch;
+        private TextBox tbCustomerName;
+        private Panel panel1;
+        private Button btnClear;
     }
 }

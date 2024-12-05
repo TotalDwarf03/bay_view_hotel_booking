@@ -13,43 +13,66 @@ namespace bay_view_hotel_booking_system
     public partial class CustomerView : Form
     {
         SQLController controller = new SQLController();
+
         public CustomerView()
         {
             InitializeComponent();
         }
 
-        private void homeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CustomerSearch_FormClosing(object sender, FormClosingEventArgs e)
         {
-            CustomerForm CHome = new CustomerForm();
-            CHome.Show();
-            this.Hide();
+            this.Owner?.Show();
         }
 
-        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmiCustomerHome_Click(object sender, EventArgs e)
         {
-            CustomerAdd CAdd = new CustomerAdd();
-            CAdd.Show();
-            this.Hide();
+            this.Close();
         }
 
-        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmiQuit_Click(object sender, EventArgs e)
         {
-            CustomerSearch CSearch = new CustomerSearch("Edit");
-            CSearch.Show();
-            this.Hide();
-        }
-
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CustomerSearch CSearch = new CustomerSearch("Delete");
-            CSearch.Show();
-            this.Hide();
+            this.Owner?.Close();
         }
 
         private void CustomerView_Load(object sender, EventArgs e)
         {
-            DataTable dtCustomer = controller.RunQuery("SELECT * FROM Customer");
-            dgCustomer.DataSource = dtCustomer;
+            string CustomerName = tbCustomerName.Text;
+
+            string query = $"""
+                SELECT 
+                    c.CustomerID, 
+                    c.Forename || ' ' || c.Surname AS Name, 
+                    c.Email, 
+                    c.PhoneNumber 
+                FROM Customer AS c 
+                WHERE c.Forename || ' ' || c.Surname LIKE '%{CustomerName}%'
+                    AND c.CustomerID != 1;
+                """;
+
+            DataTable dtCustomer = new SQLController().RunQuery(query);
+
+            if (dtCustomer.Rows.Count > 0)
+            {
+                dgCustomer.DataSource = dtCustomer;
+            }
+            else
+            {
+                MessageBox.Show(
+                      "No Customers have been found.",
+                      "Warning",
+                      MessageBoxButtons.OK,
+                      MessageBoxIcon.Warning
+               );
+
+                dgCustomer.DataSource = null;
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            tbCustomerName.Text = "";
+
+            CustomerView_Load(sender, e);
         }
     }
 }
