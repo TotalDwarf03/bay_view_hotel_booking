@@ -146,6 +146,7 @@
             MainMenuStrip = mnView;
             Margin = new Padding(3, 2, 3, 2);
             Name = "CustomerView";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "View Customers";
             FormClosing += CustomerSearch_FormClosing;
             Load += CustomerView_Load;
