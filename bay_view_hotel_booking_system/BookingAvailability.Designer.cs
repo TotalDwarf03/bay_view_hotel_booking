@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookingAvailability));
             MenuStrip = new MenuStrip();
-            tsmiAvailability = new ToolStripMenuItem();
+            tsmiViewBookings = new ToolStripMenuItem();
             tsmiEditBooking = new ToolStripMenuItem();
             tsmiQuit = new ToolStripMenuItem();
             dtpStartDate = new DateTimePicker();
@@ -53,7 +53,7 @@
             // MenuStrip
             // 
             MenuStrip.ImageScalingSize = new Size(20, 20);
-            MenuStrip.Items.AddRange(new ToolStripItem[] { tsmiAvailability, tsmiEditBooking, tsmiQuit });
+            MenuStrip.Items.AddRange(new ToolStripItem[] { tsmiViewBookings, tsmiEditBooking, tsmiQuit });
             MenuStrip.Location = new Point(0, 0);
             MenuStrip.Name = "MenuStrip";
             MenuStrip.Padding = new Padding(5, 2, 0, 2);
@@ -61,11 +61,12 @@
             MenuStrip.TabIndex = 1;
             MenuStrip.Text = "menuStrip1";
             // 
-            // tsmiAvailability
+            // tsmiViewBookings
             // 
-            tsmiAvailability.Name = "tsmiAvailability";
-            tsmiAvailability.Size = new Size(105, 20);
-            tsmiAvailability.Text = "View Availability";
+            tsmiViewBookings.Name = "tsmiViewBookings";
+            tsmiViewBookings.Size = new Size(96, 20);
+            tsmiViewBookings.Text = "View Bookings";
+            tsmiViewBookings.Click += tsmiViewBookings_Click;
             // 
             // tsmiEditBooking
             // 
@@ -257,7 +258,6 @@
         #endregion
 
         private MenuStrip MenuStrip;
-        private ToolStripMenuItem tsmiAvailability;
         private ToolStripMenuItem tsmiEditBooking;
         private ToolStripMenuItem tsmiQuit;
         private DateTimePicker dtpStartDate;
@@ -273,5 +273,6 @@
         private ComboBox cbDisabled;
         private Label lblDisabled;
         private Label lblRoomsAvailable;
+        private ToolStripMenuItem tsmiViewBookings;
     }
 }

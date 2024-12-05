@@ -230,5 +230,14 @@ namespace bay_view_hotel_booking_system
             frm.Show();
             this.Hide();
         }
+
+        private void tsmiViewBookings_Click(object sender, EventArgs e)
+        {
+            ViewBookings frm = new ViewBookings();
+            frm.Owner = this;
+
+            frm.Show();
+            this.Hide();
+        }
     }
 }
