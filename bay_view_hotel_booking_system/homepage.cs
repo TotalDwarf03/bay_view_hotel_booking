@@ -50,5 +50,14 @@ namespace bay_view_hotel_booking_system
             frm.Show();
             this.Hide();
         }
+
+        private void fpnlCustomer_Click(object sender, EventArgs e)
+        {
+            CustomerForm frm = new CustomerForm();
+            frm.Owner = this;
+
+            frm.Show();
+            this.Hide();
+        }
     }
 }

@@ -515,10 +515,16 @@ namespace bay_view_hotel_booking_system
             // Date Validation
 
             // Only validate the date if ItemsToValidate contains "date"
-            // and the start and end dates are not today's date
-            // If the dates are today's date, the page is still loading data
+            // and the start and end dates are not the default (1900-01-01)
+            // If the dates are the default, the page is still loading data
             // and validation is not required
-            if (ItemsToValidate.Contains("date") && dtpStartDate.Value != dtpEndDate.Value)
+
+            string[] dates = new string[2];
+
+            dates[0] = dtpStartDate.Value.ToString("yyyy-MM-dd");
+            dates[1] = dtpEndDate.Value.ToString("yyyy-MM-dd");
+
+            if (ItemsToValidate.Contains("date") && !dates.Contains("1900-01-01"))
             {
                 if (dtpEndDate.Value.Date < DateTime.Now.Date)
                 {

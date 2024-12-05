@@ -1,4 +1,4 @@
-﻿namespace bay_view_hotel_booking_system
+namespace bay_view_hotel_booking_system
 {
     partial class homepage
     {
@@ -161,6 +161,7 @@
             fpnlCustomer.Name = "fpnlCustomer";
             fpnlCustomer.Size = new Size(350, 84);
             fpnlCustomer.TabIndex = 6;
+            fpnlCustomer.Click += fpnlCustomer_Click;
             // 
             // lblCustomerHeader
             // 
@@ -172,6 +173,7 @@
             lblCustomerHeader.Size = new Size(233, 28);
             lblCustomerHeader.TabIndex = 0;
             lblCustomerHeader.Text = "Customer Management";
+            lblCustomerHeader.Click += fpnlCustomer_Click;
             // 
             // lblCustomerDesc
             // 
@@ -181,6 +183,7 @@
             lblCustomerDesc.Size = new Size(285, 20);
             lblCustomerDesc.TabIndex = 1;
             lblCustomerDesc.Text = "View, Add, Update and Delete Customers.";
+            lblCustomerDesc.Click += fpnlCustomer_Click;
             // 
             // fpnlRoom
             // 
