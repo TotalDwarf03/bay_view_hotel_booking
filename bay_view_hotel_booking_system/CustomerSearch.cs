@@ -19,16 +19,9 @@ namespace bay_view_hotel_booking_system
             lblNextPage.Text = NextPage;
         }
 
-        private void backToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CustomerForm CHome = new CustomerForm();
-            CHome.Show();
-            this.Hide();
-        }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string CustomerName = $"{tbForenameSearch.Text} {tbSurnameSearch.Text}";
+            string CustomerName = tbCustomerName.Text;
 
             string query = $"""
                 SELECT 
@@ -49,12 +42,12 @@ namespace bay_view_hotel_booking_system
             }
             else
             {
-                 MessageBox.Show(
-                       "No Customers have been found.",
-                       "Warning",
-                       MessageBoxButtons.OK,
-                       MessageBoxIcon.Warning
-                );
+                MessageBox.Show(
+                      "No Customers have been found.",
+                      "Warning",
+                      MessageBoxButtons.OK,
+                      MessageBoxIcon.Warning
+               );
             }
         }
 
@@ -68,15 +61,19 @@ namespace bay_view_hotel_booking_system
 
                 if (NextPage == "Edit")
                 {
-                    CustomerEdit CEdit = new CustomerEdit(CustomerID);
-                    CEdit.Show();
+                    CustomerEdit frm = new CustomerEdit(CustomerID);
+                    frm.Owner = this;
+
+                    frm.Show();
                     this.Hide();
                 }
 
                 if (NextPage == "Delete")
                 {
-                    CustomerDelete CDelete = new CustomerDelete(CustomerID);
-                    CDelete.Show();
+                    CustomerDelete frm = new CustomerDelete(CustomerID);
+                    frm.Owner = this;
+
+                    frm.Show();
                     this.Hide();
                 }
             }
@@ -89,6 +86,21 @@ namespace bay_view_hotel_booking_system
                        MessageBoxIcon.Warning
                 );
             }
+        }
+
+        private void CustomerSearch_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner?.Show();
+        }
+
+        private void tsmiCustomerHome_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void tsmiQuit_Click(object sender, EventArgs e)
+        {
+            this.Owner?.Close();
         }
     }
 }

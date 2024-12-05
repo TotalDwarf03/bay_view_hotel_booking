@@ -113,6 +113,7 @@
             Controls.Add(lblCustomerForm);
             Name = "CustomerForm";
             Text = "CustomerForm";
+            FormClosing += CustomerForm_FormClosing;
             ResumeLayout(false);
             PerformLayout();
         }

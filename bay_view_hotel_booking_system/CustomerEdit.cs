@@ -32,18 +32,9 @@ namespace bay_view_hotel_booking_system
             tbEmail.Text = dtCustomer.Rows[0]["Email"].ToString();
         }
 
-        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmiCustomerHome_Click(object sender, EventArgs e)
         {
-            CustomerAdd CAdd = new CustomerAdd();
-            CAdd.Show();
-            this.Hide();
-        }
-
-        private void customerHomeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CustomerForm CHome = new CustomerForm();
-            CHome.Show();
-            this.Hide();
+            this.Owner?.Close();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -82,18 +73,14 @@ namespace bay_view_hotel_booking_system
             }
         }
 
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CustomerEdit_FormClosing(object sender, FormClosingEventArgs e)
         {
-            CustomerSearch CSearch = new CustomerSearch("Delete");
-            CSearch.Show();
-            this.Hide();
+            this.Owner?.Show();
         }
 
-        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmiQuit_Click(object sender, EventArgs e)
         {
-            CustomerView CView = new CustomerView();
-            CView.Show();
-            this.Hide();
+            this.Owner?.Owner?.Close();
         }
     }
 }

@@ -19,37 +19,48 @@ namespace bay_view_hotel_booking_system
 
         private void btnCustomerAdd_Click(object sender, EventArgs e)
         {
-            CustomerAdd CAdd = new CustomerAdd();
-            CAdd.Show();
+            CustomerAdd frm = new CustomerAdd();
+            frm.Owner = this;
+
+            frm.Show();
             this.Hide();
         }
 
         private void CustomerEdit_Click(object sender, EventArgs e)
         {
-            CustomerSearch CSearch = new CustomerSearch("Edit");
-            CSearch.Show();
+            CustomerSearch frm = new CustomerSearch("Edit");
+            frm.Owner = this;
+
+            frm.Show();
             this.Hide();
         }
 
         private void CustomerDelete_Click(object sender, EventArgs e)
         {
-            CustomerSearch CSearch = new CustomerSearch("Delete");
-            CSearch.Show();
+            CustomerSearch frm = new CustomerSearch("Delete");
+            frm.Owner = this;
+
+            frm.Show();
             this.Hide();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            homepage homepage = new homepage();
-            homepage.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void btnCustomerView_Click(object sender, EventArgs e)
         {
-            CustomerView CView = new CustomerView();
-            CView.Show();
+            CustomerView frm = new CustomerView();
+            frm.Owner = this;
+
+            frm.Show();
             this.Hide();
+        }
+
+        private void CustomerForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner?.Show();
         }
     }
 }

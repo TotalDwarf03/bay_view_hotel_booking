@@ -28,103 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblCustomerSearch = new Label();
-            tbForenameSearch = new TextBox();
-            tbSurnameSearch = new TextBox();
-            pnlSearch = new Panel();
-            btnSearch = new Button();
-            lblSurnameSearch = new Label();
-            lblForenameSearch = new Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerSearch));
             mnCustomerSearch = new MenuStrip();
-            backToolStripMenuItem = new ToolStripMenuItem();
+            tsmiCustomerHome = new ToolStripMenuItem();
+            tsmiQuit = new ToolStripMenuItem();
             lblNextPage = new Label();
             dgCustomer = new DataGridView();
             btnLoad = new Button();
-            pnlSearch.SuspendLayout();
+            btnCustomerSearch = new Button();
+            tbCustomerName = new TextBox();
+            lblCustomerHeader = new Label();
+            pnlSearch = new Panel();
             mnCustomerSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgCustomer).BeginInit();
+            pnlSearch.SuspendLayout();
             SuspendLayout();
-            // 
-            // lblCustomerSearch
-            // 
-            lblCustomerSearch.AutoSize = true;
-            lblCustomerSearch.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCustomerSearch.Location = new Point(256, 47);
-            lblCustomerSearch.Name = "lblCustomerSearch";
-            lblCustomerSearch.Size = new Size(243, 41);
-            lblCustomerSearch.TabIndex = 0;
-            lblCustomerSearch.Text = "Customer Search";
-            // 
-            // tbForenameSearch
-            // 
-            tbForenameSearch.Location = new Point(152, 40);
-            tbForenameSearch.Name = "tbForenameSearch";
-            tbForenameSearch.Size = new Size(125, 27);
-            tbForenameSearch.TabIndex = 1;
-            // 
-            // tbSurnameSearch
-            // 
-            tbSurnameSearch.Location = new Point(152, 103);
-            tbSurnameSearch.Name = "tbSurnameSearch";
-            tbSurnameSearch.Size = new Size(125, 27);
-            tbSurnameSearch.TabIndex = 2;
-            // 
-            // pnlSearch
-            // 
-            pnlSearch.Controls.Add(btnSearch);
-            pnlSearch.Controls.Add(lblSurnameSearch);
-            pnlSearch.Controls.Add(tbSurnameSearch);
-            pnlSearch.Controls.Add(lblForenameSearch);
-            pnlSearch.Controls.Add(tbForenameSearch);
-            pnlSearch.Location = new Point(12, 121);
-            pnlSearch.Name = "pnlSearch";
-            pnlSearch.Size = new Size(346, 241);
-            pnlSearch.TabIndex = 3;
-            // 
-            // btnSearch
-            // 
-            btnSearch.Location = new Point(99, 178);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(94, 29);
-            btnSearch.TabIndex = 6;
-            btnSearch.Text = "Search";
-            btnSearch.UseVisualStyleBackColor = true;
-            btnSearch.Click += btnSearch_Click;
-            // 
-            // lblSurnameSearch
-            // 
-            lblSurnameSearch.AutoSize = true;
-            lblSurnameSearch.Location = new Point(33, 106);
-            lblSurnameSearch.Name = "lblSurnameSearch";
-            lblSurnameSearch.Size = new Size(67, 20);
-            lblSurnameSearch.TabIndex = 4;
-            lblSurnameSearch.Text = "Surname";
-            // 
-            // lblForenameSearch
-            // 
-            lblForenameSearch.AutoSize = true;
-            lblForenameSearch.Location = new Point(33, 40);
-            lblForenameSearch.Name = "lblForenameSearch";
-            lblForenameSearch.Size = new Size(75, 20);
-            lblForenameSearch.TabIndex = 5;
-            lblForenameSearch.Text = "Forename";
             // 
             // mnCustomerSearch
             // 
             mnCustomerSearch.ImageScalingSize = new Size(20, 20);
-            mnCustomerSearch.Items.AddRange(new ToolStripItem[] { backToolStripMenuItem });
+            mnCustomerSearch.Items.AddRange(new ToolStripItem[] { tsmiCustomerHome, tsmiQuit });
             mnCustomerSearch.Location = new Point(0, 0);
             mnCustomerSearch.Name = "mnCustomerSearch";
             mnCustomerSearch.Size = new Size(782, 28);
             mnCustomerSearch.TabIndex = 4;
             mnCustomerSearch.Text = "menuStrip1";
             // 
-            // backToolStripMenuItem
+            // tsmiCustomerHome
             // 
-            backToolStripMenuItem.Name = "backToolStripMenuItem";
-            backToolStripMenuItem.Size = new Size(54, 24);
-            backToolStripMenuItem.Text = "Back";
-            backToolStripMenuItem.Click += backToolStripMenuItem_Click;
+            tsmiCustomerHome.Name = "tsmiCustomerHome";
+            tsmiCustomerHome.Size = new Size(178, 24);
+            tsmiCustomerHome.Text = "Customer Management";
+            tsmiCustomerHome.Click += tsmiCustomerHome_Click;
+            // 
+            // tsmiQuit
+            // 
+            tsmiQuit.Name = "tsmiQuit";
+            tsmiQuit.Size = new Size(163, 24);
+            tsmiQuit.Text = "Return to Homepage";
+            tsmiQuit.Click += tsmiQuit_Click;
             // 
             // lblNextPage
             // 
@@ -138,58 +80,102 @@
             // dgCustomer
             // 
             dgCustomer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgCustomer.Location = new Point(379, 121);
+            dgCustomer.Location = new Point(3, 59);
             dgCustomer.Name = "dgCustomer";
+            dgCustomer.ReadOnly = true;
             dgCustomer.RowHeadersWidth = 51;
-            dgCustomer.Size = new Size(391, 207);
+            dgCustomer.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgCustomer.Size = new Size(553, 207);
             dgCustomer.TabIndex = 6;
             // 
             // btnLoad
             // 
-            btnLoad.Location = new Point(534, 334);
+            btnLoad.BackColor = SystemColors.ControlLightLight;
+            btnLoad.Location = new Point(234, 272);
             btnLoad.Name = "btnLoad";
             btnLoad.Size = new Size(94, 29);
             btnLoad.TabIndex = 7;
             btnLoad.Text = "Load";
-            btnLoad.UseVisualStyleBackColor = true;
+            btnLoad.UseVisualStyleBackColor = false;
             btnLoad.Click += btnLoad_Click;
+            // 
+            // btnCustomerSearch
+            // 
+            btnCustomerSearch.BackColor = SystemColors.ControlLightLight;
+            btnCustomerSearch.Location = new Point(445, 20);
+            btnCustomerSearch.Margin = new Padding(3, 4, 3, 4);
+            btnCustomerSearch.Name = "btnCustomerSearch";
+            btnCustomerSearch.Size = new Size(111, 31);
+            btnCustomerSearch.TabIndex = 35;
+            btnCustomerSearch.Text = "Search";
+            btnCustomerSearch.UseVisualStyleBackColor = false;
+            btnCustomerSearch.Click += btnSearch_Click;
+            // 
+            // tbCustomerName
+            // 
+            tbCustomerName.Location = new Point(3, 22);
+            tbCustomerName.Margin = new Padding(3, 4, 3, 4);
+            tbCustomerName.Name = "tbCustomerName";
+            tbCustomerName.Size = new Size(436, 27);
+            tbCustomerName.TabIndex = 34;
+            // 
+            // lblCustomerHeader
+            // 
+            lblCustomerHeader.AutoSize = true;
+            lblCustomerHeader.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblCustomerHeader.Location = new Point(3, 0);
+            lblCustomerHeader.Name = "lblCustomerHeader";
+            lblCustomerHeader.Size = new Size(127, 20);
+            lblCustomerHeader.TabIndex = 33;
+            lblCustomerHeader.Text = "Customer Name:";
+            // 
+            // pnlSearch
+            // 
+            pnlSearch.BackColor = SystemColors.ControlLight;
+            pnlSearch.BorderStyle = BorderStyle.FixedSingle;
+            pnlSearch.Controls.Add(lblCustomerHeader);
+            pnlSearch.Controls.Add(btnCustomerSearch);
+            pnlSearch.Controls.Add(dgCustomer);
+            pnlSearch.Controls.Add(tbCustomerName);
+            pnlSearch.Controls.Add(btnLoad);
+            pnlSearch.Location = new Point(18, 31);
+            pnlSearch.Name = "pnlSearch";
+            pnlSearch.Size = new Size(562, 309);
+            pnlSearch.TabIndex = 36;
             // 
             // CustomerSearch
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(782, 375);
-            Controls.Add(btnLoad);
-            Controls.Add(dgCustomer);
-            Controls.Add(lblNextPage);
+            ClientSize = new Size(782, 453);
             Controls.Add(pnlSearch);
-            Controls.Add(lblCustomerSearch);
+            Controls.Add(lblNextPage);
             Controls.Add(mnCustomerSearch);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = mnCustomerSearch;
             Name = "CustomerSearch";
-            Text = "CustomerSearch";
-            pnlSearch.ResumeLayout(false);
-            pnlSearch.PerformLayout();
+            Text = "Find Customer";
+            FormClosing += CustomerSearch_FormClosing;
             mnCustomerSearch.ResumeLayout(false);
             mnCustomerSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgCustomer).EndInit();
+            pnlSearch.ResumeLayout(false);
+            pnlSearch.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label lblCustomerSearch;
-        private TextBox tbForenameSearch;
-        private TextBox tbSurnameSearch;
-        private Panel pnlSearch;
-        private Button btnSearch;
-        private Label lblSurnameSearch;
-        private Label lblForenameSearch;
         private MenuStrip mnCustomerSearch;
-        private ToolStripMenuItem backToolStripMenuItem;
         private Label lblNextPage;
         private DataGridView dgCustomer;
         private Button btnLoad;
+        private ToolStripMenuItem tsmiCustomerHome;
+        private ToolStripMenuItem tsmiQuit;
+        private Button btnCustomerSearch;
+        private TextBox tbCustomerName;
+        private Label lblCustomerHeader;
+        private Panel pnlSearch;
     }
 }

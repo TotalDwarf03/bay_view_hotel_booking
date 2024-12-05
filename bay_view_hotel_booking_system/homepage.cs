@@ -51,10 +51,12 @@ namespace bay_view_hotel_booking_system
             this.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void fpnlCustomer_Click(object sender, EventArgs e)
         {
-            CustomerForm cform = new CustomerForm();
-            cform.Show();
+            CustomerForm frm = new CustomerForm();
+            frm.Owner = this;
+
+            frm.Show();
             this.Hide();
         }
     }

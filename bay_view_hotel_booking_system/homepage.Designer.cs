@@ -29,7 +29,6 @@ namespace bay_view_hotel_booking_system
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(homepage));
-
             pbLogo = new PictureBox();
             lblTitle = new Label();
             btnUser = new Button();
@@ -61,7 +60,6 @@ namespace bay_view_hotel_booking_system
             fpnlPayment.SuspendLayout();
             fpnlStaff.SuspendLayout();
             fpnlReporting.SuspendLayout();
-
             SuspendLayout();
             // 
             // pbLogo
@@ -163,6 +161,7 @@ namespace bay_view_hotel_booking_system
             fpnlCustomer.Name = "fpnlCustomer";
             fpnlCustomer.Size = new Size(350, 84);
             fpnlCustomer.TabIndex = 6;
+            fpnlCustomer.Click += fpnlCustomer_Click;
             // 
             // lblCustomerHeader
             // 
@@ -174,6 +173,7 @@ namespace bay_view_hotel_booking_system
             lblCustomerHeader.Size = new Size(233, 28);
             lblCustomerHeader.TabIndex = 0;
             lblCustomerHeader.Text = "Customer Management";
+            lblCustomerHeader.Click += fpnlCustomer_Click;
             // 
             // lblCustomerDesc
             // 
@@ -183,6 +183,7 @@ namespace bay_view_hotel_booking_system
             lblCustomerDesc.Size = new Size(285, 20);
             lblCustomerDesc.TabIndex = 1;
             lblCustomerDesc.Text = "View, Add, Update and Delete Customers.";
+            lblCustomerDesc.Click += fpnlCustomer_Click;
             // 
             // fpnlRoom
             // 
@@ -313,16 +314,6 @@ namespace bay_view_hotel_booking_system
             lblReportingDesc.Size = new Size(287, 40);
             lblReportingDesc.TabIndex = 1;
             lblReportingDesc.Text = "View Income, Time Occupancy and Room Occupancy Reports.";
-            // 
-            // button1
-            // 
-            button1.Location = new Point(981, 805);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 5;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // homepage
             // 
