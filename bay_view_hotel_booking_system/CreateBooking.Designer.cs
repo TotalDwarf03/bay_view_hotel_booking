@@ -90,7 +90,7 @@
             lblBooking.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblBooking.Location = new Point(3, 0);
             lblBooking.Name = "lblBooking";
-            lblBooking.Size = new Size(160, 20);
+            lblBooking.Size = new Size(126, 15);
             lblBooking.TabIndex = 0;
             lblBooking.Text = "Booking Information:";
             // 
@@ -100,22 +100,22 @@
             MenuStrip.Items.AddRange(new ToolStripItem[] { tsmiAvailability, tsmiQuit });
             MenuStrip.Location = new Point(0, 0);
             MenuStrip.Name = "MenuStrip";
-            MenuStrip.Padding = new Padding(6, 3, 0, 3);
-            MenuStrip.Size = new Size(896, 30);
+            MenuStrip.Padding = new Padding(5, 2, 0, 2);
+            MenuStrip.Size = new Size(784, 24);
             MenuStrip.TabIndex = 2;
             MenuStrip.Text = "menuStrip1";
             // 
             // tsmiAvailability
             // 
             tsmiAvailability.Name = "tsmiAvailability";
-            tsmiAvailability.Size = new Size(133, 24);
+            tsmiAvailability.Size = new Size(105, 20);
             tsmiAvailability.Text = "View Availability";
             tsmiAvailability.Click += tsmiAvailability_Click;
             // 
             // tsmiQuit
             // 
             tsmiQuit.Name = "tsmiQuit";
-            tsmiQuit.Size = new Size(163, 24);
+            tsmiQuit.Size = new Size(130, 20);
             tsmiQuit.Text = "Return to Homepage";
             tsmiQuit.Click += tsmiQuit_Click;
             // 
@@ -138,104 +138,98 @@
             pnlBooking.Controls.Add(dtpEndDate);
             pnlBooking.Controls.Add(dtpStartDate);
             pnlBooking.Controls.Add(lblStartDate);
-            pnlBooking.Location = new Point(14, 48);
-            pnlBooking.Margin = new Padding(3, 4, 3, 4);
+            pnlBooking.Location = new Point(12, 36);
             pnlBooking.Name = "pnlBooking";
-            pnlBooking.Size = new Size(185, 511);
+            pnlBooking.Size = new Size(162, 384);
             pnlBooking.TabIndex = 3;
             // 
             // tbCapacity
             // 
             tbCapacity.Enabled = false;
-            tbCapacity.Location = new Point(3, 425);
-            tbCapacity.Margin = new Padding(3, 4, 3, 4);
+            tbCapacity.Location = new Point(3, 319);
             tbCapacity.Name = "tbCapacity";
-            tbCapacity.Size = new Size(171, 27);
+            tbCapacity.Size = new Size(150, 23);
             tbCapacity.TabIndex = 23;
             // 
             // lblCapacity
             // 
             lblCapacity.AutoSize = true;
             lblCapacity.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblCapacity.Location = new Point(3, 401);
+            lblCapacity.Location = new Point(3, 301);
             lblCapacity.Name = "lblCapacity";
-            lblCapacity.Size = new Size(118, 20);
+            lblCapacity.Size = new Size(92, 15);
             lblCapacity.TabIndex = 22;
             lblCapacity.Text = "Room Capacity:";
             // 
             // tbPricePerNight
             // 
             tbPricePerNight.Enabled = false;
-            tbPricePerNight.Location = new Point(3, 367);
-            tbPricePerNight.Margin = new Padding(3, 4, 3, 4);
+            tbPricePerNight.Location = new Point(3, 275);
             tbPricePerNight.Name = "tbPricePerNight";
-            tbPricePerNight.Size = new Size(171, 27);
+            tbPricePerNight.Size = new Size(150, 23);
             tbPricePerNight.TabIndex = 21;
             // 
             // lblPricePerNight
             // 
             lblPricePerNight.AutoSize = true;
             lblPricePerNight.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblPricePerNight.Location = new Point(3, 343);
+            lblPricePerNight.Location = new Point(3, 257);
             lblPricePerNight.Name = "lblPricePerNight";
-            lblPricePerNight.Size = new Size(164, 20);
+            lblPricePerNight.Size = new Size(130, 15);
             lblPricePerNight.TabIndex = 20;
             lblPricePerNight.Text = "Room Price Per Night:";
             // 
             // tbDisabled
             // 
             tbDisabled.Enabled = false;
-            tbDisabled.Location = new Point(3, 308);
-            tbDisabled.Margin = new Padding(3, 4, 3, 4);
+            tbDisabled.Location = new Point(3, 231);
             tbDisabled.Name = "tbDisabled";
-            tbDisabled.Size = new Size(171, 27);
+            tbDisabled.Size = new Size(150, 23);
             tbDisabled.TabIndex = 19;
             // 
             // lblDisabled
             // 
             lblDisabled.AutoSize = true;
             lblDisabled.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblDisabled.Location = new Point(3, 284);
+            lblDisabled.Location = new Point(3, 213);
             lblDisabled.Name = "lblDisabled";
-            lblDisabled.Size = new Size(138, 20);
+            lblDisabled.Size = new Size(107, 15);
             lblDisabled.TabIndex = 18;
             lblDisabled.Text = "Is Disabled Room?";
             // 
             // tbRoomType
             // 
             tbRoomType.Enabled = false;
-            tbRoomType.Location = new Point(3, 249);
-            tbRoomType.Margin = new Padding(3, 4, 3, 4);
+            tbRoomType.Location = new Point(3, 187);
             tbRoomType.Name = "tbRoomType";
-            tbRoomType.Size = new Size(171, 27);
+            tbRoomType.Size = new Size(150, 23);
             tbRoomType.TabIndex = 17;
             // 
             // lblRoomType
             // 
             lblRoomType.AutoSize = true;
             lblRoomType.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblRoomType.Location = new Point(3, 225);
+            lblRoomType.Location = new Point(3, 169);
             lblRoomType.Name = "lblRoomType";
-            lblRoomType.Size = new Size(92, 20);
+            lblRoomType.Size = new Size(72, 15);
             lblRoomType.TabIndex = 16;
             lblRoomType.Text = "Room Type:";
             // 
             // tbRoomID
             // 
             tbRoomID.Enabled = false;
-            tbRoomID.Location = new Point(3, 191);
-            tbRoomID.Margin = new Padding(3, 4, 3, 4);
+            tbRoomID.Location = new Point(3, 143);
             tbRoomID.Name = "tbRoomID";
-            tbRoomID.Size = new Size(171, 27);
+            tbRoomID.Size = new Size(150, 23);
             tbRoomID.TabIndex = 15;
             // 
             // lblRoomID
             // 
             lblRoomID.AutoSize = true;
             lblRoomID.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblRoomID.Location = new Point(3, 167);
+            lblRoomID.Location = new Point(3, 125);
             lblRoomID.Name = "lblRoomID";
-            lblRoomID.Size = new Size(71, 20);
+            lblRoomID.Size = new Size(56, 15);
             lblRoomID.TabIndex = 12;
             lblRoomID.Text = "RoomID:";
             // 
@@ -243,36 +237,38 @@
             // 
             lblEndDate.AutoSize = true;
             lblEndDate.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblEndDate.Location = new Point(3, 91);
+            lblEndDate.Location = new Point(3, 68);
             lblEndDate.Name = "lblEndDate";
-            lblEndDate.Size = new Size(76, 20);
+            lblEndDate.Size = new Size(60, 15);
             lblEndDate.TabIndex = 11;
             lblEndDate.Text = "End Date:";
             // 
             // dtpEndDate
             // 
             dtpEndDate.Enabled = false;
-            dtpEndDate.Location = new Point(3, 113);
+            dtpEndDate.Location = new Point(3, 85);
+            dtpEndDate.Margin = new Padding(3, 2, 3, 2);
             dtpEndDate.Name = "dtpEndDate";
-            dtpEndDate.Size = new Size(171, 27);
+            dtpEndDate.Size = new Size(150, 23);
             dtpEndDate.TabIndex = 10;
             dtpEndDate.Value = new DateTime(2024, 11, 21, 11, 28, 36, 0);
             // 
             // dtpStartDate
             // 
             dtpStartDate.Enabled = false;
-            dtpStartDate.Location = new Point(3, 57);
+            dtpStartDate.Location = new Point(3, 43);
+            dtpStartDate.Margin = new Padding(3, 2, 3, 2);
             dtpStartDate.Name = "dtpStartDate";
-            dtpStartDate.Size = new Size(171, 27);
+            dtpStartDate.Size = new Size(150, 23);
             dtpStartDate.TabIndex = 8;
             // 
             // lblStartDate
             // 
             lblStartDate.AutoSize = true;
             lblStartDate.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblStartDate.Location = new Point(3, 35);
+            lblStartDate.Location = new Point(3, 26);
             lblStartDate.Name = "lblStartDate";
-            lblStartDate.Size = new Size(88, 20);
+            lblStartDate.Size = new Size(71, 15);
             lblStartDate.TabIndex = 9;
             lblStartDate.Text = "Start Date: ";
             // 
@@ -280,9 +276,9 @@
             // 
             lblCustomerHeader.AutoSize = true;
             lblCustomerHeader.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblCustomerHeader.Location = new Point(3, 35);
+            lblCustomerHeader.Location = new Point(3, 26);
             lblCustomerHeader.Name = "lblCustomerHeader";
-            lblCustomerHeader.Size = new Size(82, 20);
+            lblCustomerHeader.Size = new Size(64, 15);
             lblCustomerHeader.TabIndex = 20;
             lblCustomerHeader.Text = "Customer:";
             // 
@@ -302,10 +298,9 @@
             pnlGuest.Controls.Add(nudAdult);
             pnlGuest.Controls.Add(nudChild);
             pnlGuest.Controls.Add(lblGuest);
-            pnlGuest.Location = new Point(206, 48);
-            pnlGuest.Margin = new Padding(3, 4, 3, 4);
+            pnlGuest.Location = new Point(180, 36);
             pnlGuest.Name = "pnlGuest";
-            pnlGuest.Size = new Size(407, 511);
+            pnlGuest.Size = new Size(356, 384);
             pnlGuest.TabIndex = 4;
             // 
             // dgvCustomer
@@ -313,24 +308,22 @@
             dgvCustomer.AllowUserToAddRows = false;
             dgvCustomer.AllowUserToDeleteRows = false;
             dgvCustomer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCustomer.Location = new Point(3, 96);
-            dgvCustomer.Margin = new Padding(3, 4, 3, 4);
+            dgvCustomer.Location = new Point(3, 72);
             dgvCustomer.MultiSelect = false;
             dgvCustomer.Name = "dgvCustomer";
             dgvCustomer.ReadOnly = true;
             dgvCustomer.RowHeadersWidth = 51;
             dgvCustomer.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCustomer.ShowEditingIcon = false;
-            dgvCustomer.Size = new Size(398, 287);
+            dgvCustomer.Size = new Size(348, 215);
             dgvCustomer.TabIndex = 33;
             // 
             // btnCustomerSearch
             // 
             btnCustomerSearch.BackColor = SystemColors.ControlLightLight;
-            btnCustomerSearch.Location = new Point(327, 56);
-            btnCustomerSearch.Margin = new Padding(3, 4, 3, 4);
+            btnCustomerSearch.Location = new Point(286, 42);
             btnCustomerSearch.Name = "btnCustomerSearch";
-            btnCustomerSearch.Size = new Size(74, 31);
+            btnCustomerSearch.Size = new Size(65, 23);
             btnCustomerSearch.TabIndex = 32;
             btnCustomerSearch.Text = "Search";
             btnCustomerSearch.UseVisualStyleBackColor = false;
@@ -338,10 +331,9 @@
             // 
             // tbCustomerName
             // 
-            tbCustomerName.Location = new Point(3, 57);
-            tbCustomerName.Margin = new Padding(3, 4, 3, 4);
+            tbCustomerName.Location = new Point(3, 43);
             tbCustomerName.Name = "tbCustomerName";
-            tbCustomerName.Size = new Size(316, 27);
+            tbCustomerName.Size = new Size(277, 23);
             tbCustomerName.TabIndex = 31;
             tbCustomerName.KeyPress += tbCustomerName_KeyPress;
             // 
@@ -349,10 +341,9 @@
             // 
             rbBreakfastNo.AutoSize = true;
             rbBreakfastNo.Checked = true;
-            rbBreakfastNo.Location = new Point(341, 425);
-            rbBreakfastNo.Margin = new Padding(3, 4, 3, 4);
+            rbBreakfastNo.Location = new Point(298, 319);
             rbBreakfastNo.Name = "rbBreakfastNo";
-            rbBreakfastNo.Size = new Size(50, 24);
+            rbBreakfastNo.Size = new Size(41, 19);
             rbBreakfastNo.TabIndex = 30;
             rbBreakfastNo.TabStop = true;
             rbBreakfastNo.Text = "No";
@@ -362,10 +353,9 @@
             // rbBreakfastYes
             // 
             rbBreakfastYes.AutoSize = true;
-            rbBreakfastYes.Location = new Point(286, 425);
-            rbBreakfastYes.Margin = new Padding(3, 4, 3, 4);
+            rbBreakfastYes.Location = new Point(250, 319);
             rbBreakfastYes.Name = "rbBreakfastYes";
-            rbBreakfastYes.Size = new Size(51, 24);
+            rbBreakfastYes.Size = new Size(42, 19);
             rbBreakfastYes.TabIndex = 29;
             rbBreakfastYes.Text = "Yes";
             rbBreakfastYes.UseVisualStyleBackColor = true;
@@ -375,9 +365,9 @@
             // 
             lblBreakfast.AutoSize = true;
             lblBreakfast.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblBreakfast.Location = new Point(286, 401);
+            lblBreakfast.Location = new Point(250, 301);
             lblBreakfast.Name = "lblBreakfast";
-            lblBreakfast.Size = new Size(80, 20);
+            lblBreakfast.Size = new Size(64, 15);
             lblBreakfast.TabIndex = 28;
             lblBreakfast.Text = "Breakfast:";
             // 
@@ -385,9 +375,9 @@
             // 
             lblAdult.AutoSize = true;
             lblAdult.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblAdult.Location = new Point(3, 401);
+            lblAdult.Location = new Point(3, 301);
             lblAdult.Name = "lblAdult";
-            lblAdult.Size = new Size(88, 20);
+            lblAdult.Size = new Size(67, 15);
             lblAdult.TabIndex = 27;
             lblAdult.Text = "No. Adults:";
             // 
@@ -395,31 +385,29 @@
             // 
             lblChild.AutoSize = true;
             lblChild.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblChild.Location = new Point(125, 401);
+            lblChild.Location = new Point(109, 301);
             lblChild.Name = "lblChild";
-            lblChild.Size = new Size(100, 20);
+            lblChild.Size = new Size(78, 15);
             lblChild.TabIndex = 26;
             lblChild.Text = "No. Children:";
             // 
             // nudAdult
             // 
-            nudAdult.Location = new Point(3, 425);
-            nudAdult.Margin = new Padding(3, 4, 3, 4);
+            nudAdult.Location = new Point(3, 319);
             nudAdult.Maximum = new decimal(new int[] { 4, 0, 0, 0 });
             nudAdult.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nudAdult.Name = "nudAdult";
-            nudAdult.Size = new Size(114, 27);
+            nudAdult.Size = new Size(100, 23);
             nudAdult.TabIndex = 2;
             nudAdult.Value = new decimal(new int[] { 1, 0, 0, 0 });
             nudAdult.ValueChanged += NumberOfGuestsChanged;
             // 
             // nudChild
             // 
-            nudChild.Location = new Point(125, 425);
-            nudChild.Margin = new Padding(3, 4, 3, 4);
+            nudChild.Location = new Point(109, 319);
             nudChild.Maximum = new decimal(new int[] { 3, 0, 0, 0 });
             nudChild.Name = "nudChild";
-            nudChild.Size = new Size(114, 27);
+            nudChild.Size = new Size(100, 23);
             nudChild.TabIndex = 1;
             nudChild.ValueChanged += NumberOfGuestsChanged;
             // 
@@ -429,7 +417,7 @@
             lblGuest.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblGuest.Location = new Point(3, 0);
             lblGuest.Name = "lblGuest";
-            lblGuest.Size = new Size(143, 20);
+            lblGuest.Size = new Size(113, 15);
             lblGuest.TabIndex = 0;
             lblGuest.Text = "Guest Information:";
             // 
@@ -446,18 +434,17 @@
             pnlSummary.Controls.Add(lblPPN);
             pnlSummary.Controls.Add(lvPricing);
             pnlSummary.Controls.Add(lblSummary);
-            pnlSummary.Location = new Point(619, 48);
-            pnlSummary.Margin = new Padding(3, 4, 3, 4);
+            pnlSummary.Location = new Point(542, 36);
             pnlSummary.Name = "pnlSummary";
-            pnlSummary.Size = new Size(263, 511);
+            pnlSummary.Size = new Size(230, 384);
             pnlSummary.TabIndex = 5;
             // 
             // lblTotalValue
             // 
             lblTotalValue.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            lblTotalValue.Location = new Point(176, 343);
+            lblTotalValue.Location = new Point(154, 257);
             lblTotalValue.Name = "lblTotalValue";
-            lblTotalValue.Size = new Size(81, 27);
+            lblTotalValue.Size = new Size(71, 20);
             lblTotalValue.TabIndex = 38;
             lblTotalValue.Text = "£00.00";
             lblTotalValue.TextAlign = ContentAlignment.MiddleRight;
@@ -466,18 +453,18 @@
             // 
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            lblTotal.Location = new Point(3, 343);
+            lblTotal.Location = new Point(3, 257);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(185, 25);
+            lblTotal.Size = new Size(145, 20);
             lblTotal.TabIndex = 37;
             lblTotal.Text = "Total Booking Cost:";
             // 
             // lblNoOfNightsValue
             // 
             lblNoOfNightsValue.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblNoOfNightsValue.Location = new Point(184, 304);
+            lblNoOfNightsValue.Location = new Point(161, 228);
             lblNoOfNightsValue.Name = "lblNoOfNightsValue";
-            lblNoOfNightsValue.Size = new Size(73, 20);
+            lblNoOfNightsValue.Size = new Size(64, 15);
             lblNoOfNightsValue.TabIndex = 36;
             lblNoOfNightsValue.Text = "7";
             lblNoOfNightsValue.TextAlign = ContentAlignment.TopRight;
@@ -486,9 +473,9 @@
             // 
             lblNoOfNights.AutoSize = true;
             lblNoOfNights.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblNoOfNights.Location = new Point(3, 304);
+            lblNoOfNights.Location = new Point(3, 228);
             lblNoOfNights.Name = "lblNoOfNights";
-            lblNoOfNights.Size = new Size(141, 20);
+            lblNoOfNights.Size = new Size(110, 15);
             lblNoOfNights.TabIndex = 35;
             lblNoOfNights.Text = "Number of Nights:";
             // 
@@ -496,10 +483,9 @@
             // 
             chbConfirm.CheckAlign = ContentAlignment.MiddleRight;
             chbConfirm.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            chbConfirm.Location = new Point(3, 388);
-            chbConfirm.Margin = new Padding(3, 4, 3, 4);
+            chbConfirm.Location = new Point(3, 291);
             chbConfirm.Name = "chbConfirm";
-            chbConfirm.Size = new Size(254, 113);
+            chbConfirm.Size = new Size(222, 85);
             chbConfirm.TabIndex = 34;
             chbConfirm.Text = "I have read the above information and can confidently confirm that all booking information is correct and has been confirmed by the customer.";
             chbConfirm.UseVisualStyleBackColor = true;
@@ -507,9 +493,9 @@
             // lblPPNValue
             // 
             lblPPNValue.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblPPNValue.Location = new Point(184, 284);
+            lblPPNValue.Location = new Point(161, 213);
             lblPPNValue.Name = "lblPPNValue";
-            lblPPNValue.Size = new Size(73, 20);
+            lblPPNValue.Size = new Size(64, 15);
             lblPPNValue.TabIndex = 32;
             lblPPNValue.Text = "£00.00";
             lblPPNValue.TextAlign = ContentAlignment.TopRight;
@@ -518,9 +504,9 @@
             // 
             lblPPN.AutoSize = true;
             lblPPN.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblPPN.Location = new Point(3, 284);
+            lblPPN.Location = new Point(3, 213);
             lblPPN.Name = "lblPPN";
-            lblPPN.Size = new Size(118, 20);
+            lblPPN.Size = new Size(94, 15);
             lblPPN.TabIndex = 31;
             lblPPN.Text = "Price Per Night:";
             // 
@@ -529,10 +515,9 @@
             lvPricing.BackColor = SystemColors.Info;
             lvPricing.Columns.AddRange(new ColumnHeader[] { chChargeType, chPrice });
             lvPricing.HeaderStyle = ColumnHeaderStyle.Nonclickable;
-            lvPricing.Location = new Point(3, 24);
-            lvPricing.Margin = new Padding(3, 4, 3, 4);
+            lvPricing.Location = new Point(3, 18);
             lvPricing.Name = "lvPricing";
-            lvPricing.Size = new Size(253, 255);
+            lvPricing.Size = new Size(222, 192);
             lvPricing.TabIndex = 1;
             lvPricing.UseCompatibleStateImageBehavior = false;
             lvPricing.View = View.Details;
@@ -554,16 +539,15 @@
             lblSummary.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblSummary.Location = new Point(3, 0);
             lblSummary.Name = "lblSummary";
-            lblSummary.Size = new Size(143, 20);
+            lblSummary.Size = new Size(112, 15);
             lblSummary.TabIndex = 0;
             lblSummary.Text = "Booking Summary:";
             // 
             // btnBook
             // 
-            btnBook.Location = new Point(768, 568);
-            btnBook.Margin = new Padding(3, 4, 3, 4);
+            btnBook.Location = new Point(672, 426);
             btnBook.Name = "btnBook";
-            btnBook.Size = new Size(114, 31);
+            btnBook.Size = new Size(100, 23);
             btnBook.TabIndex = 6;
             btnBook.Text = "Book";
             btnBook.UseVisualStyleBackColor = true;
@@ -571,10 +555,9 @@
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(619, 568);
-            btnCancel.Margin = new Padding(3, 4, 3, 4);
+            btnCancel.Location = new Point(542, 426);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(114, 31);
+            btnCancel.Size = new Size(100, 23);
             btnCancel.TabIndex = 7;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
@@ -582,9 +565,9 @@
             // 
             // CreateBooking
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(896, 615);
+            ClientSize = new Size(784, 461);
             Controls.Add(btnCancel);
             Controls.Add(btnBook);
             Controls.Add(pnlSummary);
@@ -593,8 +576,8 @@
             Controls.Add(MenuStrip);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
             Name = "CreateBooking";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Create Booking";
             FormClosing += CreateBooking_FormClosing;
             MenuStrip.ResumeLayout(false);

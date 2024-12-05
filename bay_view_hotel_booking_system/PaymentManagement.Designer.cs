@@ -503,6 +503,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "PaymentManagement";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Payment Management";
             FormClosing += PaymentManagement_FormClosing;
             pnlBookingSummary.ResumeLayout(false);

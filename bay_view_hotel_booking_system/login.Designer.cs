@@ -82,7 +82,7 @@ namespace bay_view_hotel_booking_system
             flowLayoutPanel1.Location = new Point(267, 12);
             flowLayoutPanel1.MinimumSize = new Size(200, 218);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Padding = new Padding(20, 20, 20, 20);
+            flowLayoutPanel1.Padding = new Padding(20);
             flowLayoutPanel1.Size = new Size(252, 500);
             flowLayoutPanel1.TabIndex = 2;
             // 
@@ -163,6 +163,7 @@ namespace bay_view_hotel_booking_system
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "login";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Login";
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();

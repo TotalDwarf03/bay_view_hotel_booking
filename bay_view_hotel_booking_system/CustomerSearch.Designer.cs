@@ -50,50 +50,53 @@
             mnCustomerSearch.Items.AddRange(new ToolStripItem[] { tsmiCustomerHome, tsmiQuit });
             mnCustomerSearch.Location = new Point(0, 0);
             mnCustomerSearch.Name = "mnCustomerSearch";
-            mnCustomerSearch.Size = new Size(782, 28);
+            mnCustomerSearch.Padding = new Padding(5, 2, 0, 2);
+            mnCustomerSearch.Size = new Size(684, 24);
             mnCustomerSearch.TabIndex = 4;
             mnCustomerSearch.Text = "menuStrip1";
             // 
             // tsmiCustomerHome
             // 
             tsmiCustomerHome.Name = "tsmiCustomerHome";
-            tsmiCustomerHome.Size = new Size(178, 24);
+            tsmiCustomerHome.Size = new Size(145, 20);
             tsmiCustomerHome.Text = "Customer Management";
             tsmiCustomerHome.Click += tsmiCustomerHome_Click;
             // 
             // tsmiQuit
             // 
             tsmiQuit.Name = "tsmiQuit";
-            tsmiQuit.Size = new Size(163, 24);
+            tsmiQuit.Size = new Size(130, 20);
             tsmiQuit.Text = "Return to Homepage";
             tsmiQuit.Click += tsmiQuit_Click;
             // 
             // lblNextPage
             // 
             lblNextPage.AutoSize = true;
-            lblNextPage.Location = new Point(12, 47);
+            lblNextPage.Location = new Point(10, 35);
             lblNextPage.Name = "lblNextPage";
-            lblNextPage.Size = new Size(0, 20);
+            lblNextPage.Size = new Size(0, 15);
             lblNextPage.TabIndex = 5;
             lblNextPage.Visible = false;
             // 
             // dgCustomer
             // 
             dgCustomer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgCustomer.Location = new Point(3, 59);
+            dgCustomer.Location = new Point(3, 44);
+            dgCustomer.Margin = new Padding(3, 2, 3, 2);
             dgCustomer.Name = "dgCustomer";
             dgCustomer.ReadOnly = true;
             dgCustomer.RowHeadersWidth = 51;
             dgCustomer.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgCustomer.Size = new Size(553, 207);
+            dgCustomer.Size = new Size(484, 155);
             dgCustomer.TabIndex = 6;
             // 
             // btnLoad
             // 
             btnLoad.BackColor = SystemColors.ControlLightLight;
-            btnLoad.Location = new Point(234, 272);
+            btnLoad.Location = new Point(205, 204);
+            btnLoad.Margin = new Padding(3, 2, 3, 2);
             btnLoad.Name = "btnLoad";
-            btnLoad.Size = new Size(94, 29);
+            btnLoad.Size = new Size(82, 22);
             btnLoad.TabIndex = 7;
             btnLoad.Text = "Load";
             btnLoad.UseVisualStyleBackColor = false;
@@ -102,10 +105,9 @@
             // btnCustomerSearch
             // 
             btnCustomerSearch.BackColor = SystemColors.ControlLightLight;
-            btnCustomerSearch.Location = new Point(445, 20);
-            btnCustomerSearch.Margin = new Padding(3, 4, 3, 4);
+            btnCustomerSearch.Location = new Point(389, 15);
             btnCustomerSearch.Name = "btnCustomerSearch";
-            btnCustomerSearch.Size = new Size(111, 31);
+            btnCustomerSearch.Size = new Size(97, 23);
             btnCustomerSearch.TabIndex = 35;
             btnCustomerSearch.Text = "Search";
             btnCustomerSearch.UseVisualStyleBackColor = false;
@@ -113,10 +115,9 @@
             // 
             // tbCustomerName
             // 
-            tbCustomerName.Location = new Point(3, 22);
-            tbCustomerName.Margin = new Padding(3, 4, 3, 4);
+            tbCustomerName.Location = new Point(3, 16);
             tbCustomerName.Name = "tbCustomerName";
-            tbCustomerName.Size = new Size(436, 27);
+            tbCustomerName.Size = new Size(382, 23);
             tbCustomerName.TabIndex = 34;
             // 
             // lblCustomerHeader
@@ -125,7 +126,7 @@
             lblCustomerHeader.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblCustomerHeader.Location = new Point(3, 0);
             lblCustomerHeader.Name = "lblCustomerHeader";
-            lblCustomerHeader.Size = new Size(127, 20);
+            lblCustomerHeader.Size = new Size(100, 15);
             lblCustomerHeader.TabIndex = 33;
             lblCustomerHeader.Text = "Customer Name:";
             // 
@@ -138,23 +139,26 @@
             pnlSearch.Controls.Add(dgCustomer);
             pnlSearch.Controls.Add(tbCustomerName);
             pnlSearch.Controls.Add(btnLoad);
-            pnlSearch.Location = new Point(18, 31);
+            pnlSearch.Location = new Point(16, 23);
+            pnlSearch.Margin = new Padding(3, 2, 3, 2);
             pnlSearch.Name = "pnlSearch";
-            pnlSearch.Size = new Size(562, 309);
+            pnlSearch.Size = new Size(492, 232);
             pnlSearch.TabIndex = 36;
             // 
             // CustomerSearch
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(782, 453);
+            ClientSize = new Size(684, 340);
             Controls.Add(pnlSearch);
             Controls.Add(lblNextPage);
             Controls.Add(mnCustomerSearch);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = mnCustomerSearch;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "CustomerSearch";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Find Customer";
             FormClosing += CustomerSearch_FormClosing;
             VisibleChanged += CustomerSearch_VisibleChanged;
