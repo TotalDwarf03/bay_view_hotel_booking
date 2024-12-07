@@ -105,7 +105,7 @@ namespace bay_view_hotel_booking_system
 
         private void tsmiCustomerHome_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Owner?.Close();
         }
 
         private void CustomerEdit_FormClosing(object sender, FormClosingEventArgs e)
@@ -115,7 +115,7 @@ namespace bay_view_hotel_booking_system
 
         private void tsmiQuit_Click(object sender, EventArgs e)
         {
-            this.Owner?.Close();
+            this.Owner?.Owner?.Close();
         }
     }
 }
