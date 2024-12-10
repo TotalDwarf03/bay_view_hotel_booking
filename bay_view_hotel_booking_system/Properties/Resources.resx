@@ -127,4 +127,10 @@
   <data name="bayview_setup_empty" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bayview_setup_empty.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="example_customers.sql" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\customers.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="example_staff.sql" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\staff.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

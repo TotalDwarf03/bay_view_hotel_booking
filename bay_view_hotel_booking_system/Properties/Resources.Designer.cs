@@ -103,5 +103,40 @@ namespace bay_view_hotel_booking_system.Properties {
                 return ResourceManager.GetString("bayview_setup_empty", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DELETE FROM Customer
+        ///WHERE CustomerID != 1;
+        ///
+        ///INSERT INTO Customer (CustomerID, Forename, Surname, PhoneNumber, Email)
+        ///VALUES
+        ///  (2, &apos;John&apos;, &apos;Doe&apos;, &apos;+44 7911 123456&apos;, &apos;john.doe@example.com&apos;),
+        ///  (3, &apos;Jane&apos;, &apos;Smith&apos;, &apos;+44 7911 234567&apos;, &apos;jane.smith@example.com&apos;),
+        ///  (4, &apos;Alice&apos;, &apos;Johnson&apos;, &apos;+44 7911 345678&apos;, &apos;alice.johnson@example.com&apos;),
+        ///  (5, &apos;Bob&apos;, &apos;Brown&apos;, &apos;+44 7911 456789&apos;, &apos;bob.brown@example.com&apos;),
+        ///  (6, &apos;Charlie&apos;, &apos;Williams&apos;, &apos;+44 7911 567890&apos;, &apos;charlie.williams@example.com&apos;),
+        ///  (7, &apos;David&apos;, &apos;Jone [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string example_customers_sql {
+            get {
+                return ResourceManager.GetString("example_customers.sql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DELETE FROM Staff
+        ///WHERE StaffID NOT IN (1, 2, 3);
+        ///
+        ///INSERT INTO Staff (StaffID, StaffType, Forename, Surname, PhoneNumber, Email, Password)
+        ///VALUES
+        ///    (4, &apos;frontdesk&apos;, &apos;Michael&apos;, &apos;Taylor&apos;, &apos;07123456789&apos;, &apos;michael.taylor@bayview.com&apos;, &apos;5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8&apos;),
+        ///    (5, &apos;frontdesk&apos;, &apos;Sophia&apos;, &apos;Clark&apos;, &apos;07234567890&apos;, &apos;sophia.clark@bayview.com&apos;, &apos;5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8&apos;),
+        ///    (6, &apos;frontdesk&apos;, &apos;Liam&apos;, &apos;Walker&apos;, &apos;07345678901 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string example_staff_sql {
+            get {
+                return ResourceManager.GetString("example_staff.sql", resourceCulture);
+            }
+        }
     }
 }
