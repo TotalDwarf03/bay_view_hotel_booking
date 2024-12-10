@@ -29,99 +29,134 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffForm));
-            btnStaffAdd = new Button();
-            btnStaffEdit = new Button();
-            lblStaffForm = new Label();
+            pnlHeader = new Panel();
+            pbLogo = new PictureBox();
+            lblTitle = new Label();
+            btnBack = new Button();
             btnStaffView = new Button();
             btnStaffDelete = new Button();
-            btnBack = new Button();
+            btnStaffEdit = new Button();
+            btnStaffAdd = new Button();
+            pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
             SuspendLayout();
             // 
-            // btnStaffAdd
+            // pnlHeader
             // 
-            btnStaffAdd.Location = new Point(43, 164);
-            btnStaffAdd.Name = "btnStaffAdd";
-            btnStaffAdd.Size = new Size(139, 124);
-            btnStaffAdd.TabIndex = 0;
-            btnStaffAdd.Text = "Add";
-            btnStaffAdd.UseVisualStyleBackColor = true;
-            btnStaffAdd.Click += btnStaffAdd_Click;
+            pnlHeader.BackColor = SystemColors.Info;
+            pnlHeader.BorderStyle = BorderStyle.FixedSingle;
+            pnlHeader.Controls.Add(pbLogo);
+            pnlHeader.Controls.Add(lblTitle);
+            pnlHeader.Controls.Add(btnBack);
+            pnlHeader.Location = new Point(9, 9);
+            pnlHeader.Margin = new Padding(0);
+            pnlHeader.Name = "pnlHeader";
+            pnlHeader.Size = new Size(760, 71);
+            pnlHeader.TabIndex = 11;
             // 
-            // btnStaffEdit
+            // pbLogo
             // 
-            btnStaffEdit.Location = new Point(247, 164);
-            btnStaffEdit.Name = "btnStaffEdit";
-            btnStaffEdit.Size = new Size(139, 124);
-            btnStaffEdit.TabIndex = 1;
-            btnStaffEdit.Text = "Edit";
-            btnStaffEdit.UseVisualStyleBackColor = true;
-            btnStaffEdit.Click += btnStaffEdit_Click;
+            pbLogo.Image = Properties.Resources.bay_view_logo;
+            pbLogo.Location = new Point(3, 3);
+            pbLogo.Name = "pbLogo";
+            pbLogo.Size = new Size(125, 61);
+            pbLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pbLogo.TabIndex = 0;
+            pbLogo.TabStop = false;
             // 
-            // lblStaffForm
+            // lblTitle
             // 
-            lblStaffForm.AutoSize = true;
-            lblStaffForm.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblStaffForm.Location = new Point(321, 55);
-            lblStaffForm.Name = "lblStaffForm";
-            lblStaffForm.Size = new Size(175, 46);
-            lblStaffForm.TabIndex = 2;
-            lblStaffForm.Text = "Staff Form";
+            lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            lblTitle.Location = new Point(134, 3);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(418, 61);
+            lblTitle.TabIndex = 1;
+            lblTitle.Text = "Staff Management";
+            lblTitle.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // btnBack
+            // 
+            btnBack.Location = new Point(661, 3);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(94, 61);
+            btnBack.TabIndex = 1;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
             // 
             // btnStaffView
             // 
-            btnStaffView.Location = new Point(450, 164);
+            btnStaffView.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnStaffView.Location = new Point(9, 96);
             btnStaffView.Name = "btnStaffView";
-            btnStaffView.Size = new Size(139, 124);
-            btnStaffView.TabIndex = 3;
-            btnStaffView.Text = "View";
+            btnStaffView.Size = new Size(349, 75);
+            btnStaffView.TabIndex = 10;
+            btnStaffView.Text = "View Existing Staff";
             btnStaffView.UseVisualStyleBackColor = true;
             btnStaffView.Click += btnStaffView_Click;
             // 
             // btnStaffDelete
             // 
-            btnStaffDelete.Location = new Point(654, 164);
+            btnStaffDelete.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnStaffDelete.Location = new Point(421, 96);
             btnStaffDelete.Name = "btnStaffDelete";
-            btnStaffDelete.Size = new Size(139, 124);
-            btnStaffDelete.TabIndex = 4;
-            btnStaffDelete.Text = "Delete";
+            btnStaffDelete.Size = new Size(349, 75);
+            btnStaffDelete.TabIndex = 9;
+            btnStaffDelete.Text = "Delete an Existing Staff Member";
             btnStaffDelete.UseVisualStyleBackColor = true;
             btnStaffDelete.Click += btnStaffDelete_Click;
             // 
-            // btnBack
+            // btnStaffEdit
             // 
-            btnBack.Location = new Point(1, 370);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(88, 28);
-            btnBack.TabIndex = 5;
-            btnBack.Text = "Back";
-            btnBack.UseVisualStyleBackColor = true;
-            btnBack.Click += btnBack_Click;
+            btnStaffEdit.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnStaffEdit.Location = new Point(9, 177);
+            btnStaffEdit.Name = "btnStaffEdit";
+            btnStaffEdit.Size = new Size(349, 75);
+            btnStaffEdit.TabIndex = 8;
+            btnStaffEdit.Text = "Edit an Existing Staff Member";
+            btnStaffEdit.UseVisualStyleBackColor = true;
+            btnStaffEdit.Click += btnStaffEdit_Click;
+            // 
+            // btnStaffAdd
+            // 
+            btnStaffAdd.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnStaffAdd.Location = new Point(421, 177);
+            btnStaffAdd.Name = "btnStaffAdd";
+            btnStaffAdd.Size = new Size(349, 75);
+            btnStaffAdd.TabIndex = 7;
+            btnStaffAdd.Text = "Add a New Staff Member";
+            btnStaffAdd.UseVisualStyleBackColor = true;
+            btnStaffAdd.Click += btnStaffAdd_Click;
             // 
             // StaffForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(842, 400);
-            Controls.Add(btnBack);
-            Controls.Add(btnStaffDelete);
+            ClientSize = new Size(782, 453);
+            Controls.Add(pnlHeader);
             Controls.Add(btnStaffView);
-            Controls.Add(lblStaffForm);
+            Controls.Add(btnStaffDelete);
             Controls.Add(btnStaffEdit);
             Controls.Add(btnStaffAdd);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "StaffForm";
-            Text = "StaffForm";
+            Text = "Staff Management";
+            FormClosing += StaffForm_FormClosing;
+            pnlHeader.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Button btnStaffAdd;
-        private Button btnStaffEdit;
-        private Label lblStaffForm;
+        private Panel pnlHeader;
+        private PictureBox pbLogo;
+        private Label lblTitle;
+        private Button btnBack;
         private Button btnStaffView;
         private Button btnStaffDelete;
-        private Button btnBack;
+        private Button btnStaffEdit;
+        private Button btnStaffAdd;
     }
 }

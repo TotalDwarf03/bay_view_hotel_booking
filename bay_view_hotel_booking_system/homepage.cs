@@ -60,10 +60,12 @@ namespace bay_view_hotel_booking_system
             this.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void fpnlStaff_Click(object sender, EventArgs e)
         {
-            StaffForm CHome = new StaffForm();
-            CHome.Show();
+            StaffForm frm = new StaffForm();
+            frm.Owner = this;
+
+            frm.Show();
             this.Hide();
         }
     }

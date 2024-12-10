@@ -19,35 +19,48 @@ namespace bay_view_hotel_booking_system
 
         private void btnStaffAdd_Click(object sender, EventArgs e)
         {
-            StaffAdd SAdd = new StaffAdd();
-            SAdd.Show();
-            this.Close();
+            StaffAdd frm = new StaffAdd();
+            frm.Owner = this;
+
+            frm.Show();
+            this.Hide();
         }
 
         private void btnStaffEdit_Click(object sender, EventArgs e)
         {
-            StaffSearch SSearch = new StaffSearch("Edit");
-            SSearch.Show();
-            this.Close();
+            StaffSearch frm = new StaffSearch("Edit");
+            frm.Owner = this;
+
+            frm.Show();
+            this.Hide();
         }
 
         private void btnStaffView_Click(object sender, EventArgs e)
         {
-            StaffView SView = new StaffView();
-            SView.Show();
-            this.Close();
+            StaffView frm = new StaffView();
+            frm.Owner = this;
+
+            frm.Show();
+            this.Hide();
         }
 
         private void btnStaffDelete_Click(object sender, EventArgs e)
         {
-            StaffSearch SSearch = new StaffSearch("Delete");
-            SSearch.Show();
-            this.Close();
+            StaffSearch frm = new StaffSearch("Delete");
+            frm.Owner = this;
+
+            frm.Show();
+            this.Hide();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            // TODO
+            this.Close();
+        }
+
+        private void StaffForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner?.Show();
         }
     }
 }
