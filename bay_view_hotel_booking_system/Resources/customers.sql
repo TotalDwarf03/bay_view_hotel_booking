@@ -1,0 +1,35 @@
+DELETE FROM Customer
+WHERE CustomerID != 1;
+
+INSERT INTO Customer (CustomerID, Forename, Surname, PhoneNumber, Email)
+VALUES
+  (2, 'John', 'Doe', '+44 7911 123456', 'john.doe@example.com'),
+  (3, 'Jane', 'Smith', '+44 7911 234567', 'jane.smith@example.com'),
+  (4, 'Alice', 'Johnson', '+44 7911 345678', 'alice.johnson@example.com'),
+  (5, 'Bob', 'Brown', '+44 7911 456789', 'bob.brown@example.com'),
+  (6, 'Charlie', 'Williams', '+44 7911 567890', 'charlie.williams@example.com'),
+  (7, 'David', 'Jones', '+44 7911 678901', 'david.jones@example.com'),
+  (8, 'Emma', 'Miller', '+44 7911 789012', 'emma.miller@example.com'),
+  (9, 'Frank', 'Taylor', '+44 7911 890123', 'frank.taylor@example.com'),
+  (10, 'Grace', 'Anderson', '+44 7911 901234', 'grace.anderson@example.com'),
+  (11, 'Henry', 'Thomas', '+44 7911 012345', 'henry.thomas@example.com'),
+  (12, 'Ivy', 'Jackson', '+44 7911 123457', 'ivy.jackson@example.com'),
+  (13, 'Jack', 'White', '+44 7911 234568', 'jack.white@example.com'),
+  (14, 'Katherine', 'Harris', '+44 7911 345679', 'katherine.harris@example.com'),
+  (15, 'Louis', 'Martin', '+44 7911 456790', 'louis.martin@example.com'),
+  (16, 'Megan', 'Garcia', '+44 7911 567891', 'megan.garcia@example.com'),
+  (17, 'Nina', 'Rodriguez', '+44 7911 678902', 'nina.rodriguez@example.com'),
+  (18, 'Oscar', 'Lee', '+44 7911 789013', 'oscar.lee@example.com'),
+  (19, 'Paul', 'Walker', '+44 7911 890234', 'paul.walker@example.com'),
+  (20, 'Quinn', 'Hall', '+44 7911 901345', 'quinn.hall@example.com'),
+  (21, 'Rachel', 'Young', '+44 7911 012346', 'rachel.young@example.com'),
+  (22, 'Sam', 'King', '+44 7911 123458', 'sam.king@example.com'),
+  (23, 'Tina', 'Scott', '+44 7911 234569', 'tina.scott@example.com'),
+  (24, 'Ursula', 'Green', '+44 7911 345680', 'ursula.green@example.com'),
+  (25, 'Victor', 'Adams', '+44 7911 456791', 'victor.adams@example.com'),
+  (26, 'Wendy', 'Baker', '+44 7911 567892', 'wendy.baker@example.com'),
+  (27, 'Xander', 'Nelson', '+44 7911 678903', 'xander.nelson@example.com'),
+  (28, 'Yvonne', 'Carter', '+44 7911 789014', 'yvonne.carter@example.com'),
+  (29, 'Zach', 'Perez', '+44 7911 890345', 'zach.perez@example.com'),
+  (30, 'Alison', 'Roberts', '+44 7911 901456', 'alison.roberts@example.com'),
+  (31, 'Brian', 'Evans', '+44 7911 012347', 'brian.evans@example.com');

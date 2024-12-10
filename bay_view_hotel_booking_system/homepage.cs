@@ -59,5 +59,67 @@ namespace bay_view_hotel_booking_system
             frm.Show();
             this.Hide();
         }
+
+        private void btnInsertTestData_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "You are about to insert test data into the database. This will overwrite any existing data and should only be used for testing purposes. Do you want to continue?",
+                "Confirm",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                TestDataGenerator TestData = new TestDataGenerator();
+
+                // Insert Customers
+                int CustomersInserted = TestData.InsertExampleCustomers();
+
+                if (CustomersInserted == 0)
+                {
+                    MessageBox.Show(
+                        "Error inserting example customers. Please try again.",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+
+                    return;
+                }
+
+                MessageBox.Show(
+                    "Example customers inserted successfully.",
+                    "Success",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+
+                // Insert Staff
+                int StaffInserted = TestData.InsertExampleStaff();
+
+                if (StaffInserted == 0)
+                {
+                    MessageBox.Show(
+                        "Error inserting example staff. Please try again.",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+
+                    return;
+                }
+
+                MessageBox.Show(
+                    "Example staff inserted successfully.",
+                    "Success",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+
+                // Insert Bookings and Payments
+                // TODO
+            }
+        }
     }
 }
