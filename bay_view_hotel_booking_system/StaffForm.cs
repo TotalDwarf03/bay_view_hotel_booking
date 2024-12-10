@@ -47,9 +47,7 @@ namespace bay_view_hotel_booking_system
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            homepage homepage = new homepage();
-            homepage.Show();
-            this.Close();
+            // TODO
         }
     }
 }

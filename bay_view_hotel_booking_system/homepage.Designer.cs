@@ -324,16 +324,6 @@ namespace bay_view_hotel_booking_system
             lblReportingDesc.TabIndex = 1;
             lblReportingDesc.Text = "View Income, Time Occupancy and Room Occupancy Reports.";
             // 
-            // button1
-            // 
-            button1.Location = new Point(976, 800);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 5;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // homepage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
