@@ -97,9 +97,9 @@ namespace bay_view_hotel_booking_system
             // lblUser
             // 
             lblUser.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblUser.Location = new Point(413, 2);
+            lblUser.Location = new Point(359, 2);
             lblUser.Name = "lblUser";
-            lblUser.Size = new Size(170, 46);
+            lblUser.Size = new Size(224, 46);
             lblUser.TabIndex = 3;
             lblUser.Text = "Logged in as: \r\nUser Type: ";
             lblUser.TextAlign = ContentAlignment.MiddleLeft;
@@ -269,6 +269,7 @@ namespace bay_view_hotel_booking_system
             fpnlStaff.Size = new Size(306, 64);
             fpnlStaff.TabIndex = 8;
             fpnlStaff.Visible = false;
+            fpnlStaff.Click += fpnlStaff_Click;
             // 
             // lblStaffHeader
             // 
@@ -280,6 +281,7 @@ namespace bay_view_hotel_booking_system
             lblStaffHeader.Size = new Size(152, 21);
             lblStaffHeader.TabIndex = 0;
             lblStaffHeader.Text = "Staff Management";
+            lblStaffHeader.Click += fpnlStaff_Click;
             // 
             // lblStaffDesc
             // 
@@ -289,6 +291,7 @@ namespace bay_view_hotel_booking_system
             lblStaffDesc.Size = new Size(193, 15);
             lblStaffDesc.TabIndex = 1;
             lblStaffDesc.Text = "View, Add, Update and Delete Staff.";
+            lblStaffDesc.Click += fpnlStaff_Click;
             // 
             // fpnlReporting
             // 
