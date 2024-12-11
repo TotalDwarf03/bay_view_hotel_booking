@@ -16,7 +16,7 @@ namespace bay_view_hotel_booking_system
         public addroom()
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.CenterScreen;
+            //this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         SQLController controller = new SQLController();
@@ -47,7 +47,20 @@ namespace bay_view_hotel_booking_system
 
             int disabled = radioButton1.Checked ? 1 : 0;
 
+            string roomstatus = cbStatus.Text.ToLower();
+
             string sql = $"""
+                SELECT RoomStatusID 
+                FROM RoomStatus
+                WHERE RoomStatus = '{roomstatus}'
+                Limit 1
+                """;
+
+            DataTable dt = controller.RunQuery(sql);
+
+            string RoomStatusID = dt.Rows[0]["RoomStatusID"].ToString();
+
+            sql = $"""
                 INSERT INTO Room (
                     RoomType,
                     RoomStatusID,
@@ -56,8 +69,8 @@ namespace bay_view_hotel_booking_system
                     IsDisabled
                 )
                 VALUES (
-                    '{rType.Text}',
-                    '{txtrsID.Text}',
+                    '{rType.Text.ToLower()}',
+                    '{RoomStatusID}',
                     '{txtPrice.Text}',
                     '{txtCapacity.Text}',
                     '{disabled}'
@@ -76,7 +89,7 @@ namespace bay_view_hotel_booking_system
                 );
 
                 rType.Items.Clear();
-                txtrsID.Clear();
+                cbStatus.Items.Clear();
                 txtPrice.Clear();
                 txtCapacity.Clear();
                 radioButton1.Checked = false;
@@ -96,6 +109,15 @@ namespace bay_view_hotel_booking_system
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void viewRoomsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            viewrooms frm = new viewrooms();
+            frm.Owner = this;
+
+            frm.Show();
+            this.Hide();
         }
     }
 }

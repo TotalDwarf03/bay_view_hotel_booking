@@ -40,7 +40,7 @@
             lblEdit = new Button();
             cbDisabled = new ComboBox();
             lblStatus = new Label();
-            comboBox1 = new ComboBox();
+            cbStatus = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgRoom).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -48,10 +48,11 @@
             // dgRoom
             // 
             dgRoom.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgRoom.Location = new Point(11, 157);
+            dgRoom.Location = new Point(10, 118);
+            dgRoom.Margin = new Padding(3, 2, 3, 2);
             dgRoom.Name = "dgRoom";
             dgRoom.RowHeadersWidth = 51;
-            dgRoom.Size = new Size(758, 245);
+            dgRoom.Size = new Size(663, 184);
             dgRoom.TabIndex = 0;
             dgRoom.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -61,30 +62,31 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { addRoomToolStripMenuItem, returnToHomepageToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(782, 28);
+            menuStrip1.Padding = new Padding(5, 2, 0, 2);
+            menuStrip1.Size = new Size(684, 24);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
             // addRoomToolStripMenuItem
             // 
             addRoomToolStripMenuItem.Name = "addRoomToolStripMenuItem";
-            addRoomToolStripMenuItem.Size = new Size(95, 24);
+            addRoomToolStripMenuItem.Size = new Size(76, 20);
             addRoomToolStripMenuItem.Text = "Add Room";
             addRoomToolStripMenuItem.Click += addRoomToolStripMenuItem_Click;
             // 
             // returnToHomepageToolStripMenuItem
             // 
             returnToHomepageToolStripMenuItem.Name = "returnToHomepageToolStripMenuItem";
-            returnToHomepageToolStripMenuItem.Size = new Size(163, 24);
+            returnToHomepageToolStripMenuItem.Size = new Size(130, 20);
             returnToHomepageToolStripMenuItem.Text = "Return to Homepage";
             // 
             // lblRoomType
             // 
             lblRoomType.AutoSize = true;
             lblRoomType.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblRoomType.Location = new Point(11, 28);
+            lblRoomType.Location = new Point(10, 21);
             lblRoomType.Name = "lblRoomType";
-            lblRoomType.Size = new Size(92, 20);
+            lblRoomType.Size = new Size(72, 15);
             lblRoomType.TabIndex = 2;
             lblRoomType.Text = "Room Type:";
             // 
@@ -92,17 +94,19 @@
             // 
             rType.AllowDrop = true;
             rType.FormattingEnabled = true;
-            rType.Items.AddRange(new object[] { "single", "double", "family" });
-            rType.Location = new Point(11, 51);
+            rType.Items.AddRange(new object[] { "All", "Single", "Double", "Family" });
+            rType.Location = new Point(10, 38);
+            rType.Margin = new Padding(3, 2, 3, 2);
             rType.Name = "rType";
-            rType.Size = new Size(171, 28);
+            rType.Size = new Size(150, 23);
             rType.TabIndex = 3;
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(11, 93);
+            btnSearch.Location = new Point(10, 70);
+            btnSearch.Margin = new Padding(3, 2, 3, 2);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(94, 29);
+            btnSearch.Size = new Size(82, 22);
             btnSearch.TabIndex = 4;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
@@ -112,9 +116,9 @@
             // 
             lblDisabled.AutoSize = true;
             lblDisabled.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblDisabled.Location = new Point(190, 28);
+            lblDisabled.Location = new Point(322, 21);
             lblDisabled.Name = "lblDisabled";
-            lblDisabled.Size = new Size(122, 20);
+            lblDisabled.Size = new Size(95, 15);
             lblDisabled.TabIndex = 5;
             lblDisabled.Text = "Disabled Room?";
             // 
@@ -122,64 +126,71 @@
             // 
             lblRooms.AutoSize = true;
             lblRooms.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblRooms.Location = new Point(11, 133);
+            lblRooms.Location = new Point(10, 100);
             lblRooms.Name = "lblRooms";
-            lblRooms.Size = new Size(62, 20);
+            lblRooms.Size = new Size(48, 15);
             lblRooms.TabIndex = 6;
             lblRooms.Text = "Rooms:";
             // 
             // lblEdit
             // 
-            lblEdit.Location = new Point(14, 409);
+            lblEdit.Location = new Point(12, 307);
+            lblEdit.Margin = new Padding(3, 2, 3, 2);
             lblEdit.Name = "lblEdit";
-            lblEdit.Size = new Size(168, 33);
+            lblEdit.Size = new Size(147, 25);
             lblEdit.TabIndex = 7;
             lblEdit.Text = "View/Edit Room";
             lblEdit.UseVisualStyleBackColor = true;
+            lblEdit.Click += lblEdit_Click;
             // 
             // cbDisabled
             // 
             cbDisabled.FormattingEnabled = true;
-            cbDisabled.Location = new Point(190, 51);
+            cbDisabled.Items.AddRange(new object[] { "Any", "Yes", "No" });
+            cbDisabled.Location = new Point(322, 38);
+            cbDisabled.Margin = new Padding(3, 2, 3, 2);
             cbDisabled.Name = "cbDisabled";
-            cbDisabled.Size = new Size(171, 28);
+            cbDisabled.Size = new Size(150, 23);
             cbDisabled.TabIndex = 8;
             // 
             // lblStatus
             // 
             lblStatus.AutoSize = true;
             lblStatus.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblStatus.Location = new Point(368, 28);
+            lblStatus.Location = new Point(166, 21);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(103, 20);
+            lblStatus.Size = new Size(81, 15);
             lblStatus.TabIndex = 9;
             lblStatus.Text = "Room Status:";
             // 
-            // comboBox1
+            // cbStatus
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(368, 51);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(171, 28);
-            comboBox1.TabIndex = 10;
+            cbStatus.FormattingEnabled = true;
+            cbStatus.Items.AddRange(new object[] { "Any", "Available", "Under Refurbishment", "Off Sale" });
+            cbStatus.Location = new Point(166, 38);
+            cbStatus.Margin = new Padding(3, 2, 3, 2);
+            cbStatus.Name = "cbStatus";
+            cbStatus.Size = new Size(150, 23);
+            cbStatus.TabIndex = 10;
             // 
             // viewrooms
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(782, 453);
-            Controls.Add(comboBox1);
-            Controls.Add(lblStatus);
+            ClientSize = new Size(684, 340);
+            Controls.Add(cbStatus);
             Controls.Add(cbDisabled);
             Controls.Add(lblEdit);
             Controls.Add(lblRooms);
             Controls.Add(lblDisabled);
             Controls.Add(btnSearch);
             Controls.Add(rType);
-            Controls.Add(lblRoomType);
             Controls.Add(dgRoom);
             Controls.Add(menuStrip1);
+            Controls.Add(lblStatus);
+            Controls.Add(lblRoomType);
             MainMenuStrip = menuStrip1;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "viewrooms";
             Text = "viewrooms";
             Load += viewrooms_Load;
@@ -204,6 +215,6 @@
         private Button lblEdit;
         private ComboBox cbDisabled;
         private Label lblStatus;
-        private ComboBox comboBox1;
+        private ComboBox cbStatus;
     }
 }
