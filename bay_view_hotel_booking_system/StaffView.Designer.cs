@@ -29,111 +29,167 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffView));
-            mnStaffView = new MenuStrip();
-            staffManagementToolStripMenuItem = new ToolStripMenuItem();
+            mnStaffAdd = new MenuStrip();
+            tsmiStaffHome = new ToolStripMenuItem();
+            tsmiQuit = new ToolStripMenuItem();
+            btnClear = new Button();
             panel1 = new Panel();
-            btnLoad = new Button();
+            lblStaffHeader = new Label();
             tbStaffName = new TextBox();
-            lblStaffView = new Label();
-            dgStaff = new DataGridView();
-            mnStaffView.SuspendLayout();
+            btnStaffSearch = new Button();
+            dgvStaff = new DataGridView();
+            cbStaffType = new ComboBox();
+            lblStaffType = new Label();
+            mnStaffAdd.SuspendLayout();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgStaff).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvStaff).BeginInit();
             SuspendLayout();
             // 
-            // mnStaffView
+            // mnStaffAdd
             // 
-            mnStaffView.ImageScalingSize = new Size(20, 20);
-            mnStaffView.Items.AddRange(new ToolStripItem[] { staffManagementToolStripMenuItem });
-            mnStaffView.Location = new Point(0, 0);
-            mnStaffView.Name = "mnStaffView";
-            mnStaffView.Size = new Size(758, 28);
-            mnStaffView.TabIndex = 0;
-            mnStaffView.Text = "menuStrip1";
+            mnStaffAdd.ImageScalingSize = new Size(20, 20);
+            mnStaffAdd.Items.AddRange(new ToolStripItem[] { tsmiStaffHome, tsmiQuit });
+            mnStaffAdd.Location = new Point(0, 0);
+            mnStaffAdd.Name = "mnStaffAdd";
+            mnStaffAdd.Padding = new Padding(5, 2, 0, 2);
+            mnStaffAdd.Size = new Size(684, 24);
+            mnStaffAdd.TabIndex = 3;
+            mnStaffAdd.Text = "menuStrip1";
             // 
-            // staffManagementToolStripMenuItem
+            // tsmiStaffHome
             // 
-            staffManagementToolStripMenuItem.Name = "staffManagementToolStripMenuItem";
-            staffManagementToolStripMenuItem.Size = new Size(146, 24);
-            staffManagementToolStripMenuItem.Text = "Staff Management";
-            staffManagementToolStripMenuItem.Click += staffManagementToolStripMenuItem_Click;
+            tsmiStaffHome.Name = "tsmiStaffHome";
+            tsmiStaffHome.Size = new Size(117, 20);
+            tsmiStaffHome.Text = "Staff Management";
+            tsmiStaffHome.Click += tsmiStaffHome_Click;
+            // 
+            // tsmiQuit
+            // 
+            tsmiQuit.Name = "tsmiQuit";
+            tsmiQuit.Size = new Size(130, 20);
+            tsmiQuit.Text = "Return to Homepage";
+            tsmiQuit.Click += tsmiQuit_Click;
+            // 
+            // btnClear
+            // 
+            btnClear.BackColor = SystemColors.ControlLightLight;
+            btnClear.Location = new Point(579, 308);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(97, 23);
+            btnClear.TabIndex = 42;
+            btnClear.Text = "Clear Search";
+            btnClear.UseVisualStyleBackColor = false;
+            btnClear.Click += btnClear_Click;
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnLoad);
+            panel1.BackColor = SystemColors.ControlLight;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(cbStaffType);
+            panel1.Controls.Add(lblStaffType);
+            panel1.Controls.Add(lblStaffHeader);
             panel1.Controls.Add(tbStaffName);
-            panel1.Controls.Add(lblStaffView);
-            panel1.Controls.Add(dgStaff);
-            panel1.Location = new Point(0, 31);
+            panel1.Controls.Add(btnStaffSearch);
+            panel1.Location = new Point(12, 26);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(758, 311);
-            panel1.TabIndex = 2;
+            panel1.Size = new Size(664, 51);
+            panel1.TabIndex = 41;
             // 
-            // btnLoad
+            // lblStaffHeader
             // 
-            btnLoad.Location = new Point(652, 22);
-            btnLoad.Name = "btnLoad";
-            btnLoad.Size = new Size(94, 29);
-            btnLoad.TabIndex = 5;
-            btnLoad.Text = "Search";
-            btnLoad.UseVisualStyleBackColor = true;
-            btnLoad.Click += btnLoad_Click;
+            lblStaffHeader.AutoSize = true;
+            lblStaffHeader.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblStaffHeader.Location = new Point(3, 0);
+            lblStaffHeader.Name = "lblStaffHeader";
+            lblStaffHeader.Size = new Size(77, 15);
+            lblStaffHeader.TabIndex = 36;
+            lblStaffHeader.Text = "Staff Name: ";
             // 
             // tbStaffName
             // 
-            tbStaffName.Location = new Point(521, 24);
+            tbStaffName.Location = new Point(3, 16);
             tbStaffName.Name = "tbStaffName";
-            tbStaffName.Size = new Size(125, 27);
-            tbStaffName.TabIndex = 4;
+            tbStaffName.Size = new Size(250, 23);
+            tbStaffName.TabIndex = 37;
             // 
-            // lblStaffView
+            // btnStaffSearch
             // 
-            lblStaffView.AutoSize = true;
-            lblStaffView.Font = new Font("Segoe UI", 22.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblStaffView.Location = new Point(12, 9);
-            lblStaffView.Name = "lblStaffView";
-            lblStaffView.Size = new Size(185, 50);
-            lblStaffView.TabIndex = 3;
-            lblStaffView.Text = "Staff View";
+            btnStaffSearch.BackColor = SystemColors.ControlLightLight;
+            btnStaffSearch.Location = new Point(562, 15);
+            btnStaffSearch.Name = "btnStaffSearch";
+            btnStaffSearch.Size = new Size(97, 23);
+            btnStaffSearch.TabIndex = 38;
+            btnStaffSearch.Text = "Search";
+            btnStaffSearch.UseVisualStyleBackColor = false;
+            btnStaffSearch.Click += btnLoad_Click;
             // 
-            // dgStaff
+            // dgvStaff
             // 
-            dgStaff.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgStaff.Location = new Point(12, 75);
-            dgStaff.Name = "dgStaff";
-            dgStaff.RowHeadersWidth = 51;
-            dgStaff.Size = new Size(734, 217);
-            dgStaff.TabIndex = 2;
+            dgvStaff.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvStaff.Location = new Point(12, 81);
+            dgvStaff.Margin = new Padding(3, 2, 3, 2);
+            dgvStaff.Name = "dgvStaff";
+            dgvStaff.ReadOnly = true;
+            dgvStaff.RowHeadersWidth = 51;
+            dgvStaff.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvStaff.Size = new Size(663, 222);
+            dgvStaff.TabIndex = 40;
+            // 
+            // cbStaffType
+            // 
+            cbStaffType.FormattingEnabled = true;
+            cbStaffType.Location = new Point(259, 16);
+            cbStaffType.Name = "cbStaffType";
+            cbStaffType.Size = new Size(200, 23);
+            cbStaffType.TabIndex = 40;
+            // 
+            // lblStaffType
+            // 
+            lblStaffType.AutoSize = true;
+            lblStaffType.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblStaffType.Location = new Point(259, 0);
+            lblStaffType.Name = "lblStaffType";
+            lblStaffType.Size = new Size(67, 15);
+            lblStaffType.TabIndex = 39;
+            lblStaffType.Text = "Staff Type:";
             // 
             // StaffView
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(758, 345);
+            ClientSize = new Size(684, 340);
+            Controls.Add(btnClear);
             Controls.Add(panel1);
-            Controls.Add(mnStaffView);
+            Controls.Add(dgvStaff);
+            Controls.Add(mnStaffAdd);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MainMenuStrip = mnStaffView;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "StaffView";
-            Text = "StaffView";
-            Load += StaffView_Load;
-            mnStaffView.ResumeLayout(false);
-            mnStaffView.PerformLayout();
+            Text = "View Staff";
+            FormClosing += StaffFormClosing;
+            Load += btnLoad_Click;
+            mnStaffAdd.ResumeLayout(false);
+            mnStaffAdd.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgStaff).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvStaff).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private MenuStrip mnStaffView;
-        private ToolStripMenuItem staffManagementToolStripMenuItem;
+        private MenuStrip mnStaffAdd;
+        private ToolStripMenuItem tsmiStaffHome;
+        private ToolStripMenuItem tsmiQuit;
+        private Button btnClear;
         private Panel panel1;
+        private Label lblStaffHeader;
         private TextBox tbStaffName;
-        private Label lblStaffView;
-        private DataGridView dgStaff;
-        private Button btnLoad;
+        private Button btnStaffSearch;
+        private DataGridView dgvStaff;
+        private ComboBox cbStaffType;
+        private Label lblStaffType;
     }
 }

@@ -72,10 +72,11 @@
             // lblNextPage
             // 
             lblNextPage.AutoSize = true;
-            lblNextPage.Location = new Point(10, 35);
+            lblNextPage.Location = new Point(355, 292);
             lblNextPage.Name = "lblNextPage";
-            lblNextPage.Size = new Size(0, 15);
+            lblNextPage.Size = new Size(61, 15);
             lblNextPage.TabIndex = 5;
+            lblNextPage.Text = "Next Page";
             lblNextPage.Visible = false;
             // 
             // dgCustomer

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,18 +14,48 @@ namespace bay_view_hotel_booking_system
 {
     public partial class StaffView : Form
     {
+        TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
         SQLController controller = new SQLController();
 
         public StaffView()
         {
             InitializeComponent();
+
+            // Populate Staff Type
+            string query = $"""
+                SELECT DISTINCT
+                    s.StaffType
+                FROM Staff AS s
+                ORDER BY s.StaffType ASC
+                """;
+
+            DataTable dt = controller.RunQuery(query);
+
+            cbStaffType.Items.Clear();
+
+            cbStaffType.Items.Add("Any");
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                cbStaffType.Items.Add(ti.ToTitleCase(dr["StaffType"].ToString()));
+            }
+
+            cbStaffType.SelectedIndex = 0;
         }
 
-        private void staffManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmiStaffHome_Click(object sender, EventArgs e)
         {
-            StaffForm SHome = new StaffForm();
-            SHome.Show();
             this.Close();
+        }
+
+        private void StaffFormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner?.Show();
+        }
+
+        private void tsmiQuit_Click(object sender, EventArgs e)
+        {
+            this.Owner?.Close();
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -36,10 +68,10 @@ namespace bay_view_hotel_booking_system
                     s.StaffType,
                     s.Forename || ' ' || s.Surname AS Name, 
                     s.Email, 
-                    s.PhoneNumber,
-                    s.Password
+                    s.PhoneNumber
                 FROM Staff AS s 
                 WHERE s.Forename || ' ' || s.Surname LIKE '%{StaffName}%'
+                    AND '{cbStaffType.Text.ToLower()}' IN (s.StaffType, 'any')
                     AND s.StaffID != 1;
                 """;
 
@@ -47,7 +79,7 @@ namespace bay_view_hotel_booking_system
 
             if (dtStaff.Rows.Count > 0)
             {
-                dgStaff.DataSource = dtStaff;
+                dgvStaff.DataSource = dtStaff;
             }
             else
             {
@@ -58,14 +90,16 @@ namespace bay_view_hotel_booking_system
                       MessageBoxIcon.Warning
                );
 
-                dgStaff.DataSource = null;
+                dgvStaff.DataSource = null;
             }
         }
 
-        private void StaffView_Load(object sender, EventArgs e)
+        private void btnClear_Click(object sender, EventArgs e)
         {
-            DataTable dtStaff = controller.RunQuery("SELECT * FROM Staff");
-            dgStaff.DataSource = dtStaff;
+            tbStaffName.Text = "";
+            cbStaffType.SelectedIndex = 0;
+
+            btnLoad_Click(sender, e);
         }
     }
 }

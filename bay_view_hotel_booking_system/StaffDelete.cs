@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,9 @@ namespace bay_view_hotel_booking_system
 {
     public partial class StaffDelete : Form
     {
+        TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
         SQLController controller = new SQLController();
+
         public StaffDelete(string StaffID)
         {
             InitializeComponent();
@@ -22,26 +25,26 @@ namespace bay_view_hotel_booking_system
             DataTable dtStaff = controller.RunQuery(query);
 
             tbStaffID.Text = StaffID;
-            tbStaffType.Text = dtStaff.Rows[0]["StaffType"].ToString();
-            tbForename.Text = dtStaff.Rows[0]["Forename"].ToString();
-            tbSurname.Text = dtStaff.Rows[0]["Surname"].ToString();
+            tbStaffType.Text = ti.ToTitleCase(dtStaff.Rows[0]["StaffType"].ToString());
+            tbForename.Text = ti.ToTitleCase(dtStaff.Rows[0]["Forename"].ToString());
+            tbSurname.Text = ti.ToTitleCase(dtStaff.Rows[0]["Surname"].ToString());
             tbPhoneNumber.Text = dtStaff.Rows[0]["PhoneNumber"].ToString();
             tbEmail.Text = dtStaff.Rows[0]["Email"].ToString();
-            tbPassword.Text = dtStaff.Rows[0]["Password"].ToString();
         }
 
-        private void homeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmiStaffHome_Click(object sender, EventArgs e)
         {
-            StaffForm SHome = new StaffForm();
-            SHome.Show();
-            this.Close();
+            this.Owner?.Close();
         }
 
-        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        private void StaffFormClosing(object sender, FormClosingEventArgs e)
         {
-            StaffView SView = new StaffView();
-            SView.Show();
-            this.Close();
+            this.Owner?.Show();
+        }
+
+        private void tsmiQuit_Click(object sender, EventArgs e)
+        {
+            this.Owner?.Owner?.Close();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -103,10 +106,6 @@ namespace bay_view_hotel_booking_system
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
-
-                StaffForm sHome = new StaffForm();
-                sHome.Show();
-                this.Close();
             }
             else
             {
@@ -116,11 +115,9 @@ namespace bay_view_hotel_booking_system
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                 );
-
-                StaffForm sHome = new StaffForm();
-                sHome.Show();
-                this.Close();
             }
+
+            this.Close();
         }
     }
 }

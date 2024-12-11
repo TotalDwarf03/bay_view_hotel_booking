@@ -29,227 +29,282 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffAdd));
-            lblStaffAdd = new Label();
             mnStaffAdd = new MenuStrip();
-            homeToolStripMenuItem = new ToolStripMenuItem();
-            viewToolStripMenuItem = new ToolStripMenuItem();
-            pnlStaffAdd = new Panel();
-            btnSave = new Button();
-            tbPassword = new TextBox();
-            tbEmail = new TextBox();
-            tbPhoneNumber = new TextBox();
-            tbSurname = new TextBox();
-            tbForename = new TextBox();
-            lblPassword = new Label();
-            lblEmail = new Label();
+            tsmiStaffHome = new ToolStripMenuItem();
+            tsmiQuit = new ToolStripMenuItem();
+            pnlAddStaff = new Panel();
+            cbStaffType = new ComboBox();
+            lblStaff = new Label();
+            lblStaffType = new Label();
             lblPhoneNumber = new Label();
             lblSurname = new Label();
             lblForename = new Label();
-            lblStaffType = new Label();
-            tbStaffType = new TextBox();
+            tbPhoneNumber = new TextBox();
+            tbSurname = new TextBox();
+            tbForename = new TextBox();
+            btnSave = new Button();
+            panel1 = new Panel();
+            lblLogin = new Label();
+            lblPassword = new Label();
+            lblEmail = new Label();
+            tbPassword = new TextBox();
+            tbEmail = new TextBox();
             mnStaffAdd.SuspendLayout();
-            pnlStaffAdd.SuspendLayout();
+            pnlAddStaff.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // lblStaffAdd
-            // 
-            lblStaffAdd.AutoSize = true;
-            lblStaffAdd.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblStaffAdd.Location = new Point(180, 50);
-            lblStaffAdd.Name = "lblStaffAdd";
-            lblStaffAdd.Size = new Size(139, 41);
-            lblStaffAdd.TabIndex = 0;
-            lblStaffAdd.Text = "Staff Add";
             // 
             // mnStaffAdd
             // 
             mnStaffAdd.ImageScalingSize = new Size(20, 20);
-            mnStaffAdd.Items.AddRange(new ToolStripItem[] { homeToolStripMenuItem, viewToolStripMenuItem });
+            mnStaffAdd.Items.AddRange(new ToolStripItem[] { tsmiStaffHome, tsmiQuit });
             mnStaffAdd.Location = new Point(0, 0);
             mnStaffAdd.Name = "mnStaffAdd";
-            mnStaffAdd.Size = new Size(498, 28);
+            mnStaffAdd.Padding = new Padding(5, 2, 0, 2);
+            mnStaffAdd.Size = new Size(684, 24);
             mnStaffAdd.TabIndex = 1;
             mnStaffAdd.Text = "menuStrip1";
             // 
-            // homeToolStripMenuItem
+            // tsmiStaffHome
             // 
-            homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            homeToolStripMenuItem.Size = new Size(146, 24);
-            homeToolStripMenuItem.Text = "Staff Management";
-            homeToolStripMenuItem.Click += homeToolStripMenuItem_Click;
+            tsmiStaffHome.Name = "tsmiStaffHome";
+            tsmiStaffHome.Size = new Size(117, 20);
+            tsmiStaffHome.Text = "Staff Management";
+            tsmiStaffHome.Click += tsmiStaffHome_Click;
             // 
-            // viewToolStripMenuItem
+            // tsmiQuit
             // 
-            viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            viewToolStripMenuItem.Size = new Size(90, 24);
-            viewToolStripMenuItem.Text = "Staff View";
-            viewToolStripMenuItem.Click += viewToolStripMenuItem_Click;
+            tsmiQuit.Name = "tsmiQuit";
+            tsmiQuit.Size = new Size(130, 20);
+            tsmiQuit.Text = "Return to Homepage";
+            tsmiQuit.Click += tsmiQuit_Click;
             // 
-            // pnlStaffAdd
+            // pnlAddStaff
             // 
-            pnlStaffAdd.Controls.Add(tbStaffType);
-            pnlStaffAdd.Controls.Add(btnSave);
-            pnlStaffAdd.Controls.Add(tbPassword);
-            pnlStaffAdd.Controls.Add(tbEmail);
-            pnlStaffAdd.Controls.Add(tbPhoneNumber);
-            pnlStaffAdd.Controls.Add(tbSurname);
-            pnlStaffAdd.Controls.Add(tbForename);
-            pnlStaffAdd.Controls.Add(lblPassword);
-            pnlStaffAdd.Controls.Add(lblEmail);
-            pnlStaffAdd.Controls.Add(lblPhoneNumber);
-            pnlStaffAdd.Controls.Add(lblSurname);
-            pnlStaffAdd.Controls.Add(lblForename);
-            pnlStaffAdd.Controls.Add(lblStaffType);
-            pnlStaffAdd.Location = new Point(12, 109);
-            pnlStaffAdd.Name = "pnlStaffAdd";
-            pnlStaffAdd.Size = new Size(474, 278);
-            pnlStaffAdd.TabIndex = 2;
+            pnlAddStaff.BackColor = SystemColors.ControlLight;
+            pnlAddStaff.BorderStyle = BorderStyle.FixedSingle;
+            pnlAddStaff.Controls.Add(cbStaffType);
+            pnlAddStaff.Controls.Add(lblStaff);
+            pnlAddStaff.Controls.Add(lblStaffType);
+            pnlAddStaff.Controls.Add(lblPhoneNumber);
+            pnlAddStaff.Controls.Add(lblSurname);
+            pnlAddStaff.Controls.Add(lblForename);
+            pnlAddStaff.Controls.Add(tbPhoneNumber);
+            pnlAddStaff.Controls.Add(tbSurname);
+            pnlAddStaff.Controls.Add(tbForename);
+            pnlAddStaff.Location = new Point(12, 26);
+            pnlAddStaff.Margin = new Padding(3, 2, 3, 2);
+            pnlAddStaff.Name = "pnlAddStaff";
+            pnlAddStaff.Size = new Size(387, 124);
+            pnlAddStaff.TabIndex = 5;
             // 
-            // btnSave
+            // cbStaffType
             // 
-            btnSave.Location = new Point(353, 236);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(94, 29);
-            btnSave.TabIndex = 11;
-            btnSave.Text = "Save";
-            btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += btnSave_Click;
+            cbStaffType.FormattingEnabled = true;
+            cbStaffType.Location = new Point(214, 85);
+            cbStaffType.Name = "cbStaffType";
+            cbStaffType.Size = new Size(167, 23);
+            cbStaffType.TabIndex = 28;
             // 
-            // tbPassword
+            // lblStaff
             // 
-            tbPassword.Location = new Point(113, 233);
-            tbPassword.Name = "tbPassword";
-            tbPassword.Size = new Size(125, 27);
-            tbPassword.TabIndex = 10;
+            lblStaff.AutoSize = true;
+            lblStaff.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblStaff.Location = new Point(3, 4);
+            lblStaff.Name = "lblStaff";
+            lblStaff.Size = new Size(79, 15);
+            lblStaff.TabIndex = 11;
+            lblStaff.Text = "Staff Details:";
             // 
-            // tbEmail
+            // lblStaffType
             // 
-            tbEmail.Location = new Point(91, 189);
-            tbEmail.Name = "tbEmail";
-            tbEmail.Size = new Size(125, 27);
-            tbEmail.TabIndex = 9;
+            lblStaffType.AutoSize = true;
+            lblStaffType.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblStaffType.Location = new Point(214, 67);
+            lblStaffType.Name = "lblStaffType";
+            lblStaffType.Size = new Size(67, 15);
+            lblStaffType.TabIndex = 27;
+            lblStaffType.Text = "Staff Type:";
+            // 
+            // lblPhoneNumber
+            // 
+            lblPhoneNumber.AutoSize = true;
+            lblPhoneNumber.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblPhoneNumber.Location = new Point(214, 27);
+            lblPhoneNumber.Name = "lblPhoneNumber";
+            lblPhoneNumber.Size = new Size(94, 15);
+            lblPhoneNumber.TabIndex = 8;
+            lblPhoneNumber.Text = "Phone Number:";
+            // 
+            // lblSurname
+            // 
+            lblSurname.AutoSize = true;
+            lblSurname.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblSurname.Location = new Point(3, 67);
+            lblSurname.Name = "lblSurname";
+            lblSurname.Size = new Size(60, 15);
+            lblSurname.TabIndex = 7;
+            lblSurname.Text = "Surname:";
+            // 
+            // lblForename
+            // 
+            lblForename.AutoSize = true;
+            lblForename.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblForename.Location = new Point(3, 27);
+            lblForename.Name = "lblForename";
+            lblForename.Size = new Size(66, 15);
+            lblForename.TabIndex = 6;
+            lblForename.Text = "Forename:";
             // 
             // tbPhoneNumber
             // 
-            tbPhoneNumber.Location = new Point(134, 143);
+            tbPhoneNumber.Location = new Point(214, 44);
+            tbPhoneNumber.Margin = new Padding(3, 2, 3, 2);
             tbPhoneNumber.Name = "tbPhoneNumber";
-            tbPhoneNumber.Size = new Size(125, 27);
-            tbPhoneNumber.TabIndex = 8;
+            tbPhoneNumber.Size = new Size(167, 23);
+            tbPhoneNumber.TabIndex = 3;
             // 
             // tbSurname
             // 
-            tbSurname.Location = new Point(113, 100);
+            tbSurname.Location = new Point(3, 84);
+            tbSurname.Margin = new Padding(3, 2, 3, 2);
             tbSurname.Name = "tbSurname";
-            tbSurname.Size = new Size(125, 27);
-            tbSurname.TabIndex = 7;
+            tbSurname.Size = new Size(167, 23);
+            tbSurname.TabIndex = 2;
             // 
             // tbForename
             // 
-            tbForename.Location = new Point(113, 57);
+            tbForename.Location = new Point(3, 44);
+            tbForename.Margin = new Padding(3, 2, 3, 2);
             tbForename.Name = "tbForename";
-            tbForename.Size = new Size(125, 27);
-            tbForename.TabIndex = 6;
+            tbForename.Size = new Size(167, 23);
+            tbForename.TabIndex = 0;
+            // 
+            // btnSave
+            // 
+            btnSave.BackColor = SystemColors.ControlLightLight;
+            btnSave.Location = new Point(122, 240);
+            btnSave.Margin = new Padding(3, 2, 3, 2);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(144, 22);
+            btnSave.TabIndex = 10;
+            btnSave.Text = "Add Staff";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.ControlLight;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(lblLogin);
+            panel1.Controls.Add(lblPassword);
+            panel1.Controls.Add(lblEmail);
+            panel1.Controls.Add(tbPassword);
+            panel1.Controls.Add(tbEmail);
+            panel1.Location = new Point(12, 154);
+            panel1.Margin = new Padding(3, 2, 3, 2);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(387, 82);
+            panel1.TabIndex = 29;
+            // 
+            // lblLogin
+            // 
+            lblLogin.AutoSize = true;
+            lblLogin.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblLogin.Location = new Point(3, 0);
+            lblLogin.Name = "lblLogin";
+            lblLogin.Size = new Size(81, 15);
+            lblLogin.TabIndex = 29;
+            lblLogin.Text = "Login Details:";
             // 
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(15, 236);
+            lblPassword.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblPassword.Location = new Point(214, 27);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(70, 20);
-            lblPassword.TabIndex = 5;
+            lblPassword.Size = new Size(59, 15);
+            lblPassword.TabIndex = 8;
             lblPassword.Text = "Password";
             // 
             // lblEmail
             // 
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(15, 192);
+            lblEmail.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblEmail.Location = new Point(3, 27);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(46, 20);
-            lblEmail.TabIndex = 4;
-            lblEmail.Text = "Email";
+            lblEmail.Size = new Size(39, 15);
+            lblEmail.TabIndex = 6;
+            lblEmail.Text = "Email:";
             // 
-            // lblPhoneNumber
+            // tbPassword
             // 
-            lblPhoneNumber.AutoSize = true;
-            lblPhoneNumber.Location = new Point(15, 146);
-            lblPhoneNumber.Name = "lblPhoneNumber";
-            lblPhoneNumber.Size = new Size(104, 20);
-            lblPhoneNumber.TabIndex = 3;
-            lblPhoneNumber.Text = "PhoneNumber";
+            tbPassword.Location = new Point(214, 44);
+            tbPassword.Margin = new Padding(3, 2, 3, 2);
+            tbPassword.Name = "tbPassword";
+            tbPassword.Size = new Size(167, 23);
+            tbPassword.TabIndex = 3;
+            tbPassword.UseSystemPasswordChar = true;
             // 
-            // lblSurname
+            // tbEmail
             // 
-            lblSurname.AutoSize = true;
-            lblSurname.Location = new Point(15, 100);
-            lblSurname.Name = "lblSurname";
-            lblSurname.Size = new Size(67, 20);
-            lblSurname.TabIndex = 2;
-            lblSurname.Text = "Surname";
-            // 
-            // lblForename
-            // 
-            lblForename.AutoSize = true;
-            lblForename.Location = new Point(15, 58);
-            lblForename.Name = "lblForename";
-            lblForename.Size = new Size(75, 20);
-            lblForename.TabIndex = 1;
-            lblForename.Text = "Forename";
-            // 
-            // lblStaffType
-            // 
-            lblStaffType.AutoSize = true;
-            lblStaffType.Location = new Point(15, 16);
-            lblStaffType.Name = "lblStaffType";
-            lblStaffType.Size = new Size(75, 20);
-            lblStaffType.TabIndex = 0;
-            lblStaffType.Text = "Staff Type";
-            // 
-            // tbStaffType
-            // 
-            tbStaffType.Location = new Point(114, 12);
-            tbStaffType.Name = "tbStaffType";
-            tbStaffType.Size = new Size(125, 27);
-            tbStaffType.TabIndex = 12;
+            tbEmail.Location = new Point(3, 44);
+            tbEmail.Margin = new Padding(3, 2, 3, 2);
+            tbEmail.Name = "tbEmail";
+            tbEmail.Size = new Size(167, 23);
+            tbEmail.TabIndex = 0;
             // 
             // StaffAdd
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(498, 397);
-            Controls.Add(pnlStaffAdd);
-            Controls.Add(lblStaffAdd);
+            ClientSize = new Size(684, 340);
+            Controls.Add(panel1);
+            Controls.Add(pnlAddStaff);
             Controls.Add(mnStaffAdd);
+            Controls.Add(btnSave);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = mnStaffAdd;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "StaffAdd";
-            Text = "StaffAdd";
+            Text = "Add Staff";
+            FormClosing += StaffFormClosing;
             mnStaffAdd.ResumeLayout(false);
             mnStaffAdd.PerformLayout();
-            pnlStaffAdd.ResumeLayout(false);
-            pnlStaffAdd.PerformLayout();
+            pnlAddStaff.ResumeLayout(false);
+            pnlAddStaff.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label lblStaffAdd;
         private MenuStrip mnStaffAdd;
-        private ToolStripMenuItem homeToolStripMenuItem;
-        private ToolStripMenuItem viewToolStripMenuItem;
-        private Panel pnlStaffAdd;
-        private TextBox tbPassword;
-        private TextBox tbEmail;
-        private TextBox tbPhoneNumber;
-        private TextBox tbSurname;
-        private TextBox tbForename;
-        private Label lblPassword;
-        private Label lblEmail;
+        private ToolStripMenuItem tsmiStaffHome;
+        private ToolStripMenuItem tsmiQuit;
+        private Panel pnlAddStaff;
+        private Label lblStaff;
+        private Button btnSave;
         private Label lblPhoneNumber;
         private Label lblSurname;
         private Label lblForename;
+        private TextBox tbPhoneNumber;
+        private TextBox tbSurname;
+        private TextBox tbForename;
+        private ComboBox cbStaffType;
         private Label lblStaffType;
-        private Button btnSave;
-        private TextBox tbStaffType;
+        private Panel panel1;
+        private ComboBox comboBox1;
+        private Label label1;
+        private Label label2;
+        private Label lblPassword;
+        private Label label4;
+        private Label lblEmail;
+        private TextBox tbPassword;
+        private TextBox textBox2;
+        private TextBox tbEmail;
+        private Label lblLogin;
     }
 }

@@ -19,16 +19,24 @@ namespace bay_view_hotel_booking_system
             lblNextPage.Text = NextPage;
         }
 
-        private void homeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmiStaffHome_Click(object sender, EventArgs e)
         {
-            StaffForm SHome = new StaffForm();
-            SHome.Show();
             this.Close();
+        }
+
+        private void StaffFormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner?.Show();
+        }
+
+        private void tsmiQuit_Click(object sender, EventArgs e)
+        {
+            this.Owner?.Close();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string StaffName = tbName.Text;
+            string StaffName = tbStaffName.Text;
 
             string query = $"""
                 SELECT 
@@ -36,8 +44,7 @@ namespace bay_view_hotel_booking_system
                     s.StaffType,
                     s.Forename || ' ' || s.Surname AS Name, 
                     s.Email, 
-                    s.PhoneNumber,
-                    s.Password
+                    s.PhoneNumber
                 FROM Staff AS s 
                 WHERE s.Forename || ' ' || s.Surname LIKE '%{StaffName}%'
                     AND s.StaffID != 1;
@@ -47,7 +54,7 @@ namespace bay_view_hotel_booking_system
 
             if (dtStaff.Rows.Count > 0)
             {
-                dgStaff.DataSource = dtStaff;
+                dgvStaff.DataSource = dtStaff;
             }
             else
             {
@@ -64,9 +71,9 @@ namespace bay_view_hotel_booking_system
         {
             string NextPage = lblNextPage.Text;
 
-            if (dgStaff.SelectedRows.Count > 0)
+            if (dgvStaff.SelectedRows.Count > 0)
             {
-                string StaffID = dgStaff.SelectedRows[0].Cells[0].Value.ToString();
+                string StaffID = dgvStaff.SelectedRows[0].Cells[0].Value.ToString();
 
                 if (NextPage == "Edit")
                 {
@@ -98,13 +105,9 @@ namespace bay_view_hotel_booking_system
             }
         }
 
-        private void staffViewToolStripMenuItem_Click(object sender, EventArgs e)
+        private void StaffSearch_VisibleChanged(object sender, EventArgs e)
         {
-            StaffView Sview = new StaffView();
-            Sview.Show();
-            this.Close();
+            dgvStaff.DataSource = null;
         }
-
-
     }
 }
