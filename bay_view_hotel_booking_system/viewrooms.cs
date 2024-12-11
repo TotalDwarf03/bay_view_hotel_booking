@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Metadata.Edm;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,12 +21,6 @@ namespace bay_view_hotel_booking_system
 
         SQLController controller = new SQLController();
 
-        private void homepage_Load(object sender, EventArgs e)
-        {
-            DataTable dtRoom = controller.RunQuery("SELECT * FROM Room");
-            dgRoom.DataSource = dtRoom;
-        }
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -32,8 +28,32 @@ namespace bay_view_hotel_booking_system
 
         private void viewrooms_Load(object sender, EventArgs e)
         {
-            DataTable dtRoom = controller.RunQuery("SELECT * FROM Room");
+            string query = $"""
+                SELECT 
+                    r.RoomID,
+                    r.RoomType,
+                    CAST(rs.RoomStatus AS text) AS RoomStatus,
+                    r.Price,
+                    r.Capacity,
+
+                    CASE
+                        WHEN r.IsDisabled = 1
+                            THEN 'Yes'
+                        ELSE
+                            'No'
+                    END AS IsDisabled
+
+                FROM Room as r
+                JOIN RoomStatus as rs
+                    ON r.RoomStatusID = rs.RoomStatusID
+                """;
+
+            DataTable dtRoom = controller.RunQuery(query);
             dgRoom.DataSource = dtRoom;
+
+            rType.SelectedIndex = 0;
+            cbStatus.SelectedIndex = 0;
+            cbDisabled.SelectedIndex = 0;
         }
 
         private void addRoomToolStripMenuItem_Click(object sender, EventArgs e)
@@ -42,41 +62,80 @@ namespace bay_view_hotel_booking_system
             frm.Owner = this;
 
             frm.Show();
+            this.Hide();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             String RoomType = rType.Text;
-            
+
+            int DisabledRoom = cbDisabled.Text == "Yes" ? 1 : 0;
+
+            string RoomStatus = cbStatus.Text.ToLower();
+
             string query = $"""
+                SELECT RoomStatusID 
+                FROM RoomStatus
+                WHERE RoomStatus = '{RoomStatus}'
+                Limit 1
+                """;
+
+            DataTable dt = controller.RunQuery(query);
+
+            string RoomStatusID = "";
+
+            try
+            {
+                RoomStatusID = dt.Rows[0]["RoomStatusID"].ToString();
+            }
+            catch (Exception ex)
+            {
+                RoomStatusID = "-1";
+            }
+
+            query = $"""
                 SELECT 
-                    RoomID,
-                    RoomType,
-                    RoomStatusID,
-                    Price,
-                    Capacity,
-                    IsDisabled
+                    r.RoomID,
+                    r.RoomType,
+                    CAST(rs.RoomStatus AS text) AS RoomStatus,
+                    r.Price,
+                    r.Capacity,
 
-                FROM Room
+                    CASE
+                        WHEN r.IsDisabled = 1
+                            THEN 'Yes'
+                        ELSE
+                            'No'
+                    END AS IsDisabled
 
-                WHERE RoomType = '{RoomType}'
+                FROM Room as r
+                JOIN RoomStatus as rs
+                    ON r.RoomStatusID = rs.RoomStatusID
+
+                WHERE (RoomType = '{RoomType.ToLower()}' OR '{RoomType}' = 'All')
+                    AND (IsDisabled = {DisabledRoom} OR '{cbDisabled.Text}' = 'Any')
+                    AND (r.RoomStatusID = {RoomStatusID} OR '{RoomStatusID}' = '-1') 
+                    
                 """;
 
             DataTable dtRoom = controller.RunQuery(query);
             dgRoom.DataSource = dtRoom;
         }
 
-        //private void btnLoad_Click(object sender, EventArgs e)
-        //{
-        //SQLController controller = new SQLController();
+        private void lblEdit_Click(object sender, EventArgs e)
+        {
+            if (dgRoom.SelectedRows.Count = 0)
+            {
+                MessageBox.Show(
+                    "You must select a Booking before you can edit it.",
+                    "Warning",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning 
+                );
 
-        //string load = $"""
-        //SELECT * FROM Room
-        //""";
-
-        //DataTable dgRooms = controller.RunQuery(load);
-
-        //}
+                return;
+            }
+        }
     }
 }
 
