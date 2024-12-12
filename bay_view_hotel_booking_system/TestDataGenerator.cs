@@ -16,16 +16,25 @@ namespace bay_view_hotel_booking_system
         SQLController controller = new SQLController();
 
         /// <summary>
-        /// Inserts example customers into the database.
+        /// Insert example customers into the database
         /// </summary>
+        /// <param name="ProgressBar">The loading bar to update with progress.</param>
         /// <returns>The number of records changed by the query.</returns>
-        public int InsertExampleCustomers()
+        public int InsertExampleCustomers(ProgressBar ProgressBar)
         {
+            // Configure Progress Bar
+            ProgressBar.Minimum = 0;
+            ProgressBar.Maximum = 100;
+
+            ProgressBar.Value = 0;
+
             int RecordsChanged = 0;
 
             string query = Resources.example_customers_sql;
 
             RecordsChanged = controller.RunNonQuery(query);
+
+            ProgressBar.Value = 100;
 
             return RecordsChanged;
         }
@@ -33,14 +42,23 @@ namespace bay_view_hotel_booking_system
         /// <summary>
         /// Inserts example staff into the database.
         /// </summary>
+        /// <param name="ProgressBar">The loading bar to update with progress.</param>
         /// <returns>The number of records changed by the query.</returns>
-        public int InsertExampleStaff()
+        public int InsertExampleStaff(ProgressBar ProgressBar)
         {
+            // Configure Progress Bar
+            ProgressBar.Minimum = 0;
+            ProgressBar.Maximum = 100;
+
+            ProgressBar.Value = 0;
+
             int RecordsChanged = 0;
 
             string query = Resources.example_staff_sql;
 
             RecordsChanged = controller.RunNonQuery(query);
+
+            ProgressBar.Value = 100;
 
             return RecordsChanged;
         }
@@ -85,8 +103,9 @@ namespace bay_view_hotel_booking_system
         /// <summary>
         /// Inserts example bookings and customers into the database.
         /// </summary>
+        /// <param name="ProgressBar">The loading bar to update with progress.</param>
         /// <returns>The number of records changed by the query.</returns>
-        public int InsertExampleBookings()
+        public int InsertExampleBookings(ProgressBar ProgressBar)
         {
             int RecordsChanged = 0;
 
@@ -98,8 +117,14 @@ namespace bay_view_hotel_booking_system
             query = "DELETE FROM sqlite_sequence WHERE name = 'Booking'";
             controller.RunNonQuery(query);
 
+            // Configure Progress Bar
+            ProgressBar.Minimum = 0;
+            ProgressBar.Maximum = 500;
+
             for (int i = 0; i < 500; i++)
             {
+                ProgressBar.Value = i;
+
                 // 1. Select a random customer ID
                 int CustomerID = new Random().Next(2, 31);
 
@@ -399,14 +424,17 @@ namespace bay_view_hotel_booking_system
                 RecordsChanged += controller.RunNonQuery(query);
             }
 
+            ProgressBar.Value = 500;
+
             return RecordsChanged;
         }
 
         /// <summary>
         /// Inserts the appropriate payments for each booking in the database.
         /// </summary>
+        /// <param name="ProgressBar">The loading bar to update with progress.</param>
         /// <returns>The number of records changed by the query.</returns>
-        public int InsertPaymentsForBookings()
+        public int InsertPaymentsForBookings(ProgressBar ProgressBar)
         {
             int RecordsChanged = 0;
 
@@ -423,10 +451,18 @@ namespace bay_view_hotel_booking_system
             query = "SELECT * FROM Booking";
             DataTable bookings = controller.RunQuery(query);
 
+            // Configure Progress Bar
+            ProgressBar.Minimum = 0;
+            ProgressBar.Maximum = bookings.Rows.Count;
+
+            ProgressBar.Value = 0;
+
             // 2. Iterate through each booking
 
             foreach (DataRow row in bookings.Rows)
             {
+                ProgressBar.Value++;
+
                 // 3. Get Booking Information
 
                 DateTime StartDate = Convert.ToDateTime(row["StartDate"]);

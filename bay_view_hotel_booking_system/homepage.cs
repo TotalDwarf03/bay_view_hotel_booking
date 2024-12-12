@@ -81,104 +81,10 @@ namespace bay_view_hotel_booking_system
 
             if (result == DialogResult.Yes)
             {
-                TestDataGenerator TestData = new TestDataGenerator();
+                InsertTestData frm = new InsertTestData();
+                frm.Owner = this;
 
-                // Insert Customers
-                int CustomersInserted = TestData.InsertExampleCustomers();
-
-                if (CustomersInserted == 0)
-                {
-                    MessageBox.Show(
-                        "Error inserting example customers. Please try again.",
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
-
-                    return;
-                }
-
-                MessageBox.Show(
-                    "Example customers inserted successfully.",
-                    "Success",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
-
-                // Insert Staff
-                int StaffInserted = TestData.InsertExampleStaff();
-
-                if (StaffInserted == 0)
-                {
-                    MessageBox.Show(
-                        "Error inserting example staff. Please try again.",
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
-
-                    return;
-                }
-
-                MessageBox.Show(
-                    "Example staff inserted successfully.",
-                    "Success",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
-
-                // Insert Bookings
-                int BookingsInserted = TestData.InsertExampleBookings();
-
-                if (BookingsInserted == 0)
-                {
-                    MessageBox.Show(
-                        "Error inserting example bookings. Please try again.",
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
-
-                    return;
-                }
-
-                MessageBox.Show(
-                    "Example bookings inserted successfully.",
-                    "Success",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
-
-                // Insert Payments
-                int PaymentsInserted = TestData.InsertPaymentsForBookings();
-
-                if (PaymentsInserted == 0)
-                {
-                    MessageBox.Show(
-                        "Error inserting example payments. Please try again.",
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
-
-                    return;
-                }
-
-                MessageBox.Show(
-                    "Example payments inserted successfully.",
-                    "Success",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
-
-                // Success Message
-
-                MessageBox.Show(
-                    "Test data inserted successfully.",
-                    "Success",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
+                frm.Show();
             }
         }
     }
