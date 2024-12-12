@@ -148,6 +148,37 @@ namespace bay_view_hotel_booking_system
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
+
+                // Insert Payments
+                int PaymentsInserted = TestData.InsertPaymentsForBookings();
+
+                if (PaymentsInserted == 0)
+                {
+                    MessageBox.Show(
+                        "Error inserting example payments. Please try again.",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+
+                    return;
+                }
+
+                MessageBox.Show(
+                    "Example payments inserted successfully.",
+                    "Success",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+
+                // Success Message
+
+                MessageBox.Show(
+                    "Test data inserted successfully.",
+                    "Success",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
             }
         }
     }

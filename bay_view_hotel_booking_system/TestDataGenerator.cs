@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
+using System.Numerics;
 
 namespace bay_view_hotel_booking_system
 {
@@ -407,20 +408,201 @@ namespace bay_view_hotel_booking_system
         /// <returns>The number of records changed by the query.</returns>
         public int InsertPaymentsForBookings()
         {
-            // TODO
+            int RecordsChanged = 0;
+
+            // Remove any existing payments
+            string query = "DELETE FROM Payment";
+            controller.RunNonQuery(query);
+
+            // Reset the PaymentID sequence
+            query = "DELETE FROM sqlite_sequence WHERE name = 'Payment'";
+            controller.RunNonQuery(query);
 
             // 1. Get all bookings
 
+            query = "SELECT * FROM Booking";
+            DataTable bookings = controller.RunQuery(query);
+
             // 2. Iterate through each booking
 
-            // 3. If the booking is paid, insert a payment for the TotalPrice
+            foreach (DataRow row in bookings.Rows)
+            {
+                // 3. Get Booking Information
 
-            // 4. If the booking has been cancelled and the cancellation date is within 21 days of the StartDate, insert a payment for 15% of the TotalPrice
+                DateTime StartDate = Convert.ToDateTime(row["StartDate"]);
+                DateTime EndDate = Convert.ToDateTime(row["EndDate"]);
+                int BookingLength = (Convert.ToDateTime(row["EndDate"]) - Convert.ToDateTime(row["StartDate"])).Days;
 
-            // 5. If the booking has been updated, insert a payment or refund for an amount equal to the difference between the TotalPrice and the new TotalPrice
-            // Old total price will need some thought
+                int Breakfast = Convert.ToInt32(row["Breakfast"]);
+                int RoomID = Convert.ToInt32(row["RoomID"]);
 
-            return 0;
+                // Get Room Type and Price Per Night
+                query = $"SELECT RoomType, Price FROM Room WHERE RoomID = {RoomID}";
+                DataTable dt = controller.RunQuery(query);
+
+                string RoomType = dt.Rows[0]["RoomType"].ToString();
+                double PricePerNight = Convert.ToDouble(dt.Rows[0]["Price"]);
+
+                // 4. If the booking is paid, insert a payment for the TotalPrice
+
+                if (Convert.ToInt32(row["IsPaid"]) == 1)
+                {
+                    query = $"""
+                        INSERT INTO Payment (
+                            BookingID,
+                            Amount
+                        )
+                        VALUES (
+                            {row["BookingID"]},
+                            {row["Price"]}
+                        )
+                        """;
+
+                    RecordsChanged += controller.RunNonQuery(query);
+                }
+
+                // 5. If the booking has been cancelled and the cancellation date is within 21 days of the StartDate, insert a payment for 15% of the TotalPrice
+
+                if (Convert.ToInt32(row["IsCancelled"]) == 1)
+                {
+                    DateTime CancellationDate = Convert.ToDateTime(row["CancellationDate"]);
+
+                    if ((CancellationDate - StartDate).Days <= 21)
+                    {
+                        decimal CancellationFee = Convert.ToDecimal(row["Price"]) * 0.15m;
+
+                        query = $"""
+                            INSERT INTO Payment (
+                                BookingID,
+                                Amount
+                            )
+                            VALUES (
+                                {row["BookingID"]},
+                                {CancellationFee}
+                            )
+                            """;
+
+                        RecordsChanged += controller.RunNonQuery(query);
+                    }
+                }
+
+                // 6. If the booking has been updated, insert a payment or refund for an amount equal to the difference between the TotalPrice and the new TotalPrice
+
+                // When updating a booking, the user can either:
+                // Change the room
+                // Change the booking length (increase or decrease)
+                // Add or remove breakfast
+                // Change the number of guests (only affects double rooms on pricing, therefore not modelled in test data.)
+
+                // If the booking is not paid or hasn't been updated, no need to insert a payment or refund
+                if (Convert.ToInt32(row["IsPaid"]) == 0 | row["LastUpdatedBy"].ToString() == "")
+                {
+                    continue;
+                }
+
+                int ChangeType = new Random().Next(1, 5);
+
+                // ChangeType 1: Change the room
+                if (ChangeType == 1)
+                {
+                    query = $"""
+                        SELECT * FROM Room WHERE RoomType != '{RoomType}'
+                        """;
+
+                    dt = controller.RunQuery(query);
+
+                    int RoomIndex = new Random().Next(0, dt.Rows.Count);
+                    RoomID = Convert.ToInt32(dt.Rows[RoomIndex]["RoomID"]);
+                }
+                // ChangeType 2: Increase the booking length (Can only increase if the booking length is more than 1 day as you can't have a booking for less than 1 day)
+                else if (ChangeType == 2 | BookingLength == 1)
+                {
+                    int DateToExtend = new Random().Next(0, 2);
+
+                    if (DateToExtend == 0)
+                    {
+                        // Move the StartDate back by 1 to 7 days
+                        StartDate = StartDate.AddDays(-(new Random().Next(1, 8)));
+                    }
+                    else
+                    {
+                        // Move the EndDate forward by 1 to 7 days
+                        EndDate = EndDate.AddDays(new Random().Next(1, 8));
+                    }
+                }
+
+                // ChangeType 3: Decrease the booking length
+                else if (ChangeType == 3 & BookingLength != 1)
+                {
+                    int DateToShorten = new Random().Next(0, 2);
+
+                    if (DateToShorten == 0 & (EndDate - StartDate).Days != 1)
+                    {
+                        // Move the StartDate forward by 1 to length of booking days
+                        StartDate = StartDate.AddDays((new Random().Next(1, (EndDate - StartDate).Days - 1)));
+                    }
+                    else
+                    {
+                        // Move the EndDate back by 1 to length of booking days
+                        EndDate = EndDate.AddDays(-(new Random().Next(1, (EndDate - StartDate).Days - 1)));
+                    }
+                }
+
+                // ChangeType 4: Change breakfast
+                else if (ChangeType == 4 )
+                {
+                    Breakfast = Breakfast == 1 ? 0 : 1;
+                }
+
+                // Calculate the old TotalPrice
+                int NumberOfGuests = Convert.ToInt32(row["NoAdults"]) + Convert.ToInt32(row["NoChildren"]);
+
+                int NumberOfNights = (EndDate - StartDate).Days;
+
+                // Get Old Price Per Night
+                query = $"SELECT Price FROM Room WHERE RoomID = {RoomID}";
+                dt = controller.RunQuery(query);
+
+                decimal OldPricePerNight = Convert.ToDecimal(dt.Rows[0]["Price"]);
+
+                if (Breakfast == 1)
+                {
+                    decimal BreakfastCost = GetBreakfastCost(NumberOfGuests, RoomType);
+
+                    OldPricePerNight += BreakfastCost;
+                }
+
+                decimal OldTotalPrice = OldPricePerNight * NumberOfNights;
+
+                // Add discount if booking is for one person in a double room (£20 off)
+                if (NumberOfGuests == 1 & RoomType == "Double")
+                {
+                    OldTotalPrice -= 20;
+                }
+
+                // 7. Calculate the difference between the old and new TotalPrice
+
+                decimal NewTotalPrice = Convert.ToDecimal(row["Price"]);
+
+                decimal PriceDifference = NewTotalPrice - OldTotalPrice;
+
+                // 8. Insert a payment or refund for the PriceDifference
+
+                query = $"""
+                    INSERT INTO Payment (
+                        BookingID,
+                        Amount
+                    )
+                    VALUES (
+                        {row["BookingID"]},
+                        {PriceDifference}
+                    )
+                    """;
+
+                RecordsChanged += controller.RunNonQuery(query);
+            }
+
+            return RecordsChanged;
         }
     }
 }
