@@ -188,7 +188,7 @@ namespace bay_view_hotel_booking_system
 
             if (dgvStaff.SelectedRows.Count > 0)
             {
-                StaffID = Convert.ToInt32(dgvCustomer.SelectedRows[0].Cells[0].Value);
+                StaffID = Convert.ToInt32(dgvStaff.SelectedRows[0].Cells[0].Value);
             }
 
             DateTime StartDate = dtpStartDate.Value.Date;

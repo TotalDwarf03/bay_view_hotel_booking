@@ -375,10 +375,10 @@ namespace bay_view_hotel_booking_system
 
                 // If Booking not updated or cancelled, set StaffIDs and Dates to NULL
                 string StaffIDUpdateStr = StaffIDUpdate == 0 ? "NULL" : StaffIDUpdate.ToString();
-                string LastUpdatedDateStr = LastUpdatedDate == new DateTime(1900, 01, 01) ? "NULL" : LastUpdatedDate.ToString("yyyy-MM-dd");
+                string LastUpdatedDateStr = LastUpdatedDate == new DateTime(1900, 01, 01) ? "NULL" : $"'{LastUpdatedDate.ToString("yyyy-MM-dd")}'";
 
                 string StaffIDCancelStr = StaffIDCancel == 0 ? "NULL" : StaffIDCancel.ToString();
-                string CancellationDateStr = CancellationDate == new DateTime(1900, 01, 01) ? "NULL" : CancellationDate.ToString("yyyy-MM-dd");
+                string CancellationDateStr = CancellationDate == new DateTime(1900, 01, 01) ? "NULL" : $"'{CancellationDate.ToString("yyyy-MM-dd")}'";
 
                 query = $"""
                     INSERT INTO Booking (
@@ -415,9 +415,9 @@ namespace bay_view_hotel_booking_system
                         {StaffIDCreate},
                         '{DateCreated.ToString("yyyy-MM-dd")}',
                         {StaffIDUpdateStr},
-                        '{LastUpdatedDateStr}',
+                        {LastUpdatedDateStr},
                         {StaffIDCancelStr},
-                        '{CancellationDateStr}'
+                        {CancellationDateStr}
                     )
                     """;
 
