@@ -170,7 +170,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1385, 371);
+            ClientSize = new Size(684, 371);
             Controls.Add(btnSortIncome);
             Controls.Add(btnSortDate);
             Controls.Add(dgvMonthlyBreakdown);
