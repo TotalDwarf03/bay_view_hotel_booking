@@ -66,9 +66,10 @@ namespace bay_view_hotel_booking_system
             // pbLogo
             // 
             pbLogo.Image = Properties.Resources.bay_view_logo;
-            pbLogo.Location = new Point(3, 3);
+            pbLogo.Location = new Point(3, 2);
+            pbLogo.Margin = new Padding(3, 2, 3, 2);
             pbLogo.Name = "pbLogo";
-            pbLogo.Size = new Size(125, 61);
+            pbLogo.Size = new Size(109, 46);
             pbLogo.SizeMode = PictureBoxSizeMode.Zoom;
             pbLogo.TabIndex = 0;
             pbLogo.TabStop = false;
@@ -76,18 +77,19 @@ namespace bay_view_hotel_booking_system
             // lblTitle
             // 
             lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
-            lblTitle.Location = new Point(134, 3);
+            lblTitle.Location = new Point(117, 2);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(123, 61);
+            lblTitle.Size = new Size(108, 46);
             lblTitle.TabIndex = 1;
             lblTitle.Text = "Home";
             lblTitle.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // btnUser
             // 
-            btnUser.Location = new Point(672, 3);
+            btnUser.Location = new Point(588, 2);
+            btnUser.Margin = new Padding(3, 2, 3, 2);
             btnUser.Name = "btnUser";
-            btnUser.Size = new Size(83, 61);
+            btnUser.Size = new Size(73, 46);
             btnUser.TabIndex = 2;
             btnUser.Text = "Logout";
             btnUser.UseVisualStyleBackColor = true;
@@ -96,9 +98,9 @@ namespace bay_view_hotel_booking_system
             // lblUser
             // 
             lblUser.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblUser.Location = new Point(359, 2);
+            lblUser.Location = new Point(314, 2);
             lblUser.Name = "lblUser";
-            lblUser.Size = new Size(224, 46);
+            lblUser.Size = new Size(196, 34);
             lblUser.TabIndex = 3;
             lblUser.Text = "Logged in as: \r\nUser Type: ";
             lblUser.TextAlign = ContentAlignment.MiddleLeft;
@@ -111,10 +113,10 @@ namespace bay_view_hotel_booking_system
             pnlHeader.Controls.Add(btnUser);
             pnlHeader.Controls.Add(lblUser);
             pnlHeader.Controls.Add(lblTitle);
-            pnlHeader.Location = new Point(9, 9);
+            pnlHeader.Location = new Point(8, 7);
             pnlHeader.Margin = new Padding(0);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Size = new Size(760, 71);
+            pnlHeader.Size = new Size(665, 54);
             pnlHeader.TabIndex = 4;
             // 
             // fpnlBooking
@@ -124,9 +126,10 @@ namespace bay_view_hotel_booking_system
             fpnlBooking.Controls.Add(lblBookingHeader);
             fpnlBooking.Controls.Add(lblBookingDesc);
             fpnlBooking.ImeMode = ImeMode.NoControl;
-            fpnlBooking.Location = new Point(9, 93);
+            fpnlBooking.Location = new Point(8, 70);
+            fpnlBooking.Margin = new Padding(3, 2, 3, 2);
             fpnlBooking.Name = "fpnlBooking";
-            fpnlBooking.Size = new Size(349, 85);
+            fpnlBooking.Size = new Size(306, 64);
             fpnlBooking.TabIndex = 5;
             fpnlBooking.Click += fpnlBooking_Click;
             // 
@@ -137,7 +140,7 @@ namespace bay_view_hotel_booking_system
             lblBookingHeader.ImageAlign = ContentAlignment.TopLeft;
             lblBookingHeader.Location = new Point(3, 0);
             lblBookingHeader.Name = "lblBookingHeader";
-            lblBookingHeader.Size = new Size(221, 28);
+            lblBookingHeader.Size = new Size(180, 21);
             lblBookingHeader.TabIndex = 0;
             lblBookingHeader.Text = "Booking Management";
             lblBookingHeader.Click += fpnlBooking_Click;
@@ -145,9 +148,9 @@ namespace bay_view_hotel_booking_system
             // lblBookingDesc
             // 
             lblBookingDesc.AutoSize = true;
-            lblBookingDesc.Location = new Point(3, 28);
+            lblBookingDesc.Location = new Point(3, 21);
             lblBookingDesc.Name = "lblBookingDesc";
-            lblBookingDesc.Size = new Size(319, 20);
+            lblBookingDesc.Size = new Size(252, 15);
             lblBookingDesc.TabIndex = 1;
             lblBookingDesc.Text = "View Availability, Create and Update Bookings.";
             lblBookingDesc.Click += fpnlBooking_Click;
@@ -158,9 +161,10 @@ namespace bay_view_hotel_booking_system
             fpnlCustomer.BorderStyle = BorderStyle.FixedSingle;
             fpnlCustomer.Controls.Add(lblCustomerHeader);
             fpnlCustomer.Controls.Add(lblCustomerDesc);
-            fpnlCustomer.Location = new Point(9, 183);
+            fpnlCustomer.Location = new Point(8, 137);
+            fpnlCustomer.Margin = new Padding(3, 2, 3, 2);
             fpnlCustomer.Name = "fpnlCustomer";
-            fpnlCustomer.Size = new Size(349, 85);
+            fpnlCustomer.Size = new Size(306, 64);
             fpnlCustomer.TabIndex = 6;
             fpnlCustomer.Click += fpnlCustomer_Click;
             // 
@@ -171,7 +175,7 @@ namespace bay_view_hotel_booking_system
             lblCustomerHeader.ImageAlign = ContentAlignment.TopLeft;
             lblCustomerHeader.Location = new Point(3, 0);
             lblCustomerHeader.Name = "lblCustomerHeader";
-            lblCustomerHeader.Size = new Size(233, 28);
+            lblCustomerHeader.Size = new Size(189, 21);
             lblCustomerHeader.TabIndex = 0;
             lblCustomerHeader.Text = "Customer Management";
             lblCustomerHeader.Click += fpnlCustomer_Click;
@@ -179,9 +183,9 @@ namespace bay_view_hotel_booking_system
             // lblCustomerDesc
             // 
             lblCustomerDesc.AutoSize = true;
-            lblCustomerDesc.Location = new Point(3, 28);
+            lblCustomerDesc.Location = new Point(3, 21);
             lblCustomerDesc.Name = "lblCustomerDesc";
-            lblCustomerDesc.Size = new Size(285, 20);
+            lblCustomerDesc.Size = new Size(226, 15);
             lblCustomerDesc.TabIndex = 1;
             lblCustomerDesc.Text = "View, Add, Update and Delete Customers.";
             lblCustomerDesc.Click += fpnlCustomer_Click;
@@ -192,9 +196,10 @@ namespace bay_view_hotel_booking_system
             fpnlRoom.BorderStyle = BorderStyle.FixedSingle;
             fpnlRoom.Controls.Add(lblRoomHeading);
             fpnlRoom.Controls.Add(lblRoomDesc);
-            fpnlRoom.Location = new Point(421, 93);
+            fpnlRoom.Location = new Point(368, 70);
+            fpnlRoom.Margin = new Padding(3, 2, 3, 2);
             fpnlRoom.Name = "fpnlRoom";
-            fpnlRoom.Size = new Size(349, 85);
+            fpnlRoom.Size = new Size(306, 64);
             fpnlRoom.TabIndex = 7;
             fpnlRoom.Visible = false;
             // 
@@ -205,16 +210,16 @@ namespace bay_view_hotel_booking_system
             lblRoomHeading.ImageAlign = ContentAlignment.TopLeft;
             lblRoomHeading.Location = new Point(3, 0);
             lblRoomHeading.Name = "lblRoomHeading";
-            lblRoomHeading.Size = new Size(198, 28);
+            lblRoomHeading.Size = new Size(161, 21);
             lblRoomHeading.TabIndex = 0;
             lblRoomHeading.Text = "Room Management";
             // 
             // lblRoomDesc
             // 
             lblRoomDesc.AutoSize = true;
-            lblRoomDesc.Location = new Point(3, 28);
+            lblRoomDesc.Location = new Point(3, 21);
             lblRoomDesc.Name = "lblRoomDesc";
-            lblRoomDesc.Size = new Size(211, 20);
+            lblRoomDesc.Size = new Size(167, 15);
             lblRoomDesc.TabIndex = 1;
             lblRoomDesc.Text = "View, Add and Update Rooms.";
             // 
@@ -224,9 +229,10 @@ namespace bay_view_hotel_booking_system
             fpnlPayment.BorderStyle = BorderStyle.FixedSingle;
             fpnlPayment.Controls.Add(lblPaymentHeader);
             fpnlPayment.Controls.Add(lblPaymentDesc);
-            fpnlPayment.Location = new Point(9, 273);
+            fpnlPayment.Location = new Point(8, 205);
+            fpnlPayment.Margin = new Padding(3, 2, 3, 2);
             fpnlPayment.Name = "fpnlPayment";
-            fpnlPayment.Size = new Size(349, 85);
+            fpnlPayment.Size = new Size(306, 64);
             fpnlPayment.TabIndex = 8;
             fpnlPayment.Click += fpnlPayment_Click;
             // 
@@ -237,7 +243,7 @@ namespace bay_view_hotel_booking_system
             lblPaymentHeader.ImageAlign = ContentAlignment.TopLeft;
             lblPaymentHeader.Location = new Point(3, 0);
             lblPaymentHeader.Name = "lblPaymentHeader";
-            lblPaymentHeader.Size = new Size(226, 28);
+            lblPaymentHeader.Size = new Size(184, 21);
             lblPaymentHeader.TabIndex = 0;
             lblPaymentHeader.Text = "Payment Management";
             lblPaymentHeader.Click += fpnlPayment_Click;
@@ -245,9 +251,9 @@ namespace bay_view_hotel_booking_system
             // lblPaymentDesc
             // 
             lblPaymentDesc.AutoSize = true;
-            lblPaymentDesc.Location = new Point(3, 28);
+            lblPaymentDesc.Location = new Point(3, 21);
             lblPaymentDesc.Name = "lblPaymentDesc";
-            lblPaymentDesc.Size = new Size(291, 20);
+            lblPaymentDesc.Size = new Size(234, 15);
             lblPaymentDesc.TabIndex = 1;
             lblPaymentDesc.Text = "Mark Bookings as Paid or Cancel Bookings.";
             lblPaymentDesc.Click += fpnlPayment_Click;
@@ -258,9 +264,10 @@ namespace bay_view_hotel_booking_system
             fpnlStaff.BorderStyle = BorderStyle.FixedSingle;
             fpnlStaff.Controls.Add(lblStaffHeader);
             fpnlStaff.Controls.Add(lblStaffDesc);
-            fpnlStaff.Location = new Point(421, 185);
+            fpnlStaff.Location = new Point(368, 139);
+            fpnlStaff.Margin = new Padding(3, 2, 3, 2);
             fpnlStaff.Name = "fpnlStaff";
-            fpnlStaff.Size = new Size(349, 85);
+            fpnlStaff.Size = new Size(306, 64);
             fpnlStaff.TabIndex = 8;
             fpnlStaff.Visible = false;
             fpnlStaff.Click += fpnlStaff_Click;
@@ -272,7 +279,7 @@ namespace bay_view_hotel_booking_system
             lblStaffHeader.ImageAlign = ContentAlignment.TopLeft;
             lblStaffHeader.Location = new Point(3, 0);
             lblStaffHeader.Name = "lblStaffHeader";
-            lblStaffHeader.Size = new Size(189, 28);
+            lblStaffHeader.Size = new Size(152, 21);
             lblStaffHeader.TabIndex = 0;
             lblStaffHeader.Text = "Staff Management";
             lblStaffHeader.Click += fpnlStaff_Click;
@@ -280,9 +287,9 @@ namespace bay_view_hotel_booking_system
             // lblStaffDesc
             // 
             lblStaffDesc.AutoSize = true;
-            lblStaffDesc.Location = new Point(3, 28);
+            lblStaffDesc.Location = new Point(3, 21);
             lblStaffDesc.Name = "lblStaffDesc";
-            lblStaffDesc.Size = new Size(247, 20);
+            lblStaffDesc.Size = new Size(193, 15);
             lblStaffDesc.TabIndex = 1;
             lblStaffDesc.Text = "View, Add, Update and Delete Staff.";
             lblStaffDesc.Click += fpnlStaff_Click;
@@ -293,11 +300,13 @@ namespace bay_view_hotel_booking_system
             fpnlReporting.BorderStyle = BorderStyle.FixedSingle;
             fpnlReporting.Controls.Add(lblReportingHeader);
             fpnlReporting.Controls.Add(lblReportingDesc);
-            fpnlReporting.Location = new Point(421, 275);
+            fpnlReporting.Location = new Point(368, 206);
+            fpnlReporting.Margin = new Padding(3, 2, 3, 2);
             fpnlReporting.Name = "fpnlReporting";
-            fpnlReporting.Size = new Size(349, 85);
+            fpnlReporting.Size = new Size(306, 64);
             fpnlReporting.TabIndex = 9;
             fpnlReporting.Visible = false;
+            fpnlReporting.Click += fpnlReporting_Click;
             // 
             // lblReportingHeader
             // 
@@ -306,26 +315,29 @@ namespace bay_view_hotel_booking_system
             lblReportingHeader.ImageAlign = ContentAlignment.TopLeft;
             lblReportingHeader.Location = new Point(3, 0);
             lblReportingHeader.Name = "lblReportingHeader";
-            lblReportingHeader.Size = new Size(191, 28);
+            lblReportingHeader.Size = new Size(153, 21);
             lblReportingHeader.TabIndex = 0;
             lblReportingHeader.Text = "Reporting Services";
+            lblReportingHeader.Click += fpnlReporting_Click;
             // 
             // lblReportingDesc
             // 
             lblReportingDesc.AutoSize = true;
-            lblReportingDesc.Location = new Point(3, 28);
+            lblReportingDesc.Location = new Point(3, 21);
             lblReportingDesc.Name = "lblReportingDesc";
-            lblReportingDesc.Size = new Size(287, 40);
+            lblReportingDesc.Size = new Size(294, 30);
             lblReportingDesc.TabIndex = 1;
             lblReportingDesc.Text = "View Income, Time Occupancy and Room Occupancy Reports.";
+            lblReportingDesc.Click += fpnlReporting_Click;
             // 
             // btnInsertTestData
             // 
             btnInsertTestData.BackColor = Color.LightCoral;
             btnInsertTestData.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnInsertTestData.Location = new Point(225, 381);
+            btnInsertTestData.Location = new Point(197, 286);
+            btnInsertTestData.Margin = new Padding(3, 2, 3, 2);
             btnInsertTestData.Name = "btnInsertTestData";
-            btnInsertTestData.Size = new Size(349, 60);
+            btnInsertTestData.Size = new Size(305, 45);
             btnInsertTestData.TabIndex = 10;
             btnInsertTestData.Text = "Insert Test Data";
             btnInsertTestData.UseVisualStyleBackColor = false;
@@ -333,9 +345,9 @@ namespace bay_view_hotel_booking_system
             // 
             // homepage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(782, 453);
+            ClientSize = new Size(684, 340);
             Controls.Add(btnInsertTestData);
             Controls.Add(fpnlBooking);
             Controls.Add(pnlHeader);
@@ -346,7 +358,6 @@ namespace bay_view_hotel_booking_system
             Controls.Add(fpnlCustomer);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
             Name = "homepage";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Home";
