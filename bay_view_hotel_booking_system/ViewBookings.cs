@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -14,11 +15,29 @@ namespace bay_view_hotel_booking_system
 {
     public partial class ViewBookings : Form
     {
+        TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
         SQLController controller = new SQLController();
 
         public ViewBookings()
         {
             InitializeComponent();
+
+            // Populate Room Type Combo Box
+            string query = $"""
+                SELECT DISTINCT
+                    RoomType
+                FROM Room
+                """;
+
+            DataTable dt = controller.RunQuery(query);
+
+            cbRoomType.Items.Clear();
+            cbRoomType.Items.Add("Any");
+
+            foreach (DataRow row in dt.Rows)
+            {
+                cbRoomType.Items.Add(ti.ToTitleCase(row["RoomType"].ToString()));
+            }
 
             SetDefaultValues();
         }
@@ -38,6 +57,27 @@ namespace bay_view_hotel_booking_system
             this.Owner?.Close();
         }
 
+        private void PopulateRoomComboBox(string RoomType)
+        {
+            string query = $"""
+                SELECT
+                    RoomID
+                FROM Room
+                WHERE '{RoomType.ToLower()}' IN (RoomType, 'any')
+                """;
+
+            DataTable dt = controller.RunQuery(query);
+
+            cbRoom.Items.Clear();
+
+            cbRoom.Items.Add("Any");
+
+            foreach (DataRow row in dt.Rows)
+            {
+                cbRoom.Items.Add(row["RoomID"].ToString());
+            }
+        }
+
         private void SetDefaultValues()
         {
             dgvCustomer.DataSource = null;
@@ -49,6 +89,8 @@ namespace bay_view_hotel_booking_system
 
             cbPaid.SelectedIndex = 0;
             cbCancelled.SelectedIndex = 0;
+            cbRoomType.SelectedIndex = 0;
+            cbRoom.SelectedIndex = 0;
         }
 
         private void btnCustomerSearch_Click(object sender, EventArgs e)
@@ -155,10 +197,14 @@ namespace bay_view_hotel_booking_system
             string Cancelled = cbCancelled.Text;
             string Paid = cbPaid.Text;
 
+            string RoomType = cbRoomType.Text;
+            string Room = cbRoom.Text;
+
             string query = $"""
                 SELECT
                     b.BookingID,
                     c.Forename || ' ' || c.Surname AS Customer,
+                    b.RoomID,
                     r.RoomType,
                     b.StartDate,
                     b.EndDate,
@@ -203,9 +249,9 @@ namespace bay_view_hotel_booking_system
                 WHERE
                     -- Booking within selected date range
                     (
-                        '{StartDate.ToString("yyyy-MM-dd")}' BETWEEN b.StartDate AND b.EndDate
+                        b.StartDate BETWEEN '{StartDate.ToString("yyyy-MM-dd")}' AND '{EndDate.ToString("yyyy-MM-dd")}'
                         OR
-                        '{EndDate.ToString("yyyy-MM-dd")}' BETWEEN b.StartDate and b.EndDate
+                        b.EndDate BETWEEN '{StartDate.ToString("yyyy-MM-dd")}' AND '{EndDate.ToString("yyyy-MM-dd")}'
                     )
 
                     -- Booking is for selected customer
@@ -235,6 +281,8 @@ namespace bay_view_hotel_booking_system
                                         END,
                                         'Any'
                                     )
+                    AND '{Room}' IN (CAST(b.RoomID AS TEXT), 'Any')
+                    AND '{RoomType.ToLower()}' IN (r.RoomType, 'any')
                 """;
 
             DataTable dtBooking = controller.RunQuery(query);
@@ -259,6 +307,24 @@ namespace bay_view_hotel_booking_system
             for (int i = 0; i < dgvBooking.Columns.Count; i++)
             {
                 dgvBooking.AutoResizeColumn(i, DataGridViewAutoSizeColumnMode.AllCells);
+            }
+        }
+
+        private void cbRoomType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PopulateRoomComboBox(cbRoomType.Text);
+        }
+
+        private void dgvBooking_DataSourceChanged(object sender, EventArgs e)
+        {
+            if (dgvBooking.Rows.Count > 0)
+            {
+                lblTotalBookings.Visible = true;
+                lblTotalBookings.Text = $"{dgvBooking.Rows.Count} Bookings Found.";
+            }
+            else
+            {
+                lblTotalBookings.Visible = false;
             }
         }
     }

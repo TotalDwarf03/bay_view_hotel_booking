@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
 namespace bay_view_hotel_booking_system
 {
@@ -67,6 +68,24 @@ namespace bay_view_hotel_booking_system
 
             frm.Show();
             this.Hide();
+        }
+
+        private void btnInsertTestData_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "You are about to insert test data into the database. This will overwrite any existing data and should only be used for testing purposes. Do you want to continue?",
+                "Confirm",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                InsertTestData frm = new InsertTestData();
+                frm.Owner = this;
+
+                frm.Show();
+            }
         }
     }
 }
