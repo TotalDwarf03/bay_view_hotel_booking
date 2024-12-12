@@ -386,5 +386,27 @@ namespace bay_view_hotel_booking_system
 
             return RecordsChanged;
         }
+
+        /// <summary>
+        /// Inserts the appropriate payments for each booking in the database.
+        /// </summary>
+        /// <returns>The number of records changed by the query.</returns>
+        public int InsertPaymentsForBookings()
+        {
+            // TODO
+
+            // 1. Get all bookings
+
+            // 2. Iterate through each booking
+
+            // 3. If the booking is paid, insert a payment for the TotalPrice
+
+            // 4. If the booking has been cancelled and the cancellation date is within 21 days of the StartDate, insert a payment for 15% of the TotalPrice
+
+            // 5. If the booking has been updated, insert a payment or refund for an amount equal to the difference between the TotalPrice and the new TotalPrice
+            // Old total price will need some thought
+
+            return 0;
+        }
     }
 }
