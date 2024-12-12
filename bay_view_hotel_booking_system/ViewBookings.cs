@@ -249,9 +249,9 @@ namespace bay_view_hotel_booking_system
                 WHERE
                     -- Booking within selected date range
                     (
-                        '{StartDate.ToString("yyyy-MM-dd")}' BETWEEN b.StartDate AND b.EndDate
+                        b.StartDate BETWEEN '{StartDate.ToString("yyyy-MM-dd")}' AND '{EndDate.ToString("yyyy-MM-dd")}'
                         OR
-                        '{EndDate.ToString("yyyy-MM-dd")}' BETWEEN b.StartDate and b.EndDate
+                        b.EndDate BETWEEN '{StartDate.ToString("yyyy-MM-dd")}' AND '{EndDate.ToString("yyyy-MM-dd")}'
                     )
 
                     -- Booking is for selected customer
@@ -285,8 +285,6 @@ namespace bay_view_hotel_booking_system
                     AND '{RoomType.ToLower()}' IN (r.RoomType, 'any')
                 """;
 
-            Debug.WriteLine(query);
-
             DataTable dtBooking = controller.RunQuery(query);
 
             if (dtBooking.Rows.Count == 0)
@@ -315,6 +313,19 @@ namespace bay_view_hotel_booking_system
         private void cbRoomType_SelectedIndexChanged(object sender, EventArgs e)
         {
             PopulateRoomComboBox(cbRoomType.Text);
+        }
+
+        private void dgvBooking_DataSourceChanged(object sender, EventArgs e)
+        {
+            if (dgvBooking.Rows.Count > 0)
+            {
+                lblTotalBookings.Visible = true;
+                lblTotalBookings.Text = $"{dgvBooking.Rows.Count} Bookings Found.";
+            }
+            else
+            {
+                lblTotalBookings.Visible = false;
+            }
         }
     }
 }

@@ -124,11 +124,19 @@ namespace bay_view_hotel_booking_system
                 								COUNT(b.BookingID)
                 							FROM Booking AS b
                 							WHERE
-                								(
-                									'{StartDate.ToString("yyyy-MM-dd")}' BETWEEN b.StartDate AND b.EndDate
-                									OR
-                									'{EndDate.ToString("yyyy-MM-dd")}' BETWEEN b.StartDate AND b.EndDate
-                								)
+                                                (
+                								    (
+                									    b.StartDate BETWEEN '{StartDate.ToString("yyyy-MM-dd")}' AND '{EndDate.ToString("yyyy-MM-dd")}'
+                									    OR
+                									    b.EndDate BETWEEN '{StartDate.ToString("yyyy-MM-dd")}' AND '{EndDate.ToString("yyyy-MM-dd")}'
+                								    )
+                                                    OR
+                                                    (
+                                                        '{StartDate.ToString("yyyy-MM-dd")}' BETWEEN b.StartDate AND b.EndDate
+                                                        OR
+                                                        '{EndDate.ToString("yyyy-MM-dd")}' BETWEEN b.StartDate AND b.EndDate
+                                                    )
+                                                )
                 								AND b.RoomID = r.RoomID
                                                 AND b.IsCancelled = 0
                 					)

@@ -143,10 +143,18 @@ namespace bay_view_hotel_booking_system
                 							            FROM Booking AS b
                 							            WHERE
                 								            (
-                									            '{StartDate.ToString("yyyy-MM-dd")}' BETWEEN b.StartDate AND b.EndDate
-                									            OR
-                									            '{EndDate.ToString("yyyy-MM-dd")}' BETWEEN b.StartDate AND b.EndDate
-                								            )
+                								                (
+                									                b.StartDate BETWEEN '{StartDate.ToString("yyyy-MM-dd")}' AND '{EndDate.ToString("yyyy-MM-dd")}'
+                									                OR
+                									                b.EndDate BETWEEN '{StartDate.ToString("yyyy-MM-dd")}' AND '{EndDate.ToString("yyyy-MM-dd")}'
+                								                )
+                                                                OR
+                                                                (
+                                                                    '{StartDate.ToString("yyyy-MM-dd")}' BETWEEN b.StartDate AND b.EndDate
+                                                                    OR
+                                                                    '{EndDate.ToString("yyyy-MM-dd")}' BETWEEN b.StartDate AND b.EndDate
+                                                                )
+                                                            )
                 								            AND b.RoomID = r.RoomID
                                                             AND b.IsCancelled = 0
                 					            )
@@ -169,7 +177,13 @@ namespace bay_view_hotel_booking_system
 
                 // 3b. Select a random room from the available rooms
 
-                int RoomIndex = new Random().Next(1, rooms.Rows.Count);
+                if (rooms.Rows.Count == 0)
+                {
+                    // If there are no available rooms, skip this booking
+                    continue;
+                }
+
+                int RoomIndex = new Random().Next(0, rooms.Rows.Count);
                 int RoomID = Convert.ToInt32(rooms.Rows[RoomIndex]["RoomID"]);
                 string RoomType = rooms.Rows[RoomIndex]["RoomType"].ToString();
                 double Price = Convert.ToDouble(rooms.Rows[RoomIndex]["Price"]);
@@ -375,9 +389,9 @@ namespace bay_view_hotel_booking_system
                         {StaffIDCreate},
                         '{DateCreated.ToString("yyyy-MM-dd")}',
                         {StaffIDUpdateStr},
-                        {LastUpdatedDateStr},
+                        '{LastUpdatedDateStr}',
                         {StaffIDCancelStr},
-                        {CancellationDateStr}
+                        '{CancellationDateStr}'
                     )
                     """;
 

@@ -57,6 +57,7 @@
             lblCustomerHeader = new Label();
             tbCustomerName = new TextBox();
             dgvBooking = new DataGridView();
+            lblTotalBookings = new Label();
             MenuStrip.SuspendLayout();
             pnlSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStaff).BeginInit();
@@ -360,12 +361,26 @@
             dgvBooking.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvBooking.Size = new Size(893, 253);
             dgvBooking.TabIndex = 4;
+            dgvBooking.DataSourceChanged += dgvBooking_DataSourceChanged;
+            // 
+            // lblTotalBookings
+            // 
+            lblTotalBookings.AutoSize = true;
+            lblTotalBookings.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblTotalBookings.Location = new Point(797, 454);
+            lblTotalBookings.Name = "lblTotalBookings";
+            lblTotalBookings.Size = new Size(105, 15);
+            lblTotalBookings.TabIndex = 17;
+            lblTotalBookings.Text = "x Bookings Found";
+            lblTotalBookings.TextAlign = ContentAlignment.MiddleRight;
+            lblTotalBookings.Visible = false;
             // 
             // ViewBookings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(915, 461);
+            ClientSize = new Size(915, 478);
+            Controls.Add(lblTotalBookings);
             Controls.Add(dgvBooking);
             Controls.Add(pnlSearch);
             Controls.Add(MenuStrip);
@@ -416,5 +431,6 @@
         private Label lblRoomType;
         private ComboBox cbRoom;
         private Label lblRoom;
+        private Label lblTotalBookings;
     }
 }
