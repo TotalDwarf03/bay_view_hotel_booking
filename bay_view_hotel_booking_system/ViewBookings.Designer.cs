@@ -33,6 +33,10 @@
             tsmiAvailability = new ToolStripMenuItem();
             tsmiQuit = new ToolStripMenuItem();
             pnlSearch = new Panel();
+            cbRoomType = new ComboBox();
+            lblRoomType = new Label();
+            cbRoom = new ComboBox();
+            lblRoom = new Label();
             btnStaffSearch = new Button();
             lblStaff = new Label();
             tbStaff = new TextBox();
@@ -67,7 +71,7 @@
             MenuStrip.Location = new Point(0, 0);
             MenuStrip.Name = "MenuStrip";
             MenuStrip.Padding = new Padding(5, 2, 0, 2);
-            MenuStrip.Size = new Size(784, 24);
+            MenuStrip.Size = new Size(915, 24);
             MenuStrip.TabIndex = 2;
             MenuStrip.Text = "menuStrip1";
             // 
@@ -89,6 +93,10 @@
             // 
             pnlSearch.BackColor = SystemColors.ControlLight;
             pnlSearch.BorderStyle = BorderStyle.FixedSingle;
+            pnlSearch.Controls.Add(cbRoomType);
+            pnlSearch.Controls.Add(lblRoomType);
+            pnlSearch.Controls.Add(cbRoom);
+            pnlSearch.Controls.Add(lblRoom);
             pnlSearch.Controls.Add(btnStaffSearch);
             pnlSearch.Controls.Add(lblStaff);
             pnlSearch.Controls.Add(tbStaff);
@@ -110,8 +118,45 @@
             pnlSearch.Controls.Add(tbCustomerName);
             pnlSearch.Location = new Point(12, 27);
             pnlSearch.Name = "pnlSearch";
-            pnlSearch.Size = new Size(760, 163);
+            pnlSearch.Size = new Size(893, 163);
             pnlSearch.TabIndex = 3;
+            // 
+            // cbRoomType
+            // 
+            cbRoomType.FormattingEnabled = true;
+            cbRoomType.Location = new Point(761, 88);
+            cbRoomType.Name = "cbRoomType";
+            cbRoomType.Size = new Size(126, 23);
+            cbRoomType.TabIndex = 49;
+            cbRoomType.SelectedIndexChanged += cbRoomType_SelectedIndexChanged;
+            // 
+            // lblRoomType
+            // 
+            lblRoomType.AutoSize = true;
+            lblRoomType.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblRoomType.Location = new Point(761, 71);
+            lblRoomType.Name = "lblRoomType";
+            lblRoomType.Size = new Size(72, 15);
+            lblRoomType.TabIndex = 48;
+            lblRoomType.Text = "Room Type:";
+            // 
+            // cbRoom
+            // 
+            cbRoom.FormattingEnabled = true;
+            cbRoom.Location = new Point(761, 46);
+            cbRoom.Name = "cbRoom";
+            cbRoom.Size = new Size(126, 23);
+            cbRoom.TabIndex = 47;
+            // 
+            // lblRoom
+            // 
+            lblRoom.AutoSize = true;
+            lblRoom.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblRoom.Location = new Point(761, 29);
+            lblRoom.Name = "lblRoom";
+            lblRoom.Size = new Size(56, 15);
+            lblRoom.TabIndex = 46;
+            lblRoom.Text = "RoomID:";
             // 
             // btnStaffSearch
             // 
@@ -159,7 +204,7 @@
             // btnClear
             // 
             btnClear.BackColor = SystemColors.ControlLightLight;
-            btnClear.Location = new Point(632, 130);
+            btnClear.Location = new Point(764, 130);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(123, 23);
             btnClear.TabIndex = 5;
@@ -252,7 +297,7 @@
             // btnSearch
             // 
             btnSearch.BackColor = SystemColors.ControlLightLight;
-            btnSearch.Location = new Point(497, 130);
+            btnSearch.Location = new Point(629, 130);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(126, 23);
             btnSearch.TabIndex = 6;
@@ -313,14 +358,14 @@
             dgvBooking.Name = "dgvBooking";
             dgvBooking.ReadOnly = true;
             dgvBooking.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvBooking.Size = new Size(760, 253);
+            dgvBooking.Size = new Size(893, 253);
             dgvBooking.TabIndex = 4;
             // 
             // ViewBookings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(784, 461);
+            ClientSize = new Size(915, 461);
             Controls.Add(dgvBooking);
             Controls.Add(pnlSearch);
             Controls.Add(MenuStrip);
@@ -367,5 +412,9 @@
         private Label lblStaff;
         private TextBox tbStaff;
         private DataGridView dgvStaff;
+        private ComboBox cbRoomType;
+        private Label lblRoomType;
+        private ComboBox cbRoom;
+        private Label lblRoom;
     }
 }
