@@ -88,6 +88,34 @@ namespace bay_view_hotel_booking_system
             dgvMonthlyBreakdown.Columns["IncomeRaw"].Visible = false;
 
             btnSortDate_Click(sender, e);
+            UpdateChart(dt);
+        }
+
+        private void UpdateChart(DataTable dt)
+        {
+            // Clear the chart
+            IncomeChart.Series.Clear();
+            // Add a new series
+            IncomeChart.Series.Add("Income");
+            // Set the chart type
+            IncomeChart.Series["Income"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            // Set the x-axis to be the DateGroup
+            IncomeChart.Series["Income"].XValueMember = "Date";
+            // Set the y-axis to be the Income
+            IncomeChart.Series["Income"].YValueMembers = "IncomeRaw";
+            // Set the data source
+            IncomeChart.DataSource = dt;
+            // Set the x-axis to be a date
+            IncomeChart.ChartAreas[0].AxisX.LabelStyle.Format = "MMM yyyy";
+            // Set the y-axis to be a currency
+            IncomeChart.ChartAreas[0].AxisY.LabelStyle.Format = "C";
+            // Set the title
+            IncomeChart.Titles.Clear();
+            IncomeChart.Titles.Add("Income Breakdown");
+            // Set the title font
+            IncomeChart.Titles[0].Font = new Font("Arial", 16, FontStyle.Bold);
+            // Set the title alignment
+            IncomeChart.Titles[0].Alignment = ContentAlignment.TopCenter;
         }
 
         private void btnSortDate_Click(object sender, EventArgs e)

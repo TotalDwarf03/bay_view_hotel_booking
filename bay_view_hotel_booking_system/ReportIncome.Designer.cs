@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportIncome));
             pnlHeader = new Panel();
             lblEndDate = new Label();
@@ -40,9 +42,11 @@
             dgvMonthlyBreakdown = new DataGridView();
             btnSortDate = new Button();
             btnSortIncome = new Button();
+            IncomeChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvMonthlyBreakdown).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)IncomeChart).BeginInit();
             SuspendLayout();
             // 
             // pnlHeader
@@ -58,14 +62,14 @@
             pnlHeader.Location = new Point(9, 9);
             pnlHeader.Margin = new Padding(0);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Size = new Size(665, 54);
+            pnlHeader.Size = new Size(1163, 54);
             pnlHeader.TabIndex = 17;
             // 
             // lblEndDate
             // 
             lblEndDate.AutoSize = true;
             lblEndDate.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblEndDate.Location = new Point(510, 8);
+            lblEndDate.Location = new Point(1008, 8);
             lblEndDate.Name = "lblEndDate";
             lblEndDate.Size = new Size(60, 15);
             lblEndDate.TabIndex = 21;
@@ -84,7 +88,7 @@
             // 
             // dtpEndDate
             // 
-            dtpEndDate.Location = new Point(510, 25);
+            dtpEndDate.Location = new Point(1008, 25);
             dtpEndDate.Margin = new Padding(3, 2, 3, 2);
             dtpEndDate.Name = "dtpEndDate";
             dtpEndDate.Size = new Size(150, 23);
@@ -106,7 +110,7 @@
             // 
             lblStartDate.AutoSize = true;
             lblStartDate.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblStartDate.Location = new Point(354, 8);
+            lblStartDate.Location = new Point(852, 8);
             lblStartDate.Name = "lblStartDate";
             lblStartDate.Size = new Size(71, 15);
             lblStartDate.TabIndex = 19;
@@ -114,7 +118,7 @@
             // 
             // dtpStartDate
             // 
-            dtpStartDate.Location = new Point(354, 25);
+            dtpStartDate.Location = new Point(852, 25);
             dtpStartDate.Margin = new Padding(3, 2, 3, 2);
             dtpStartDate.Name = "dtpStartDate";
             dtpStartDate.Size = new Size(150, 23);
@@ -124,7 +128,7 @@
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(592, 337);
+            btnBack.Location = new Point(1090, 447);
             btnBack.Margin = new Padding(3, 2, 3, 2);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(82, 23);
@@ -141,12 +145,12 @@
             dgvMonthlyBreakdown.Name = "dgvMonthlyBreakdown";
             dgvMonthlyBreakdown.ReadOnly = true;
             dgvMonthlyBreakdown.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMonthlyBreakdown.Size = new Size(253, 266);
+            dgvMonthlyBreakdown.Size = new Size(253, 376);
             dgvMonthlyBreakdown.TabIndex = 18;
             // 
             // btnSortDate
             // 
-            btnSortDate.Location = new Point(9, 337);
+            btnSortDate.Location = new Point(9, 447);
             btnSortDate.Margin = new Padding(3, 2, 3, 2);
             btnSortDate.Name = "btnSortDate";
             btnSortDate.Size = new Size(120, 23);
@@ -157,7 +161,7 @@
             // 
             // btnSortIncome
             // 
-            btnSortIncome.Location = new Point(142, 337);
+            btnSortIncome.Location = new Point(142, 447);
             btnSortIncome.Margin = new Padding(3, 2, 3, 2);
             btnSortIncome.Name = "btnSortIncome";
             btnSortIncome.Size = new Size(120, 23);
@@ -166,11 +170,25 @@
             btnSortIncome.UseVisualStyleBackColor = true;
             btnSortIncome.Click += btnSortIncome_Click;
             // 
+            // IncomeChart
+            // 
+            chartArea1.Name = "ChartArea1";
+            IncomeChart.ChartAreas.Add(chartArea1);
+            IncomeChart.Location = new Point(268, 66);
+            IncomeChart.Name = "IncomeChart";
+            series1.ChartArea = "ChartArea1";
+            series1.Name = "Series1";
+            IncomeChart.Series.Add(series1);
+            IncomeChart.Size = new Size(904, 376);
+            IncomeChart.TabIndex = 21;
+            IncomeChart.Text = "chart1";
+            // 
             // ReportIncome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(684, 371);
+            ClientSize = new Size(1184, 481);
+            Controls.Add(IncomeChart);
             Controls.Add(btnSortIncome);
             Controls.Add(btnSortDate);
             Controls.Add(dgvMonthlyBreakdown);
@@ -186,6 +204,7 @@
             pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvMonthlyBreakdown).EndInit();
+            ((System.ComponentModel.ISupportInitialize)IncomeChart).EndInit();
             ResumeLayout(false);
         }
 
@@ -202,5 +221,6 @@
         private DataGridView dgvMonthlyBreakdown;
         private Button btnSortDate;
         private Button btnSortIncome;
+        private System.Windows.Forms.DataVisualization.Charting.Chart IncomeChart;
     }
 }
