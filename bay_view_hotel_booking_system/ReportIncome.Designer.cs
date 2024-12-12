@@ -30,8 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportIncome));
             pnlHeader = new Panel();
+            lblEndDate = new Label();
             pbLogo = new PictureBox();
+            dtpEndDate = new DateTimePicker();
             lblTitle = new Label();
+            lblStartDate = new Label();
+            dtpStartDate = new DateTimePicker();
             btnBack = new Button();
             pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
@@ -41,14 +45,27 @@
             // 
             pnlHeader.BackColor = SystemColors.Info;
             pnlHeader.BorderStyle = BorderStyle.FixedSingle;
+            pnlHeader.Controls.Add(lblEndDate);
             pnlHeader.Controls.Add(pbLogo);
+            pnlHeader.Controls.Add(dtpEndDate);
             pnlHeader.Controls.Add(lblTitle);
-            pnlHeader.Controls.Add(btnBack);
+            pnlHeader.Controls.Add(lblStartDate);
+            pnlHeader.Controls.Add(dtpStartDate);
             pnlHeader.Location = new Point(9, 9);
             pnlHeader.Margin = new Padding(0);
             pnlHeader.Name = "pnlHeader";
             pnlHeader.Size = new Size(665, 54);
             pnlHeader.TabIndex = 17;
+            // 
+            // lblEndDate
+            // 
+            lblEndDate.AutoSize = true;
+            lblEndDate.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblEndDate.Location = new Point(510, 8);
+            lblEndDate.Name = "lblEndDate";
+            lblEndDate.Size = new Size(60, 15);
+            lblEndDate.TabIndex = 21;
+            lblEndDate.Text = "End Date:";
             // 
             // pbLogo
             // 
@@ -61,6 +78,15 @@
             pbLogo.TabIndex = 0;
             pbLogo.TabStop = false;
             // 
+            // dtpEndDate
+            // 
+            dtpEndDate.Location = new Point(510, 25);
+            dtpEndDate.Margin = new Padding(3, 2, 3, 2);
+            dtpEndDate.Name = "dtpEndDate";
+            dtpEndDate.Size = new Size(150, 23);
+            dtpEndDate.TabIndex = 20;
+            dtpEndDate.Value = new DateTime(1900, 1, 1, 0, 0, 0, 0);
+            // 
             // lblTitle
             // 
             lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
@@ -71,12 +97,31 @@
             lblTitle.Text = "Income";
             lblTitle.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // lblStartDate
+            // 
+            lblStartDate.AutoSize = true;
+            lblStartDate.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblStartDate.Location = new Point(354, 8);
+            lblStartDate.Name = "lblStartDate";
+            lblStartDate.Size = new Size(71, 15);
+            lblStartDate.TabIndex = 19;
+            lblStartDate.Text = "Start Date: ";
+            // 
+            // dtpStartDate
+            // 
+            dtpStartDate.Location = new Point(354, 25);
+            dtpStartDate.Margin = new Padding(3, 2, 3, 2);
+            dtpStartDate.Name = "dtpStartDate";
+            dtpStartDate.Size = new Size(150, 23);
+            dtpStartDate.TabIndex = 18;
+            dtpStartDate.Value = new DateTime(1900, 1, 1, 0, 0, 0, 0);
+            // 
             // btnBack
             // 
-            btnBack.Location = new Point(578, 2);
+            btnBack.Location = new Point(592, 306);
             btnBack.Margin = new Padding(3, 2, 3, 2);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(82, 46);
+            btnBack.Size = new Size(82, 23);
             btnBack.TabIndex = 1;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = true;
@@ -88,6 +133,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(684, 340);
             Controls.Add(pnlHeader);
+            Controls.Add(btnBack);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ReportIncome";
@@ -95,6 +141,7 @@
             Text = "Income Report";
             FormClosing += Report_FormClosing;
             pnlHeader.ResumeLayout(false);
+            pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
             ResumeLayout(false);
         }
@@ -105,5 +152,9 @@
         private PictureBox pbLogo;
         private Label lblTitle;
         private Button btnBack;
+        private Label lblEndDate;
+        private DateTimePicker dtpEndDate;
+        private Label lblStartDate;
+        private DateTimePicker dtpStartDate;
     }
 }
