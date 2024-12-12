@@ -37,8 +37,12 @@
             lblStartDate = new Label();
             dtpStartDate = new DateTimePicker();
             btnBack = new Button();
+            dgvMonthlyBreakdown = new DataGridView();
+            btnSortDate = new Button();
+            btnSortIncome = new Button();
             pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvMonthlyBreakdown).BeginInit();
             SuspendLayout();
             // 
             // pnlHeader
@@ -86,6 +90,7 @@
             dtpEndDate.Size = new Size(150, 23);
             dtpEndDate.TabIndex = 20;
             dtpEndDate.Value = new DateTime(1900, 1, 1, 0, 0, 0, 0);
+            dtpEndDate.ValueChanged += ParametersChanged;
             // 
             // lblTitle
             // 
@@ -115,10 +120,11 @@
             dtpStartDate.Size = new Size(150, 23);
             dtpStartDate.TabIndex = 18;
             dtpStartDate.Value = new DateTime(1900, 1, 1, 0, 0, 0, 0);
+            dtpStartDate.ValueChanged += ParametersChanged;
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(592, 306);
+            btnBack.Location = new Point(592, 337);
             btnBack.Margin = new Padding(3, 2, 3, 2);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(82, 23);
@@ -127,11 +133,47 @@
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
             // 
+            // dgvMonthlyBreakdown
+            // 
+            dgvMonthlyBreakdown.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvMonthlyBreakdown.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMonthlyBreakdown.Location = new Point(9, 66);
+            dgvMonthlyBreakdown.Name = "dgvMonthlyBreakdown";
+            dgvMonthlyBreakdown.ReadOnly = true;
+            dgvMonthlyBreakdown.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvMonthlyBreakdown.Size = new Size(253, 266);
+            dgvMonthlyBreakdown.TabIndex = 18;
+            // 
+            // btnSortDate
+            // 
+            btnSortDate.Location = new Point(9, 337);
+            btnSortDate.Margin = new Padding(3, 2, 3, 2);
+            btnSortDate.Name = "btnSortDate";
+            btnSortDate.Size = new Size(120, 23);
+            btnSortDate.TabIndex = 19;
+            btnSortDate.Text = "Sort by Date";
+            btnSortDate.UseVisualStyleBackColor = true;
+            btnSortDate.Click += btnSortDate_Click;
+            // 
+            // btnSortIncome
+            // 
+            btnSortIncome.Location = new Point(142, 337);
+            btnSortIncome.Margin = new Padding(3, 2, 3, 2);
+            btnSortIncome.Name = "btnSortIncome";
+            btnSortIncome.Size = new Size(120, 23);
+            btnSortIncome.TabIndex = 20;
+            btnSortIncome.Text = "Sort by Income";
+            btnSortIncome.UseVisualStyleBackColor = true;
+            btnSortIncome.Click += btnSortIncome_Click;
+            // 
             // ReportIncome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(684, 340);
+            ClientSize = new Size(1385, 371);
+            Controls.Add(btnSortIncome);
+            Controls.Add(btnSortDate);
+            Controls.Add(dgvMonthlyBreakdown);
             Controls.Add(pnlHeader);
             Controls.Add(btnBack);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -143,6 +185,7 @@
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvMonthlyBreakdown).EndInit();
             ResumeLayout(false);
         }
 
@@ -156,5 +199,8 @@
         private DateTimePicker dtpEndDate;
         private Label lblStartDate;
         private DateTimePicker dtpStartDate;
+        private DataGridView dgvMonthlyBreakdown;
+        private Button btnSortDate;
+        private Button btnSortIncome;
     }
 }
