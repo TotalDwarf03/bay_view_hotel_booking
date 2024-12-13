@@ -37,14 +37,13 @@
             label6 = new Label();
             txtPrice = new TextBox();
             txtCapacity = new TextBox();
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
             btnAdd = new Button();
             button2 = new Button();
             menuStrip1 = new MenuStrip();
             viewRoomsToolStripMenuItem = new ToolStripMenuItem();
             returnToHomepageToolStripMenuItem = new ToolStripMenuItem();
             cbStatus = new ComboBox();
+            cbDisabled = new ComboBox();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -83,11 +82,11 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(54, 130);
+            label3.Location = new Point(70, 130);
             label3.Name = "label3";
-            label3.Size = new Size(91, 15);
+            label3.Size = new Size(77, 15);
             label3.TabIndex = 3;
-            label3.Text = "Room Status ID:";
+            label3.Text = "Room Status:";
             label3.Click += label3_Click;
             // 
             // label4
@@ -111,11 +110,11 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(84, 233);
+            label6.Location = new Point(60, 234);
             label6.Name = "label6";
-            label6.Size = new Size(63, 15);
+            label6.Size = new Size(90, 15);
             label6.TabIndex = 7;
-            label6.Text = "IsDisabled:";
+            label6.Text = "Disabled Room:";
             // 
             // txtPrice
             // 
@@ -132,31 +131,6 @@
             txtCapacity.Name = "txtCapacity";
             txtCapacity.Size = new Size(133, 23);
             txtCapacity.TabIndex = 9;
-            // 
-            // radioButton1
-            // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(169, 232);
-            radioButton1.Margin = new Padding(3, 2, 3, 2);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(47, 19);
-            radioButton1.TabIndex = 11;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "True";
-            radioButton1.UseVisualStyleBackColor = true;
-            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
-            // 
-            // radioButton2
-            // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(229, 232);
-            radioButton2.Margin = new Padding(3, 2, 3, 2);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(51, 19);
-            radioButton2.TabIndex = 12;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "False";
-            radioButton2.UseVisualStyleBackColor = true;
             // 
             // btnAdd
             // 
@@ -219,16 +193,24 @@
             cbStatus.Size = new Size(133, 23);
             cbStatus.TabIndex = 16;
             // 
+            // cbDisabled
+            // 
+            cbDisabled.FormattingEnabled = true;
+            cbDisabled.Items.AddRange(new object[] { "Yes", "No" });
+            cbDisabled.Location = new Point(160, 234);
+            cbDisabled.Name = "cbDisabled";
+            cbDisabled.Size = new Size(133, 23);
+            cbDisabled.TabIndex = 17;
+            // 
             // addroom
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(546, 338);
+            Controls.Add(cbDisabled);
             Controls.Add(cbStatus);
             Controls.Add(button2);
             Controls.Add(btnAdd);
-            Controls.Add(radioButton2);
-            Controls.Add(radioButton1);
             Controls.Add(txtCapacity);
             Controls.Add(txtPrice);
             Controls.Add(label6);
@@ -260,13 +242,12 @@
         private Label label6;
         private TextBox txtPrice;
         private TextBox txtCapacity;
-        private RadioButton radioButton1;
-        private RadioButton radioButton2;
         private Button btnAdd;
         private Button button2;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem viewRoomsToolStripMenuItem;
         private ToolStripMenuItem returnToHomepageToolStripMenuItem;
         private ComboBox cbStatus;
+        private ComboBox cbDisabled;
     }
 }

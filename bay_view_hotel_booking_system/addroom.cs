@@ -45,7 +45,7 @@ namespace bay_view_hotel_booking_system
         {
             SQLController controller = new SQLController();
 
-            int disabled = radioButton1.Checked ? 1 : 0;
+            int disabled = cbDisabled.Text == "Yes" ? 1 : 0;
 
             string roomstatus = cbStatus.Text.ToLower();
 
@@ -92,8 +92,7 @@ namespace bay_view_hotel_booking_system
                 cbStatus.Items.Clear();
                 txtPrice.Clear();
                 txtCapacity.Clear();
-                radioButton1.Checked = false;
-                radioButton2.Checked = false;
+                cbDisabled.Items.Clear();
             }
             else
             {
@@ -108,16 +107,25 @@ namespace bay_view_hotel_booking_system
 
         private void button2_Click(object sender, EventArgs e)
         {
+            viewrooms frm = Application.OpenForms["viewrooms"] as viewrooms;
+            if (frm != null)
+            {
+                frm.Show();
+            }
+
             this.Close();
         }
 
         private void viewRoomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            viewrooms frm = new viewrooms();
-            frm.Owner = this;
+           
+            viewrooms frm = Application.OpenForms["viewrooms"] as viewrooms;
+            if (frm != null)
+            {
+                frm.Show();
+            }
 
-            frm.Show();
-            this.Hide();
+            this.Close();
         }
     }
 }
