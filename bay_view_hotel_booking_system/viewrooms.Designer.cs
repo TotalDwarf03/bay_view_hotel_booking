@@ -41,6 +41,7 @@
             cbDisabled = new ComboBox();
             lblStatus = new Label();
             cbStatus = new ComboBox();
+            btnRefresh = new Button();
             ((System.ComponentModel.ISupportInitialize)dgRoom).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -50,7 +51,9 @@
             dgRoom.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgRoom.Location = new Point(10, 118);
             dgRoom.Margin = new Padding(3, 2, 3, 2);
+            dgRoom.MultiSelect = false;
             dgRoom.Name = "dgRoom";
+            dgRoom.ReadOnly = true;
             dgRoom.RowHeadersWidth = 51;
             dgRoom.Size = new Size(663, 184);
             dgRoom.TabIndex = 0;
@@ -173,11 +176,22 @@
             cbStatus.Size = new Size(150, 23);
             cbStatus.TabIndex = 10;
             // 
+            // btnRefresh
+            // 
+            btnRefresh.Location = new Point(98, 70);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(82, 22);
+            btnRefresh.TabIndex = 11;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
             // viewrooms
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(684, 340);
+            Controls.Add(btnRefresh);
             Controls.Add(cbStatus);
             Controls.Add(cbDisabled);
             Controls.Add(lblEdit);
@@ -216,5 +230,6 @@
         private ComboBox cbDisabled;
         private Label lblStatus;
         private ComboBox cbStatus;
+        private Button btnRefresh;
     }
 }
