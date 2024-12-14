@@ -497,32 +497,7 @@ namespace bay_view_hotel_booking_system
                     RecordsChanged += controller.RunNonQuery(query);
                 }
 
-                // 5. If the booking has been cancelled and the cancellation date is within 21 days of the StartDate, insert a payment for 15% of the TotalPrice
-
-                if (Convert.ToInt32(row["IsCancelled"]) == 1)
-                {
-                    DateTime CancellationDate = Convert.ToDateTime(row["CancellationDate"]);
-
-                    if ((CancellationDate - StartDate).Days <= 21)
-                    {
-                        decimal CancellationFee = Convert.ToDecimal(row["Price"]) * 0.15m;
-
-                        query = $"""
-                            INSERT INTO Payment (
-                                BookingID,
-                                Amount
-                            )
-                            VALUES (
-                                {row["BookingID"]},
-                                {CancellationFee}
-                            )
-                            """;
-
-                        RecordsChanged += controller.RunNonQuery(query);
-                    }
-                }
-
-                // 6. If the booking has been updated, insert a payment or refund for an amount equal to the difference between the TotalPrice and the new TotalPrice
+                // 5. If the booking has been updated, insert a payment or refund for an amount equal to the difference between the TotalPrice and the new TotalPrice
 
                 // When updating a booking, the user can either:
                 // Change the room
@@ -616,13 +591,13 @@ namespace bay_view_hotel_booking_system
                     OldTotalPrice -= 20;
                 }
 
-                // 7. Calculate the difference between the old and new TotalPrice
+                // 6. Calculate the difference between the old and new TotalPrice
 
                 decimal NewTotalPrice = Convert.ToDecimal(row["Price"]);
 
                 decimal PriceDifference = NewTotalPrice - OldTotalPrice;
 
-                // 8. Insert a payment or refund for the PriceDifference
+                // 7. Insert a payment or refund for the PriceDifference
 
                 query = $"""
                     INSERT INTO Payment (
@@ -636,6 +611,31 @@ namespace bay_view_hotel_booking_system
                     """;
 
                 RecordsChanged += controller.RunNonQuery(query);
+
+                // 8. If the booking has been cancelled and the cancellation date is within 21 days of the StartDate, insert a payment for 15% of the TotalPrice
+
+                if (Convert.ToInt32(row["IsCancelled"]) == 1)
+                {
+                    DateTime CancellationDate = Convert.ToDateTime(row["CancellationDate"]);
+
+                    if ((CancellationDate - StartDate).Days <= 21)
+                    {
+                        decimal CancellationFee = Convert.ToDecimal(row["Price"]) * 0.15m;
+
+                        query = $"""
+                            INSERT INTO Payment (
+                                BookingID,
+                                Amount
+                            )
+                            VALUES (
+                                {row["BookingID"]},
+                                {CancellationFee}
+                            )
+                            """;
+
+                        RecordsChanged += controller.RunNonQuery(query);
+                    }
+                }
             }
 
             return RecordsChanged;

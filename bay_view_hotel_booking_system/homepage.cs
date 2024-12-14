@@ -70,6 +70,15 @@ namespace bay_view_hotel_booking_system
             this.Hide();
         }
 
+        private void fpnlReporting_Click(object sender, EventArgs e)
+        {
+            ReportingServices frm = new ReportingServices();
+            frm.Owner = this;
+
+            frm.Show();
+            this.Hide();
+        }
+
         private void btnInsertTestData_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
