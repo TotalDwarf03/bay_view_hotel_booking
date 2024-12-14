@@ -40,6 +40,7 @@
             btnSortDate = new Button();
             dgvMonthlyBreakdown = new DataGridView();
             pnlHeader = new Panel();
+            btnDefault = new Button();
             lblEndDate = new Label();
             pbLogo = new PictureBox();
             dtpEndDate = new DateTimePicker();
@@ -48,7 +49,6 @@
             dtpStartDate = new DateTimePicker();
             btnBack = new Button();
             ProportionChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            btnDefault = new Button();
             ((System.ComponentModel.ISupportInitialize)BookingChart).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvMonthlyBreakdown).BeginInit();
             pnlHeader.SuspendLayout();
@@ -67,6 +67,7 @@
             BookingChart.Legends.Add(legend1);
             BookingChart.Location = new Point(222, 67);
             BookingChart.Name = "BookingChart";
+            BookingChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
@@ -124,6 +125,17 @@
             pnlHeader.Name = "pnlHeader";
             pnlHeader.Size = new Size(1163, 54);
             pnlHeader.TabIndex = 23;
+            // 
+            // btnDefault
+            // 
+            btnDefault.Location = new Point(1076, 25);
+            btnDefault.Margin = new Padding(3, 2, 3, 2);
+            btnDefault.Name = "btnDefault";
+            btnDefault.Size = new Size(82, 23);
+            btnDefault.TabIndex = 29;
+            btnDefault.Text = "Set Default";
+            btnDefault.UseVisualStyleBackColor = true;
+            btnDefault.Click += btnDefault_Click;
             // 
             // lblEndDate
             // 
@@ -209,6 +221,7 @@
             ProportionChart.Legends.Add(legend2);
             ProportionChart.Location = new Point(1020, 67);
             ProportionChart.Name = "ProportionChart";
+            ProportionChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Series1";
@@ -216,17 +229,6 @@
             ProportionChart.Size = new Size(154, 376);
             ProportionChart.TabIndex = 28;
             ProportionChart.Text = "chart1";
-            // 
-            // btnDefault
-            // 
-            btnDefault.Location = new Point(1076, 25);
-            btnDefault.Margin = new Padding(3, 2, 3, 2);
-            btnDefault.Name = "btnDefault";
-            btnDefault.Size = new Size(82, 23);
-            btnDefault.TabIndex = 29;
-            btnDefault.Text = "Set Default";
-            btnDefault.UseVisualStyleBackColor = true;
-            btnDefault.Click += btnDefault_Click;
             // 
             // ReportTimeOccupancy
             // 

@@ -189,6 +189,7 @@
             IncomeChart.ChartAreas.Add(chartArea1);
             IncomeChart.Location = new Point(268, 66);
             IncomeChart.Name = "IncomeChart";
+            IncomeChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             series1.ChartArea = "ChartArea1";
             series1.Name = "Series1";
             IncomeChart.Series.Add(series1);

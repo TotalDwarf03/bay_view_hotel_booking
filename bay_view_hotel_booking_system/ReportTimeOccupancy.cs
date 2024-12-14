@@ -163,8 +163,8 @@ namespace bay_view_hotel_booking_system
             ProportionChart.Series["Proportion"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
 
             // Add points to the Pie Chart
-            ProportionChart.Series["Proportion"].Points.AddXY("Active Bookings", dt.Compute("SUM(ActiveBookings)", ""));
             ProportionChart.Series["Proportion"].Points.AddXY("Cancelled Bookings", dt.Compute("SUM(CancelledBookings)", ""));
+            ProportionChart.Series["Proportion"].Points.AddXY("Active Bookings", dt.Compute("SUM(ActiveBookings)", ""));
 
             // Set the label to show the percentage
             ProportionChart.Series["Proportion"].Label = "#PERCENT{P1}";
