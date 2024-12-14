@@ -21,6 +21,21 @@ namespace bay_view_hotel_booking_system
         {
             InitializeComponent();
 
+            SetDefaultDateRange();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Report_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner?.Show();
+        }
+
+        private void SetDefaultDateRange()
+        {
             string query = """
                 SELECT
                     MIN(StartDate) AS StartDate,
@@ -32,16 +47,6 @@ namespace bay_view_hotel_booking_system
 
             dtpStartDate.Value = Convert.ToDateTime(dt.Rows[0]["StartDate"].ToString());
             dtpEndDate.Value = Convert.ToDateTime(dt.Rows[0]["EndDate"].ToString());
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Report_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            this.Owner?.Show();
         }
 
         private void ParametersChanged(object sender, EventArgs e)
@@ -126,6 +131,11 @@ namespace bay_view_hotel_booking_system
         private void btnSortIncome_Click(object sender, EventArgs e)
         {
             dgvMonthlyBreakdown.Sort(dgvMonthlyBreakdown.Columns["IncomeRaw"], ListSortDirection.Descending);
+        }
+
+        private void btnDefault_Click(object sender, EventArgs e)
+        {
+            SetDefaultDateRange();
         }
     }
 }

@@ -30,8 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportRoomOccupancy));
             pnlHeader = new Panel();
+            lblEndDate = new Label();
             pbLogo = new PictureBox();
+            dtpEndDate = new DateTimePicker();
             lblTitle = new Label();
+            lblStartDate = new Label();
+            dtpStartDate = new DateTimePicker();
             btnBack = new Button();
             pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
@@ -41,14 +45,27 @@
             // 
             pnlHeader.BackColor = SystemColors.Info;
             pnlHeader.BorderStyle = BorderStyle.FixedSingle;
+            pnlHeader.Controls.Add(lblEndDate);
             pnlHeader.Controls.Add(pbLogo);
+            pnlHeader.Controls.Add(dtpEndDate);
             pnlHeader.Controls.Add(lblTitle);
-            pnlHeader.Controls.Add(btnBack);
-            pnlHeader.Location = new Point(9, 9);
+            pnlHeader.Controls.Add(lblStartDate);
+            pnlHeader.Controls.Add(dtpStartDate);
+            pnlHeader.Location = new Point(11, 10);
             pnlHeader.Margin = new Padding(0);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Size = new Size(665, 54);
-            pnlHeader.TabIndex = 18;
+            pnlHeader.Size = new Size(1163, 54);
+            pnlHeader.TabIndex = 23;
+            // 
+            // lblEndDate
+            // 
+            lblEndDate.AutoSize = true;
+            lblEndDate.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblEndDate.Location = new Point(1008, 8);
+            lblEndDate.Name = "lblEndDate";
+            lblEndDate.Size = new Size(60, 15);
+            lblEndDate.TabIndex = 21;
+            lblEndDate.Text = "End Date:";
             // 
             // pbLogo
             // 
@@ -61,33 +78,61 @@
             pbLogo.TabIndex = 0;
             pbLogo.TabStop = false;
             // 
+            // dtpEndDate
+            // 
+            dtpEndDate.Location = new Point(1008, 25);
+            dtpEndDate.Margin = new Padding(3, 2, 3, 2);
+            dtpEndDate.Name = "dtpEndDate";
+            dtpEndDate.Size = new Size(150, 23);
+            dtpEndDate.TabIndex = 20;
+            dtpEndDate.Value = new DateTime(1900, 1, 1, 0, 0, 0, 0);
+            // 
             // lblTitle
             // 
             lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             lblTitle.Location = new Point(117, 2);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(246, 46);
+            lblTitle.Size = new Size(323, 46);
             lblTitle.TabIndex = 1;
             lblTitle.Text = "Room Occupancy";
             lblTitle.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // lblStartDate
+            // 
+            lblStartDate.AutoSize = true;
+            lblStartDate.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblStartDate.Location = new Point(852, 8);
+            lblStartDate.Name = "lblStartDate";
+            lblStartDate.Size = new Size(71, 15);
+            lblStartDate.TabIndex = 19;
+            lblStartDate.Text = "Start Date: ";
+            // 
+            // dtpStartDate
+            // 
+            dtpStartDate.Location = new Point(852, 25);
+            dtpStartDate.Margin = new Padding(3, 2, 3, 2);
+            dtpStartDate.Name = "dtpStartDate";
+            dtpStartDate.Size = new Size(150, 23);
+            dtpStartDate.TabIndex = 18;
+            dtpStartDate.Value = new DateTime(1900, 1, 1, 0, 0, 0, 0);
+            // 
             // btnBack
             // 
-            btnBack.Location = new Point(578, 2);
+            btnBack.Location = new Point(1092, 448);
             btnBack.Margin = new Padding(3, 2, 3, 2);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(82, 46);
-            btnBack.TabIndex = 1;
+            btnBack.Size = new Size(82, 23);
+            btnBack.TabIndex = 22;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = true;
-            btnBack.Click += btnBack_Click;
             // 
             // ReportRoomOccupancy
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(684, 340);
+            ClientSize = new Size(1184, 481);
             Controls.Add(pnlHeader);
+            Controls.Add(btnBack);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ReportRoomOccupancy";
@@ -95,15 +140,19 @@
             Text = "Room Occupancy Report";
             FormClosing += Report_FormClosing;
             pnlHeader.ResumeLayout(false);
+            pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
         private Panel pnlHeader;
+        private Label lblEndDate;
         private PictureBox pbLogo;
+        private DateTimePicker dtpEndDate;
         private Label lblTitle;
+        private Label lblStartDate;
+        private DateTimePicker dtpStartDate;
         private Button btnBack;
     }
 }

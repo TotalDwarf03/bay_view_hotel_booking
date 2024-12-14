@@ -32,6 +32,7 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportIncome));
             pnlHeader = new Panel();
+            btnDefault = new Button();
             lblEndDate = new Label();
             pbLogo = new PictureBox();
             dtpEndDate = new DateTimePicker();
@@ -53,6 +54,7 @@
             // 
             pnlHeader.BackColor = SystemColors.Info;
             pnlHeader.BorderStyle = BorderStyle.FixedSingle;
+            pnlHeader.Controls.Add(btnDefault);
             pnlHeader.Controls.Add(lblEndDate);
             pnlHeader.Controls.Add(pbLogo);
             pnlHeader.Controls.Add(dtpEndDate);
@@ -65,11 +67,22 @@
             pnlHeader.Size = new Size(1163, 54);
             pnlHeader.TabIndex = 17;
             // 
+            // btnDefault
+            // 
+            btnDefault.Location = new Point(1076, 25);
+            btnDefault.Margin = new Padding(3, 2, 3, 2);
+            btnDefault.Name = "btnDefault";
+            btnDefault.Size = new Size(82, 23);
+            btnDefault.TabIndex = 30;
+            btnDefault.Text = "Set Default";
+            btnDefault.UseVisualStyleBackColor = true;
+            btnDefault.Click += btnDefault_Click;
+            // 
             // lblEndDate
             // 
             lblEndDate.AutoSize = true;
             lblEndDate.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblEndDate.Location = new Point(1008, 8);
+            lblEndDate.Location = new Point(920, 8);
             lblEndDate.Name = "lblEndDate";
             lblEndDate.Size = new Size(60, 15);
             lblEndDate.TabIndex = 21;
@@ -88,7 +101,7 @@
             // 
             // dtpEndDate
             // 
-            dtpEndDate.Location = new Point(1008, 25);
+            dtpEndDate.Location = new Point(920, 25);
             dtpEndDate.Margin = new Padding(3, 2, 3, 2);
             dtpEndDate.Name = "dtpEndDate";
             dtpEndDate.Size = new Size(150, 23);
@@ -110,7 +123,7 @@
             // 
             lblStartDate.AutoSize = true;
             lblStartDate.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblStartDate.Location = new Point(852, 8);
+            lblStartDate.Location = new Point(764, 8);
             lblStartDate.Name = "lblStartDate";
             lblStartDate.Size = new Size(71, 15);
             lblStartDate.TabIndex = 19;
@@ -118,7 +131,7 @@
             // 
             // dtpStartDate
             // 
-            dtpStartDate.Location = new Point(852, 25);
+            dtpStartDate.Location = new Point(764, 25);
             dtpStartDate.Margin = new Padding(3, 2, 3, 2);
             dtpStartDate.Name = "dtpStartDate";
             dtpStartDate.Size = new Size(150, 23);
@@ -222,5 +235,6 @@
         private Button btnSortDate;
         private Button btnSortIncome;
         private System.Windows.Forms.DataVisualization.Charting.Chart IncomeChart;
+        private Button btnDefault;
     }
 }
