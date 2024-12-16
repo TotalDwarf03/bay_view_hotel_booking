@@ -1,6 +1,6 @@
 ﻿namespace bay_view_hotel_booking_system
 {
-    partial class FindBooking
+    partial class BookingSearch
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FindBooking));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookingSearch));
             MenuStrip = new MenuStrip();
             tsmiAvailability = new ToolStripMenuItem();
             tsmiQuit = new ToolStripMenuItem();

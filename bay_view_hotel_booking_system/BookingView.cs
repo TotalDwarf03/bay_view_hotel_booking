@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace bay_view_hotel_booking_system
 {
-    public partial class ViewBookings : Form
+    public partial class BookingView : Form
     {
         TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
         SQLController controller = new SQLController();
 
-        public ViewBookings()
+        public BookingView()
         {
             InitializeComponent();
 

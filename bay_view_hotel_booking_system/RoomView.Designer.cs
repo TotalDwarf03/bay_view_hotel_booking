@@ -1,6 +1,6 @@
 ﻿namespace bay_view_hotel_booking_system
 {
-    partial class viewrooms
+    partial class RoomView
     {
         /// <summary>
         /// Required designer variable.

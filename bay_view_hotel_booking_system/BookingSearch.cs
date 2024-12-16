@@ -12,12 +12,12 @@ using System.Globalization;
 
 namespace bay_view_hotel_booking_system
 {
-    public partial class FindBooking : Form
+    public partial class BookingSearch : Form
     {
         TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
         SQLController controller = new SQLController();
 
-        public FindBooking(string NextPage)
+        public BookingSearch(string NextPage)
         {
             InitializeComponent();
 
@@ -180,7 +180,7 @@ namespace bay_view_hotel_booking_system
 
             if (NextPage == "EditBooking")
             {
-                EditBooking frm = new EditBooking(Convert.ToInt32(BookingID));
+                BookingEdit frm = new BookingEdit(Convert.ToInt32(BookingID));
                 frm.Owner = this;
 
                 frm.Show();

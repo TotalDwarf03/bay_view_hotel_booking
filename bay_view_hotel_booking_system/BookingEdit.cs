@@ -13,12 +13,12 @@ using System.Diagnostics;
 
 namespace bay_view_hotel_booking_system
 {
-    public partial class EditBooking : Form
+    public partial class BookingEdit : Form
     {
         TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
         SQLController controller = new SQLController();
 
-        public EditBooking(int BookingID)
+        public BookingEdit(int BookingID)
         {
             InitializeComponent();
 

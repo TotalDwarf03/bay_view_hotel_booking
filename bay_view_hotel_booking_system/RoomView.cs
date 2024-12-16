@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace bay_view_hotel_booking_system
 {
-    public partial class viewrooms : Form
+    public partial class RoomView : Form
     {
-        public viewrooms()
+        public RoomView()
         {
             InitializeComponent();
         }
@@ -58,7 +58,7 @@ namespace bay_view_hotel_booking_system
 
         private void addRoomToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            addroom frm = new addroom();
+            RoomAdd frm = new RoomAdd();
             frm.Owner = this;
 
             frm.Show();
@@ -143,7 +143,7 @@ namespace bay_view_hotel_booking_system
             int Capacity = Convert.ToInt32(dgRoom.SelectedRows[0].Cells[4].Value);
             bool IsDisabledRoom = dgRoom.SelectedRows[0].Cells[5].Value.ToString() == "Yes" ? true : false;
 
-            editroom frm = new editroom(SelectedRoomID, SelectedRoomType, SelectedRoomStatus, Price, Capacity, IsDisabledRoom);
+            RoomEdit frm = new RoomEdit(SelectedRoomID, SelectedRoomType, SelectedRoomStatus, Price, Capacity, IsDisabledRoom);
             frm.Owner = this;
 
             frm.Show();

@@ -217,7 +217,7 @@ namespace bay_view_hotel_booking_system
             DateTime StartDate = dtpStartDate.Value.Date;
             DateTime EndDate = dtpEndDate.Value.Date;
 
-            CreateBooking frm = new CreateBooking(SelectedRoomID, SelectedRoomType, RoomPrice, RoomCapacity, IsDisabledRoom, StartDate, EndDate);
+            BookingCreate frm = new BookingCreate(SelectedRoomID, SelectedRoomType, RoomPrice, RoomCapacity, IsDisabledRoom, StartDate, EndDate);
             frm.Owner = this;
 
             frm.Show();
@@ -232,7 +232,7 @@ namespace bay_view_hotel_booking_system
 
         private void tsmiEditBooking_Click(object sender, EventArgs e)
         {
-            FindBooking frm = new FindBooking("EditBooking");
+            BookingSearch frm = new BookingSearch("EditBooking");
             frm.Owner = this;
 
             frm.Show();
@@ -241,7 +241,7 @@ namespace bay_view_hotel_booking_system
 
         private void tsmiViewBookings_Click(object sender, EventArgs e)
         {
-            ViewBookings frm = new ViewBookings();
+            BookingView frm = new BookingView();
             frm.Owner = this;
 
             frm.Show();

@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace bay_view_hotel_booking_system
 {
-    public partial class addroom : Form
+    public partial class RoomAdd : Form
     {
-        public addroom()
+        public RoomAdd()
         {
             InitializeComponent();
             //this.StartPosition = FormStartPosition.CenterScreen;
@@ -107,7 +107,7 @@ namespace bay_view_hotel_booking_system
 
         private void button2_Click(object sender, EventArgs e)
         {
-            viewrooms frm = Application.OpenForms["viewrooms"] as viewrooms;
+            RoomView frm = Application.OpenForms["viewrooms"] as RoomView;
             if (frm != null)
             {
                 frm.Show();
@@ -119,7 +119,7 @@ namespace bay_view_hotel_booking_system
         private void viewRoomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
            
-            viewrooms frm = Application.OpenForms["viewrooms"] as viewrooms;
+            RoomView frm = Application.OpenForms["viewrooms"] as RoomView;
             if (frm != null)
             {
                 frm.Show();

@@ -4,12 +4,12 @@ using System.Globalization;
 
 namespace bay_view_hotel_booking_system
 {
-    public partial class CreateBooking : Form
+    public partial class BookingCreate : Form
     {
         TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
         SQLController controller = new SQLController();
 
-        public CreateBooking(int SelectedRoomID, string RoomType, decimal RoomPrice, int RoomCapacity, bool IsDisabledRoom, DateTime StartDate, DateTime EndDate)
+        public BookingCreate(int SelectedRoomID, string RoomType, decimal RoomPrice, int RoomCapacity, bool IsDisabledRoom, DateTime StartDate, DateTime EndDate)
         {
             InitializeComponent();
 

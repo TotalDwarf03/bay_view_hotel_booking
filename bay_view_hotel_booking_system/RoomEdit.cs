@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace bay_view_hotel_booking_system
 {
-    public partial class editroom : Form
+    public partial class RoomEdit : Form
     {
         TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
         SQLController controller = new SQLController();
 
-        public editroom(int SelectedRoomID, string SelectedRoomType, string SelectedRoomStatus, decimal Price, int Capacity, bool IsDisabledRoom)
+        public RoomEdit(int SelectedRoomID, string SelectedRoomType, string SelectedRoomStatus, decimal Price, int Capacity, bool IsDisabledRoom)
         {
             InitializeComponent();
 
@@ -35,7 +35,7 @@ namespace bay_view_hotel_booking_system
 
         private void button2_Click(object sender, EventArgs e)
         {
-            viewrooms frm = Application.OpenForms["viewrooms"] as viewrooms;
+            RoomView frm = Application.OpenForms["viewrooms"] as RoomView;
             if (frm != null)
             {
                 frm.Show();
@@ -46,7 +46,7 @@ namespace bay_view_hotel_booking_system
 
         private void viewRoomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            viewrooms frm = Application.OpenForms["viewrooms"] as viewrooms;
+            RoomView frm = Application.OpenForms["viewrooms"] as RoomView;
             if (frm != null)
             {
                 frm.Show();
@@ -103,7 +103,7 @@ namespace bay_view_hotel_booking_system
                 txtCapacity.Clear();
                 cbDisabled.Items.Clear();
 
-                viewrooms frm = Application.OpenForms["viewrooms"] as viewrooms;
+                RoomView frm = Application.OpenForms["viewrooms"] as RoomView;
                 if (frm != null)
                 {
                     frm.Show();
