@@ -44,6 +44,20 @@ namespace bay_view_hotel_booking_system
 
             DataTable dt = controller.RunQuery(query);
 
+            // Check for Null values
+            // If there is a null value, there are no bookings
+            if (dt.Rows[0]["StartDate"].ToString() == "" || dt.Rows[0]["EndDate"].ToString() == "")
+            {
+                MessageBox.Show(
+                    "No bookings found.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+
+                return;
+            }
+
             dtpStartDate.Value = Convert.ToDateTime(dt.Rows[0]["StartDate"].ToString());
             dtpEndDate.Value = Convert.ToDateTime(dt.Rows[0]["EndDate"].ToString());
         }

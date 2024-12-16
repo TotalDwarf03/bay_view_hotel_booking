@@ -362,7 +362,7 @@ namespace bay_view_hotel_booking_system
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "homepage";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Home";
             FormClosing += homepage_FormClosing;
             ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();

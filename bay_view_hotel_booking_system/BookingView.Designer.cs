@@ -387,7 +387,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ViewBookings";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "View Bookings";
             FormClosing += ViewBookings_FormClosing;
             MenuStrip.ResumeLayout(false);

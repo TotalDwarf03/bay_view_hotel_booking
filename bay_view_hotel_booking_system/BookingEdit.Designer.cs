@@ -699,7 +699,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "EditBooking";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Edit Booking";
             FormClosing += EditBooking_FormClosing;
             Load += EditBooking_Load;

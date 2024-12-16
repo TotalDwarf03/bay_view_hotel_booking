@@ -148,7 +148,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "CustomerForm";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Customer Management";
             FormClosing += CustomerForm_FormClosing;
             pnlHeader.ResumeLayout(false);

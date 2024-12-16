@@ -209,7 +209,7 @@
             MainMenuStrip = mnCustomerEdit;
             Margin = new Padding(3, 2, 3, 2);
             Name = "CustomerEdit";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Edit Customer";
             FormClosing += CustomerEdit_FormClosing;
             mnCustomerEdit.ResumeLayout(false);

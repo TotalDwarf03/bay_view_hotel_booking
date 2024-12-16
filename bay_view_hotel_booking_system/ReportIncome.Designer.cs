@@ -211,7 +211,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ReportIncome";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Income Report";
             FormClosing += Report_FormClosing;
             pnlHeader.ResumeLayout(false);

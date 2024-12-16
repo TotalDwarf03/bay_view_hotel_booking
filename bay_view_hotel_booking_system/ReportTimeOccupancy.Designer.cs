@@ -245,7 +245,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ReportTimeOccupancy";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Time Occupancy Report";
             FormClosing += Report_FormClosing;
             ((System.ComponentModel.ISupportInitialize)BookingChart).EndInit();

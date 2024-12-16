@@ -577,7 +577,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CreateBooking";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Create Booking";
             FormClosing += CreateBooking_FormClosing;
             MenuStrip.ResumeLayout(false);

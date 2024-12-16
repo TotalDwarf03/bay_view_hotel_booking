@@ -204,7 +204,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "CustomerDelete";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Delete Customer";
             FormClosing += CustomerEdit_FormClosing;
             menuStrip1.ResumeLayout(false);

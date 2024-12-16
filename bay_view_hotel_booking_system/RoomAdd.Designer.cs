@@ -208,7 +208,7 @@
             MainMenuStrip = menuStrip1;
             Margin = new Padding(3, 2, 3, 2);
             Name = "RoomAdd";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Add Room";
             FormClosing += RoomAdd_FormClosing;
             menuStrip1.ResumeLayout(false);

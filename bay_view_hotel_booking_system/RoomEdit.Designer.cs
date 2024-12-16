@@ -227,7 +227,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "RoomEdit";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Edit Room";
             FormClosing += editroom_FormClosing;
             menuStrip1.ResumeLayout(false);

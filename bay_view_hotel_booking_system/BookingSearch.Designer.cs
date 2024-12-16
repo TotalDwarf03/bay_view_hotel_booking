@@ -217,7 +217,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "FindBooking";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Find Booking";
             FormClosing += EditBooking_FormClosing;
             VisibleChanged += FindBooking_VisibleChanged;
