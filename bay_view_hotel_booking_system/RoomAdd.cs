@@ -16,34 +16,64 @@ namespace bay_view_hotel_booking_system
         public RoomAdd()
         {
             InitializeComponent();
-            //this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         SQLController controller = new SQLController();
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            SQLController controller = new SQLController();
+            // Validate Inputs
+
+            string message = "";
+            bool ValidationFailed = false;
+
+            if (rType.Text == "")
+            {
+                message = "Please select a room type.";
+                ValidationFailed = true;
+            }
+            else if (cbStatus.Text == "")
+            {
+                message = "Please select a room status.";
+                ValidationFailed = true;
+            }
+            else if (txtPrice.Text == "")
+            {
+                message = "Please enter a price.";
+                ValidationFailed = true;
+            }
+            else if (txtCapacity.Text == "")
+            {
+                message = "Please enter a capacity.";
+                ValidationFailed = true;
+            }
+
+            // Make sure price is a number
+
+            else if (!decimal.TryParse(txtPrice.Text, out decimal price))
+            {
+                message = "Price must be a number.";
+                ValidationFailed = true;
+            }
+
+            // Make sure capacity is a number
+
+            else if (!int.TryParse(txtCapacity.Text, out int capacity))
+            {
+                message = "Capacity must be a number.";
+                ValidationFailed = true;
+            }
+
+            if (ValidationFailed)
+            {
+                MessageBox.Show(
+                    message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return;
+            }
 
             int disabled = cbDisabled.Text == "Yes" ? 1 : 0;
 
@@ -87,12 +117,6 @@ namespace bay_view_hotel_booking_system
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
-
-                rType.Items.Clear();
-                cbStatus.Items.Clear();
-                txtPrice.Clear();
-                txtCapacity.Clear();
-                cbDisabled.Items.Clear();
             }
             else
             {
@@ -103,29 +127,24 @@ namespace bay_view_hotel_booking_system
                     MessageBoxIcon.Error
                 );
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            RoomView frm = Application.OpenForms["viewrooms"] as RoomView;
-            if (frm != null)
-            {
-                frm.Show();
-            }
 
             this.Close();
         }
 
         private void viewRoomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
-            RoomView frm = Application.OpenForms["viewrooms"] as RoomView;
-            if (frm != null)
-            {
-                frm.Show();
-            }
 
             this.Close();
+        }
+
+        private void RoomAdd_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner?.Show();
+        }
+
+        private void returnToHomepageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Owner?.Close();
         }
     }
 }

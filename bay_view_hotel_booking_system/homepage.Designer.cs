@@ -202,6 +202,7 @@ namespace bay_view_hotel_booking_system
             fpnlRoom.Size = new Size(306, 64);
             fpnlRoom.TabIndex = 7;
             fpnlRoom.Visible = false;
+            fpnlRoom.Click += fpnlRoom_Click;
             // 
             // lblRoomHeading
             // 
@@ -213,6 +214,7 @@ namespace bay_view_hotel_booking_system
             lblRoomHeading.Size = new Size(161, 21);
             lblRoomHeading.TabIndex = 0;
             lblRoomHeading.Text = "Room Management";
+            lblRoomHeading.Click += fpnlRoom_Click;
             // 
             // lblRoomDesc
             // 
@@ -222,6 +224,7 @@ namespace bay_view_hotel_booking_system
             lblRoomDesc.Size = new Size(167, 15);
             lblRoomDesc.TabIndex = 1;
             lblRoomDesc.Text = "View, Add and Update Rooms.";
+            lblRoomDesc.Click += fpnlRoom_Click;
             // 
             // fpnlPayment
             // 

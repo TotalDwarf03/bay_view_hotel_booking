@@ -21,11 +21,6 @@ namespace bay_view_hotel_booking_system
 
         SQLController controller = new SQLController();
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void viewrooms_Load(object sender, EventArgs e)
         {
             string query = $"""
@@ -43,8 +38,8 @@ namespace bay_view_hotel_booking_system
                             'No'
                     END AS IsDisabled
 
-                FROM Room as r
-                JOIN RoomStatus as rs
+                FROM Room AS r
+                JOIN RoomStatus AS rs
                     ON r.RoomStatusID = rs.RoomStatusID
                 """;
 
@@ -108,8 +103,8 @@ namespace bay_view_hotel_booking_system
                             'No'
                     END AS IsDisabled
 
-                FROM Room as r
-                JOIN RoomStatus as rs
+                FROM Room AS r
+                JOIN RoomStatus AS rs
                     ON r.RoomStatusID = rs.RoomStatusID
 
                 WHERE (RoomType = '{RoomType.ToLower()}' OR '{RoomType}' = 'All')
@@ -127,7 +122,7 @@ namespace bay_view_hotel_booking_system
             if (dgRoom.SelectedRows.Count == 0)
             {
                 MessageBox.Show(
-                    "You must select a Booking before you can edit it.",
+                    "You must select a Room before you can edit it.",
                     "Warning",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
@@ -150,8 +145,12 @@ namespace bay_view_hotel_booking_system
             this.Hide();
         }
 
-        private void RefreshDataGrid()
+        private void ResetDefaultValues(object sender, EventArgs e)
         {
+            rType.SelectedIndex = 0;
+            cbStatus.SelectedIndex = 0;
+            cbDisabled.SelectedIndex = 0;
+
             String RoomType = rType.Text;
 
             int DisabledRoom = cbDisabled.Text == "Yes" ? 1 : 0;
@@ -196,17 +195,20 @@ namespace bay_view_hotel_booking_system
                 FROM Room as r
                 JOIN RoomStatus as rs
                     ON r.RoomStatusID = rs.RoomStatusID
-                    
                 """;
 
             DataTable dtRoom = controller.RunQuery(query);
             dgRoom.DataSource = dtRoom;
         }
 
-
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private void returnToHomepageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RefreshDataGrid();
+            this.Close();
+        }
+
+        private void RoomView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner?.Show();
         }
     }
 }

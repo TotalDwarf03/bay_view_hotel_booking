@@ -61,6 +61,15 @@ namespace bay_view_hotel_booking_system
             this.Hide();
         }
 
+        private void fpnlRoom_Click(object sender, EventArgs e)
+        {
+            RoomView frm = new RoomView();
+            frm.Owner = this;
+
+            frm.Show();
+            this.Hide();
+        }
+
         private void fpnlStaff_Click(object sender, EventArgs e)
         {
             StaffForm frm = new StaffForm();
