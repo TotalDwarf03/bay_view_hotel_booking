@@ -245,7 +245,7 @@
             MainMenuStrip = MenuStrip;
             Margin = new Padding(3, 2, 3, 2);
             Name = "BookingAvailability";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Booking Management: Availability";
             FormClosing += AddBooking_FormClosing;
             VisibleChanged += BookingAvailability_VisibleChanged;

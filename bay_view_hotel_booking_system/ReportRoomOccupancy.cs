@@ -17,6 +17,8 @@ namespace bay_view_hotel_booking_system
         TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
         SQLController controller = new SQLController();
 
+        int PreviousRoomTypeIndex = 0;
+
         public ReportRoomOccupancy()
         {
             InitializeComponent();
@@ -90,6 +92,20 @@ namespace bay_view_hotel_booking_system
 
             dt = controller.RunQuery(query);
 
+            // Check for Null values
+            // If there is a null value, there are no bookings
+            if (dt.Rows[0]["StartDate"].ToString() == "" || dt.Rows[0]["EndDate"].ToString() == "")
+            {
+                MessageBox.Show(
+                    "No bookings found.", 
+                    "Error", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error
+                );
+
+                return;
+            }
+
             dtpStartDate.Value = Convert.ToDateTime(dt.Rows[0]["StartDate"].ToString());
             dtpEndDate.Value = Convert.ToDateTime(dt.Rows[0]["EndDate"].ToString());
         }
@@ -102,7 +118,38 @@ namespace bay_view_hotel_booking_system
                 return;
             }
 
-            string query = $"""
+            string query;
+            DataTable dt;
+
+            // RoomID Combo Box
+
+            if (cbRoomType.SelectedIndex != PreviousRoomTypeIndex)
+            {
+                query = $"""
+                SELECT DISTINCT
+                    RoomID
+                FROM Room
+                WHERE '{cbRoomType.Text.ToLower()}' IN ('all', RoomType)
+                ORDER BY RoomID
+                """;
+
+                dt = controller.RunQuery(query);
+
+                cbRoom.Items.Clear();
+
+                cbRoom.Items.Add("All");
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    cbRoom.Items.Add(row["RoomID"].ToString());
+                }
+
+                PreviousRoomTypeIndex = cbRoomType.SelectedIndex;
+                cbRoom.SelectedIndex = 0;
+            }
+                        
+
+            query = $"""
                 SELECT
                     strftime('%m %Y', StartDate) AS DateGroup,
                     COUNT(b.BookingID) AS Bookings,
@@ -119,7 +166,7 @@ namespace bay_view_hotel_booking_system
                 ORDER BY strftime('%m %Y', StartDate)
                 """;
 
-            DataTable dt = controller.RunQuery(query);
+            dt = controller.RunQuery(query);
 
             dt.Columns.Add("Date", typeof(DateTime));
 

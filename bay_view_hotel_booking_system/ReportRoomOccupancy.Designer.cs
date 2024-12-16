@@ -251,7 +251,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ReportRoomOccupancy";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Room Occupancy Report";
             FormClosing += Report_FormClosing;
             ((System.ComponentModel.ISupportInitialize)ProportionChart).EndInit();

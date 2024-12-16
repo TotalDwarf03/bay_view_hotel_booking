@@ -45,7 +45,7 @@ namespace bay_view_hotel_booking_system
 
         private void fpnlPayment_Click(object sender, EventArgs e)
         {
-            FindBooking frm = new FindBooking("PaymentManagement");
+            BookingSearch frm = new BookingSearch("PaymentManagement");
             frm.Owner = this;
 
             frm.Show();
@@ -55,6 +55,15 @@ namespace bay_view_hotel_booking_system
         private void fpnlCustomer_Click(object sender, EventArgs e)
         {
             CustomerForm frm = new CustomerForm();
+            frm.Owner = this;
+
+            frm.Show();
+            this.Hide();
+        }
+
+        private void fpnlRoom_Click(object sender, EventArgs e)
+        {
+            RoomView frm = new RoomView();
             frm.Owner = this;
 
             frm.Show();

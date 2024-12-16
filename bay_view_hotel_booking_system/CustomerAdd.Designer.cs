@@ -198,7 +198,7 @@
             MainMenuStrip = mnCustomerAdd;
             Margin = new Padding(3, 2, 3, 2);
             Name = "CustomerAdd";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Add Customer";
             FormClosing += CustomerEdit_FormClosing;
             mnCustomerAdd.ResumeLayout(false);

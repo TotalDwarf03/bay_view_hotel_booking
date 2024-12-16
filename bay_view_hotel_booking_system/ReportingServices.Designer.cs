@@ -157,7 +157,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ReportingServices";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Reporting Services";
             FormClosing += Report_FormClosing;
             pnlHeader.ResumeLayout(false);

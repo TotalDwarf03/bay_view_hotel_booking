@@ -159,7 +159,7 @@
             MainMenuStrip = mnCustomerSearch;
             Margin = new Padding(3, 2, 3, 2);
             Name = "CustomerSearch";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Find Customer";
             FormClosing += CustomerSearch_FormClosing;
             VisibleChanged += CustomerSearch_VisibleChanged;
