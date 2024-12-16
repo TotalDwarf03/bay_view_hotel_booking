@@ -345,7 +345,7 @@ namespace bay_view_hotel_booking_system
             // 
             // homepage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(684, 340);
             Controls.Add(btnInsertTestData);
@@ -358,7 +358,6 @@ namespace bay_view_hotel_booking_system
             Controls.Add(fpnlCustomer);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
             Name = "homepage";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Home";
