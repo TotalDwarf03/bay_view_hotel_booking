@@ -28,15 +28,17 @@ To access the tool, a login to one of the 2 Staff accounts are required.
 
 ### Admin User
 
-Email: **admin@bayview.com**
-Password: **password**
+| Email             | Password |
+| ----------------- | -------- |
+| admin@bayview.com | password |
 
 This account gives you full access to the tool.
 
 ### Front Desk User
 
-Email: **user@bayview.com**
-Password: **password**
+| Email            | Password |
+| ---------------- | -------- |
+| user@bayview.com | password |
 
 This account limits functionality as Front Desk / Receptionist Staff are not allowed to: 
 
